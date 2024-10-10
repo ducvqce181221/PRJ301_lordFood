@@ -1,0 +1,140 @@
+body {
+    margin-top: 60px;
+}
+
+.custom-header {
+    display: flex;
+    /*  justify-content: space-evenly;*/
+    align-items: center;
+    background-color: #fff;
+    padding: 5px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding-left: -100px;
+    z-index: 1000;
+}
+
+.custom-header ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.custom-header > ul > li {
+    display: flex;
+    align-items: center;
+}
+
+.custom-header .logo-header-main img {
+    width: 13%;
+}
+
+.custom-header ul > li > a {
+    text-decoration: none;
+    padding: 0 5px;
+    margin-left: 40px;
+    color: #333;
+    font-size: 18px;
+}
+
+.logo-header-main {
+    text-align: center;
+    margin-left: 90px;
+}
+
+.custom-h_cart {
+    margin-top: -5px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px 15px;
+    margin-left: 40px;
+    transition: all 0.3s ease;
+}
+
+.custom-h_cart a {
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+}
+
+.custom-h_cart span {
+    color: #333;
+    font-size: 16px;
+}
+
+.custom-h_cart:hover a span {
+    color: red;
+}
+
+.custom-header a:hover,
+.custom-h_cart a:hover {
+    text-decoration: underline;
+    color: red;
+}
+
+.custom-h_cart figure {
+    margin: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.custom-h_cart i {
+    font-size: 20px;
+    color: #00aaff;
+    margin-right: 5px;
+}
+
+.custom-h_cart code {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    color: red;
+    border-radius: 50%;
+    padding: 2px 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.custom-nav-item .custom-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 70%;
+    right: 0;
+    margin-top: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+    padding: 0.5rem 0;
+    min-width: 200px;
+    z-index: 1000;
+}
+
+.custom-nav-item .custom-dropdown-menu.show {
+    display: block;
+}
+
+.custom-header .custom-dropdown-item {
+    color: #333;
+    font-size: 16px;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+    padding: 8px 0;
+}
+
+.custom-dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #007bff;
+}

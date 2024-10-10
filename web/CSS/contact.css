@@ -1,0 +1,63 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Sep 29, 2024, 2:13:49 PM
+    Author     : Le Trong Luan _ CE181151
+*/
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.contact {
+    margin-left: 50px;
+    margin: 140px 0 50px 70px;
+    display: flex;
+}
+.breadcrumb {
+    margin-left: 30px;
+}
+.breadcrumb a,
+i {
+    text-decoration: none;
+    color: black;
+    margin-left: 10px;
+}
+.underline {
+    border-bottom: 4px solid #10a8df;
+    width: 50px;
+}
+.breadcrumb a:hover {
+    color: red;
+}
+.contact-info2 h2,
+p {
+    color: rgb(24, 1, 1);
+}
+.highlight {
+    color: red;
+}
+a {
+    text-decoration: none;
+    color: #2d343e;
+}
+P {
+    color: rgb(24, 1, 1);
+}
+.right-img {
+    display: flex;
+    width: 50%;
+    object-fit: contain;
+    margin-left: 150px;
+}
+.right-img img {
+    width: 50%;
+}
+
+/* -------------------------------- */

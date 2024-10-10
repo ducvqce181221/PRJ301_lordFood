@@ -1,0 +1,244 @@
+/* Reset CSS */
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.image-banner {
+    margin-top: 70px;
+}
+.image-banner img {
+    width: 100vw;         /* Ensures the image takes the full width of its container */
+    height: 600px;        /* Maintains the aspect ratio, avoiding distortion */
+}
+/* section1 */
+.section1 {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 50px auto;
+}
+
+.video-content {
+    width: 50%;
+}
+.video-content video {
+    width: 100%;
+}
+
+.text-content {
+    padding-left: 40px;
+}
+
+.text-content h1 {
+    line-height: 35px;
+    color: #333;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.text-content p {
+    line-height: 30px;
+    font-size: 18px;
+    color: #636363;
+    text-align: justify;
+}
+.text-content div {
+    margin: 10px 0;
+    width: 60px;
+    height: 3px;
+    background: #00aeed;
+}
+/* section 2 */
+.header-section2 img {
+    width: 15%;
+}
+.header-section2 {
+    text-align: center;
+}
+.time-line-img {
+    width: 35%;
+    text-align: center;
+    margin: auto 0;
+}
+.time-line-img img {
+    width: 70%;
+}
+.swiper-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.swiper-slide {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.section-2 {
+    width: 100vw;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    margin-bottom: 30px;
+    height: 700px;
+}
+.swiper-container {
+    margin-top: 30px;
+}
+.time-line-item {
+    display: flex;
+    justify-content: space-around;
+}
+.time-line-content {
+    text-align: center;
+    background-color: #058dbf;
+    color: white;
+    font-size: 18px;
+    border-radius: 10px;
+    height: 150px;
+    margin-top: 100px;
+    width: 700px;
+}
+
+.time-line-content h4 {
+    font-size: 26px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.time-line-content p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+.time-line-content {
+    background: linear-gradient(45deg, #0066cc, #0099cc);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.time-line-item::before {
+    background: linear-gradient(45deg, #0066cc, #0099cc);
+}
+
+.time-line-item::after {
+    background: linear-gradient(45deg, #0066cc, #0099cc);
+}
+.swiper-slide {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.swiper-slide.swiper-slide-visible {
+    opacity: 1;
+}
+
+/* section 3 */
+.content-container {
+    display: flex;
+    justify-content: center;
+}
+.text-content-sec3,
+.video-aboutUs {
+    text-align: center;
+    width: 45%;
+}
+.video-aboutUs video {
+    width: 90%;
+    text-align: center;
+}
+.text-content-sec3 h2 {
+    line-height: 35px;
+    color: #333;
+    font-size: 22px;
+    text-align: start;
+    text-transform: uppercase;
+}
+
+.text-content-sec3 p {
+    line-height: 30px;
+    font-size: 16px;
+    color: #636363;
+    text-align: justify;
+}
+.text-content-sec3 div {
+    margin: 10px 0;
+    width: 60px;
+    height: 3px;
+    background: #00aeed;
+}
+.section-history {
+    width: 80%; /* Adjust as needed */
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px 0; /* Add padding to space out */
+}
+
+.section-history h2 {
+    font-size: 2em; /* Customize size as needed */
+    margin-bottom: 10px;
+}
+
+/*.section-history .underline {
+    width: 50px;
+    height: 4px;
+    background-color: #00bfff;  Adjust underline color 
+    margin: 10px auto;  Center the underline 
+}*/
+
+.section-history p {
+    font-size: 1.1em;
+    line-height: 1.6em;
+    margin-bottom: 15px;
+}
+.section-history {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.section-history h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.section-history h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #00A8E8;
+    margin: 10px auto 20px auto;
+}
+
+.section-history p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+@media (min-width: 768px) {
+    .section-history {
+        padding: 60px;
+    }
+
+    .section-history p {
+        font-size: 20px;
+    }
+}

@@ -1,0 +1,175 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Sep 29, 2024, 2:42:02 PM
+    Author     : Le Trong Luan _ CE181151
+*/
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+.contact-header {
+    margin-top: 150px;
+}
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+.phone-group {
+    display: flex;
+    flex-direction: column;
+}
+.contact-header {
+    margin-top: 50px;
+    background: linear-gradient(45deg, #0066cc, #0099cc);
+    padding: 50px 0;
+    text-align: center;
+    color: #333;
+}
+
+.contact-header h1 {
+    font-size: 36px;
+    margin: 0;
+}
+
+.contact-header p {
+    font-size: 18px;
+    margin: 10px 0 0;
+}
+
+.breadcrumb {
+    margin: 20px 0;
+    color: #d44851;
+    font-weight: bold;
+}
+
+.contact-form {
+    background-color: #fff;
+    padding: 30px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 130px;
+}
+
+.contact-form p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group select {
+    flex: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.form-group > .xamlol {
+    display: flex;
+    flex-basis: 50%;
+    flex-direction: column;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    height: 100px;
+    resize: none;
+}
+
+.feedback-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.feedback-options label {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+button:hover {
+    background-color: #c13642;
+}
+z .info {
+    display: flex;
+    justify-content: center;
+}
+.right-img,
+.breadcrumb {
+    width: 45%;
+}
+.right-img img {
+    width: 100%;
+}
+/* section 2 */
+.content-container {
+    display: flex;
+    justify-content: center;
+}
+.text-content {
+    text-align: center;
+    width: 45%;
+}
+.video-aboutUs {
+    width: 50%;
+    margin-left: 50px;
+}
+.video-aboutUs video {
+    width: 100%;
+    text-align: center;
+}
+.text-content h2 {
+    line-height: 35px;
+    color: #333;
+    font-size: 22px;
+    text-align: start;
+    text-transform: uppercase;
+}
+
+.text-content p {
+    line-height: 30px;
+    font-size: 16px;
+    color: #636363;
+    text-align: justify;
+}
+.text-content div {
+    margin: 10px 0;
+    width: 60px;
+    height: 3px;
+    background: #00aeed;
+}
+.business {
+    margin-bottom: 20px;
+}
+button {
+    padding: 15px 30px;
+    margin-top: 30px;
+    background-color: #d44851;
+    color: white;
+    margin-left: 1100px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+/* ---------------------------------- */

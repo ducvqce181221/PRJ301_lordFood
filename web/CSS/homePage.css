@@ -1,0 +1,223 @@
+/* banner */
+.custom-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    opacity: 0;
+    color: white;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.custom-arrow.left {
+    left: 10px;
+    top: 30%;
+}
+
+.custom-arrow.right {
+    right: 10px;
+}
+#carouselExampleControls {
+    margin-top: 85px;
+    margin-bottom: 40px;
+}
+.carousel-inner {
+    width: 100%;
+    /* Chiều cao cố định */
+}
+
+.carousel-inner img {
+    width: 100vw;
+    object-fit: contain;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 700px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+/* section 1 */
+.image-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+    margin-top: 100px;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+.image-container:hover::before {
+    opacity: 0;
+}
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 10px 20px;
+    z-index: 1;
+}
+
+/* section 2 */
+.section1 img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    margin-top: 100px;
+}
+.section-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.overlay {
+    padding: 0 10px;
+    text-align: center;
+    position: absolute;
+    top: 45%;
+    bottom: 50%;
+    left: 20%;
+    right: 20%;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    transform: translateY(0);
+    transition: transform 0.6s ease-in-out;
+}
+.section-item2 .overlay {
+    left: 26%;
+}
+.section1:hover {
+    color: red;
+}
+
+.overlay p {
+    padding: 8px 0;
+}
+.overlay:hover {
+    transform: translateY(-10px);
+}
+/* section 3 */
+.section2-item {
+    position: relative;
+    margin: 30px auto 0 auto;
+    width: 73%;
+    overflow: hidden;
+}
+
+.section2-item img {
+    width: 100%;
+    height: 400px;
+}
+
+.section2-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: rgba(40, 157, 210, 0.9);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: transform 0.8s ease-in-out;
+}
+
+.section2-overlay h2 {
+    text-align: center;
+}
+
+.section2-overlay p {
+    font-size: 18px;
+    text-align: start;
+}
+
+.section2-underline {
+    width: 100px;
+    height: 6px;
+    margin: 10px auto;
+    background-color: white;
+}
+
+.section2-overlay:hover {
+    transform: translateX(100%);
+}
+/* section 4 */
+.header-logo {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 150px;
+}
+
+.swiper-container {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    overflow: hidden;
+}
+
+.swiper-wrapper {
+    display: flex;
+    align-items: flex-start;
+}
+
+.swiper-slide {
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    width: calc((100% / 3) - 20px);
+    box-sizing: border-box;
+    height: 550px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.swiper-slide-visible {
+    opacity: 1;
+}
+
+.card {
+    width: 100%;
+    margin: 0 10px;
+    flex: 1;
+}
+
+.card-body,
+h5 {
+    text-align: center;
+}
+.card-body-sec3 h5,
+p {
+    text-align: start;
+    line-height: 1.5;
+}
+.card-body-sec3 h5 {
+    font-weight: bold;
+}
+.card img {
+    height: 250px;
+    object-fit: cover;
+    width: 100%;
+}
