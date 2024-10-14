@@ -78,7 +78,7 @@
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
-                        <li><a class="dropdown-item" href="./signInAdmin.php">Logout</a></li>
+                        <li><a class="dropdown-item" href="./signInAdmin.jsp">Logout</a></li>
                     </ul>
                 </li>
             </ul>
