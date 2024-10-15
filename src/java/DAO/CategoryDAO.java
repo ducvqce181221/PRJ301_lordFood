@@ -8,6 +8,7 @@ import Model.Category;
 import java.sql.*;
 import java.util.List;
 import DBContext.ConnectDB;
+import java.util.ArrayList;
 
 /**
  *
@@ -22,20 +23,20 @@ public class CategoryDAO {
     protected static String Update_Cate = "UPDATE category SET category_name = ? WHERE = ?";
 
     public static List<Category> getAll() {
-        List<Category> list = null;
+        List<Category>list = new ArrayList<>();
         try {
             Con = ConnectDB.getConnection();
-
             PreparedStatement stm = Con.prepareStatement(Select_All);
             ResultSet rs = stm.executeQuery();
 
             while (rs.next()) {
                 Category c = new Category(
                         rs.getString(1),
-                        rs.getString(2)
-                );
-                list.add(c);
+                        rs.getString(2));
+             list.add(c);
             }
+            rs.close();
+            stm.close();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -56,6 +57,7 @@ public class CategoryDAO {
         try {
             Con = ConnectDB.getConnection();
             PreparedStatement stm = Con.prepareStatement(Delect_By_Id);
+            stm.setString(1, Id);
             rs = stm.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace();
