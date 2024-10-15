@@ -121,9 +121,9 @@
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Contact Management</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">View Contacts</li>
+                            <li class="breadcrumb-item active">View Orders</li>
                         </ol>
-
+                      
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
@@ -138,7 +138,6 @@
                                             <th>Email</th>
                                             <th>Phone Number</th>
                                             <th>Complain</th>
-                                            <th>Created At</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -150,7 +149,7 @@
 
                                             try {
                                                 conn = ConnectDB.getConnection();
-                                                String sql = "SELECT contactID, fullname, Email, PhoneNumber, complain, created_at FROM contact";
+                                                String sql = "SELECT contactID, fullname, Email, PhoneNumber, complain FROM contact";
                                                 stmt = conn.prepareStatement(sql);
                                                 rs = stmt.executeQuery();
 
@@ -160,18 +159,17 @@
                                                     String email = rs.getString("Email");
                                                     String phoneNumber = rs.getString("PhoneNumber");
                                                     String complain = rs.getString("complain");
-                                                    String time = rs.getString("created_at");
                                         %>
                                         <tr>
-                                            <td><%= contactID %></td>
-                                            <td><%= fullname %></td>
-                                            <td><%= email %></td>
-                                            <td><%= phoneNumber %></td>
-                                            <td><%= complain %></td>
-                                            <td><%= time %></td>
+                                            <td>   <%= contactID %>   </td>
+                                            <td>   <%= fullname %>   </td>
+                                            <td>   <%= email %>   </td>
+                                            <td>   <%= phoneNumber %>   </td>
+                                            <td>   <%= complain %>   </td>
                                             <td>
                                                 <a href="<%= request.getContextPath() %>/deleteContact?id=<%= contactID %>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this contact?')">Delete</a>
-                                                <a href="<%= request.getContextPath() %>/admin/editContact.jsp?id=<%= contactID %>" class="btn btn-warning">Edit</a>
+                                                <a href="<%= request.getContextPath() %>/admin/editContact.jsp?id=<%= contactID %>" class="btn btn-warning" onclick="return ">Edit</a>
+                                                
                                             </td>
                                         </tr>
                                         <%
