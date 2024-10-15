@@ -11,6 +11,10 @@
         <servlet-name>CategoryServlet</servlet-name>
         <servlet-class>controller.CategoryServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MenuServlet</servlet-name>
+        <servlet-class>controller.MenuServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CartServlet</servlet-name>
         <url-pattern>/cartServlet</url-pattern>
@@ -18,6 +22,10 @@
     <servlet-mapping>
         <servlet-name>CategoryServlet</servlet-name>
         <url-pattern>/categoryServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MenuServlet</servlet-name>
+        <url-pattern>/menu</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
