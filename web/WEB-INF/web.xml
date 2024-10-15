@@ -15,6 +15,10 @@
         <servlet-name>MenuServlet</servlet-name>
         <servlet-class>controller.MenuServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>foodDetailServlet</servlet-name>
+        <servlet-class>controller.foodDetailServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CartServlet</servlet-name>
         <url-pattern>/cartServlet</url-pattern>
@@ -26,6 +30,10 @@
     <servlet-mapping>
         <servlet-name>MenuServlet</servlet-name>
         <url-pattern>/menu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>foodDetailServlet</servlet-name>
+        <url-pattern>/foodDetail</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

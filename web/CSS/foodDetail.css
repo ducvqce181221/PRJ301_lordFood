@@ -1,0 +1,28 @@
+.breadcrumb-container {
+    background-color: #f8f9fa; /* Màu nền nhạt */
+    border-radius: 5px; /* Bo góc */
+    padding: 10px; /* Padding cho breadcrumb */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+}
+
+.breadcrumb-link {
+    font-size: 19px;
+    color: gray;
+    transition: color 0.3s; /* Hiệu ứng chuyển màu */
+    text-decoration: none; /* Xóa gạch chân */
+}
+
+.breadcrumb-link:hover {
+    color: #007bff; /* Đổi màu khi hover */
+}
+
+.breadcrumb-separator {
+    margin: 0 5px; /* Khoảng cách xung quanh dấu phân cách */
+    color: #6c757d; /* Màu chữ cho dấu phân cách */
+}
+
+.breadcrumb-item {
+    font-size: 19px;
+    color: #007bff; /* Màu chữ cho link */
+    
+}

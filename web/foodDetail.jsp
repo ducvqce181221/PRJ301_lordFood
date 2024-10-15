@@ -1,69 +1,59 @@
-<%-- 
-    Document   : foodDetail
-    Created on : Oct 15, 2024, 7:42:48 PM
-    Author     : Vu Quang Duc - CE181221
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%-- Document : foodDetail Created on : Oct 15, 2024, 7:42:48 PM Author : Vu Quang Duc - CE181221 --%> <%@page
+contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>JSP Page</title>
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
             rel="stylesheet"
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
             crossorigin="anonymous"
-            />
+        />
 
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-            />
+        />
+
+        <link rel="stylesheet" href="./CSS/foodDetail.css" />
     </head>
     <body>
-        <!--Main layout-->
-
         <div class="container mt-5">
             <!--Grid row-->
             <div class="row">
                 <!--Grid column-->
                 <div class="col-md-6 mb-4">
-                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/14.jpg" class="img-fluid" alt="" />
+                    <img src="${product.imageURL}" class="img-fluid" alt="" />
                 </div>
                 <!--Grid column-->
 
                 <!--Grid column-->
                 <div class="col-md-6 mb-4">
                     <!--Content-->
-                    <div class="p-4">
-                        <div class="mb-3">
-                            <a href="">
-                                <span class="badge bg-dark me-1">Category 2</span>
-                            </a>
-                            <a href="">
-                                <span class="badge bg-info me-1">New</span>
-                            </a>
-                            <a href="">
-                                <span class="badge bg-danger me-1">Bestseller</span>
-                            </a>
-                        </div>
+                    <div class="d-flex align-items-center p-3 breadcrumb-container">
+                        <a href="menu" class="me-2 breadcrumb-link">Menu</a>
+                        <i class="bi bi-arrow-right mx-2"></i>
+                        <span class="ms-2 breadcrumb-item">Food Detail</span>
+                    </div>
 
+                    <div class="p-4">
                         <p class="lead">
-                            <span class="me-1">
-                                <del>$200</del>
-                            </span>
-                            <span>$100</span>
+                            <!--<span class="me-1"><del>$200</del></span>-->
+                            <span>${product.price}VND</span>
                         </p>
 
-                        <strong><p style="font-size: 20px;">Description</p></strong>
+                        <div class="d-flex align-items-center">
+                            <strong><span style="font-size: 20px">${product.productName}</span></strong>
+                            <span class="badge bg-danger ms-2">${cate.category_name}</span>
+                        </div>
 
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero eos atque quia ipsa sint voluptatibus! Beatae sit assumenda asperiores iure at maxime atque repellendus maiores quia sapiente.</p>
+                        <p>${product.description}</p>
 
                         <form class="d-flex justify-content-left">
                             <!-- Default input -->
-                            <div class="form-outline me-1" style="width: 80px;">
+                            <div class="form-outline me-1" style="width: 80px">
                                 <input type="number" value="1" class="form-control" />
                             </div>
                             <button class="btn btn-primary ms-1" type="submit">

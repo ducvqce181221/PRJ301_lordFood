@@ -13,14 +13,16 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Category;
 import model.Product;
 
 /**
  *
- * @author Truong Van Khang - CE181852
+ * @author VU QUANG DUC - CE181221
  */
-public class CategoryServlet extends HttpServlet {
+public class foodDetailServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +41,10 @@ public class CategoryServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CategoryServlet</title>");
+            out.println("<title>Servlet foodDetailServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CategoryServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet foodDetailServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,15 +63,21 @@ public class CategoryServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 //        processRequest(request, response);
+
+        int productid = Integer.parseInt(request.getParameter("productid"));
         int cateid = Integer.parseInt(request.getParameter("cateid"));
 
         MenuDAO menuDAO = new MenuDAO();
-        List<Category> listC = CategoryDAO.getAll();
-        request.setAttribute("listCate", listC);
+        Product product = menuDAO.getProductByProID(productid);
+        request.setAttribute("product", product);
 
-        List<Product> list = menuDAO.getProductByCateID(cateid);
-        request.setAttribute("listProducts", list);
-        request.getRequestDispatcher("menu.jsp").forward(request, response);
+        try {
+            Category cate = CategoryDAO.getCateByID(cateid);
+            request.setAttribute("cate", cate);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(foodDetailServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        request.getRequestDispatcher("foodDetail.jsp").forward(request, response);
 
     }
 
