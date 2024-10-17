@@ -66,7 +66,7 @@ public class CategoryServlet extends HttpServlet {
                     deleteCategory(request, response);
                     break;
                 case "update":
-                    showListCategory(request, response);
+                    updateCategory(request, response);
                     break;
                 case "add":
                     addNewCategory(request, response);
@@ -121,6 +121,25 @@ public class CategoryServlet extends HttpServlet {
                 showListCategory(request, response);
             } else {
                 System.out.println("Loi Delete");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void updateCategory(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        try {
+            boolean Complete = false;
+            String Id = request.getParameter("categoryId");
+            String CategoryName = request.getParameter("categoryName");
+            System.out.println(Id);
+            Complete = CategoryDAO.UpdateCateById(Id, CategoryName);
+            if (Complete) {
+                System.out.println("da Update");
+                showListCategory(request, response);
+            } else {
+                System.out.println("Loi Update");
             }
         } catch (Exception e) {
             e.printStackTrace();

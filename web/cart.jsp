@@ -1,14 +1,18 @@
 <%-- 
     Document   : cart
     Created on : Sep 29, 2024, 2:50:10 PM
-    Author     : Le Trong Luan _ CE181151
+    Author     : Truong Van Khang _ CE181852
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="components/header.jsp" %>
+<%@page import="jakarta.servlet.http.HttpSession"%>
+<%@page import="java.util.List"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +22,7 @@
     </head>
 
     <body>
+
         <div class="cart-container">
             <div class="cart-content">
                 <div class="cart-items">
@@ -41,33 +46,26 @@
                             <hr>
                             <!-- Example row -->
                             <tr>
+                                <c:forEach var="c" items=""> 
+
+                                </c:forEach>
                                 <td>1</td>  
                                 <td><img src="path_to_image.jpg" alt="Product Image" class="product-img"></td>
                                 <td>Sản phẩm A</td>
-                                <td class="unit-price" name="unit-price"> <%= 200000%> </td> <!-- Lấy dữ liệu từ giá product -->
+                                <td class="unit-price" name="unit-price">
+                                    <fmt:formatNumber value="${50000}" pattern="#,###" />
+                                    VND
+                                </td><!-- Lấy dữ liệu từ giá product -->
                                 <td>
                                     <div class="quantity-controls">
-                                        <button class="quantity-btn" onclick="decreaseQuantity(this)">-</button>
-                                        <input type="number" value="1" min="1" class="quantity-input"> <!-- Đã thêm class cho input số lượng -->                                      
-                                        <button class="quantity-btn" onclick="increaseQuantity(this)">+</button>
+                                        <button class="quantity-btn"><a href="cartServlet?num=-1&id=<>">-</a></button>
+                                        <input type="number" class="quantity-input" value="${3}" > <!-- Đã thêm class cho input số lượng -->                                      
+                                        <button class="quantity-btn"><a href="cartServlet?num=-1&id=<>">+</a></button>
                                     </div>
                                 </td>
-                                <td class="total-price">200,000 VND</td> <!-- Đã thêm class cho tổng tiền -->
-                                <td> <button class="remove-btn" onclick="removeItem(this)">Xóa</button></td>>
-                            </tr>
-                            <tr>
-                                <td>1</td>  
-                                <td><img src="path_to_image.jpg" alt="Product Image" class="product-img"></td>
-                                <td>Sản phẩm A</td>
-                                <td class="unit-price" name="unit-price"> <%= 100000%> </td> <!-- Lấy dữ liệu từ giá product -->
-                                <td>
-                                    <div class="quantity-controls">
-                                        <button class="quantity-btn" onclick="decreaseQuantity(this)">-</button>
-                                        <input type="number" value="1" min="1" class="quantity-input"> <!-- Đã thêm class cho input số lượng -->                                      
-                                        <button class="quantity-btn" onclick="increaseQuantity(this)">+</button>
-                                    </div>
-                                </td>
-                                <td class="total-price">200,000 VND</td> <!-- Đã thêm class cho tổng tiền -->
+                                <td class="total-price">  
+                                    <fmt:formatNumber value="${50000}" pattern="#,###" />
+                                    VND</td> <!-- Đã thêm class cho tổng tiền -->
                                 <td> <button class="remove-btn" onclick="removeItem(this)">Xóa</button></td>>
                             </tr>
                             </tbody>

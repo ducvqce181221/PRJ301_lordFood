@@ -5,6 +5,7 @@
 package Model;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  *
@@ -19,10 +20,10 @@ public class Product {
     private int quantityOfStock;
     private String imageURL;
     private int categoryID;
-    private Date created_at;
-    private Date updated_at;
+    private Timestamp created_at;
+    private Timestamp updated_at;
 
-    public Product(int product_id, String productName, String description, double price, int quantityOfStock, String imageURL, int categoryID, Date created_at, Date updated_at) {
+    public Product(int product_id, String productName, String description, double price, int quantityOfStock, String imageURL, int categoryID, Timestamp created_at, Timestamp updated_at) {
         this.product_id = product_id;
         this.productName = productName;
         this.description = description;
@@ -33,6 +34,11 @@ public class Product {
         this.created_at = created_at;
         this.updated_at = updated_at;
     }
+
+    public Product() {
+    }
+
+   
 
     public int getProduct_id() {
         return product_id;
@@ -90,19 +96,19 @@ public class Product {
         this.categoryID = categoryID;
     }
 
-    public Date getCreated_at() {
+    public Timestamp getCreated_at() {
         return created_at;
     }
 
-    public void setCreated_at(Date created_at) {
+    public void setCreated_at(Timestamp created_at) {
         this.created_at = created_at;
     }
 
-    public Date getUpdated_at() {
+    public Timestamp getUpdated_at() {
         return updated_at;
     }
 
-    public void setUpdated_at(Date updated_at) {
+    public void setUpdated_at(Timestamp updated_at) {
         this.updated_at = updated_at;
     }
     

@@ -56,7 +56,6 @@
 
         </style>
 
-
     </head>
 
 
@@ -104,7 +103,11 @@
                         <ol>
                             <li class="breadcrumb-item active">View Category</li>
                         </ol>
-                        <c:set var="categoryCount" value="${fn:length(dataCategory) + 1}" /> 
+                        <c:forEach var="item" items="${dataCategory}">
+                            <c:set var="lastCategoryId" value="${item.categoryId}" />
+                        </c:forEach>
+                        <c:set var="categoryCount" value="${lastCategoryId + 1}" /> 
+
                         <div class="form-container btn ms-2">
                             <form action="./categoryServlet" method="GET"> 
                                 <input type="hidden" name="action" value="add"> 
@@ -136,7 +139,7 @@
                                                 <td>${item.categoryId}</td>
                                                 <td>${item.category_name}</td>
                                                 <td>
-                                                    <a href="./categoryServlet?id=<%= 3 %>&action=update" class="btn btn-primary btn-sm">Update</a>
+                                                    <a href="#" class="btn btn-primary btn-sm" onclick="openUpdateModal(${item.categoryId}, '${item.category_name}')">Update</a>
                                                     <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete(${item.categoryId})">Delete</button>
                                                 </td>
                                             </c:forEach>
@@ -150,18 +153,48 @@
             </div>
         </div>
 
+        <!-- Modal Cập Nhật -->
+        <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updateModalLabel">Update Category</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="./categoryServlet" method="get">
+                            <input type="hidden" name="action" value="update" />
+                            <input type="hidden" id="categoryId" name="categoryId" />
+
+                            <div class="form-group">
+                                <label for="categoryName">Category Name</label>
+                                <input type="text" class="form-control" id="categoryNameInput" name="categoryName" required />
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeUpdateModal()">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <!-- Modal Xác Nhận -->
         <div id="confirmModal" class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Xác Nhận</h5>
+                        <h5 class="modal-title">Submit</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal()">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Bạn có chắc chắn muốn xóa bản ghi này không?</p>
+                        <p>Are you sure you want to delete this record?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal()">Hủy</button>
@@ -195,6 +228,19 @@
             document.querySelectorAll('.close').forEach(function (element) {
                 element.addEventListener('click', closeModal);
             });
+
+            function openUpdateModal(categoryId, categoryName) {
+                // Gán giá trị ID và tên Category vào modal
+                document.getElementById('categoryId').value = categoryId;
+                document.getElementById('categoryNameInput').value = categoryName;
+
+                // Hiển thị modal
+                $('#updateModal').modal('show');
+            }
+
+            function closeUpdateModal() {
+                $('#updateModal').modal('hide');
+            }
         </script>
     </body>
 </html>
