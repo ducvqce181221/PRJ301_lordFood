@@ -46,27 +46,31 @@
                             <hr>
                             <!-- Example row -->
                             <tr>
-                                <c:forEach var="c" items=""> 
-
+                                <c:forEach var="item" items="${cart.items}">
+                                    <td>${item.id}</td>  
+                                    <td>
+                                        <img src="${item.product.imageURL}" alt="Product Image" class="product-img">
+                                    </td>
+                                    <td>${item.product.productName}</td>
+                                    <td class="unit-price" name="unit-price">
+                                        <fmt:formatNumber value="${item.product.price}" pattern="#,###" />
+                                        VND
+                                    </td>
+                                    <td>
+                                        <div class="quantity-controls">
+                                            <button class="quantity-btn" onclick="updateCart('decrease', ${item.product.productId}, ${item.quantity})">-</button>
+                                            <input type="number" class="quantity-input" value="${item.quantity}" readonly> 
+                                            <button class="quantity-btn" onclick="updateCart('increase', ${item.product.productId}, ${item.quantity})">+</button>
+                                        </div>
+                                    </td>
+                                    <td class="total-price">  
+                                        <fmt:formatNumber value="${item.product.price * item.quantity}" pattern="#,###" />
+                                        VND
+                                    </td>
+                                    <td> 
+                                        <button class="remove-btn" onclick="removeItem(this)">Delete</button>
+                                    </td>
                                 </c:forEach>
-                                <td>1</td>  
-                                <td><img src="path_to_image.jpg" alt="Product Image" class="product-img"></td>
-                                <td>Sản phẩm A</td>
-                                <td class="unit-price" name="unit-price">
-                                    <fmt:formatNumber value="${50000}" pattern="#,###" />
-                                    VND
-                                </td><!-- Lấy dữ liệu từ giá product -->
-                                <td>
-                                    <div class="quantity-controls">
-                                        <button class="quantity-btn"><a href="cartServlet?num=-1&id=<>">-</a></button>
-                                        <input type="number" class="quantity-input" value="${3}" > <!-- Đã thêm class cho input số lượng -->                                      
-                                        <button class="quantity-btn"><a href="cartServlet?num=-1&id=<>">+</a></button>
-                                    </div>
-                                </td>
-                                <td class="total-price">  
-                                    <fmt:formatNumber value="${50000}" pattern="#,###" />
-                                    VND</td> <!-- Đã thêm class cho tổng tiền -->
-                                <td> <button class="remove-btn" onclick="removeItem(this)">Xóa</button></td>>
                             </tr>
                             </tbody>
                         </table>

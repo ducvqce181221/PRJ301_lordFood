@@ -4,6 +4,9 @@
  */
 package Model;
 
+import java.sql.Timestamp;
+
+
 /**
  *
  * @author Truong Van Khang - CE181852
@@ -12,14 +15,12 @@ public class Category {
 
     private String categoryId;
     private String category_name;
+    private Timestamp create_at;
 
-    public Category(String category_name) {
-        this.category_name = category_name;
-    }
-
-    public Category(String categoryId, String category_name) {
+    public Category(String categoryId, String category_name, Timestamp create_at) {
         this.categoryId = categoryId;
         this.category_name = category_name;
+        this.create_at = create_at;
     }
 
     public String getCategoryId() {
@@ -38,4 +39,15 @@ public class Category {
         this.category_name = category_name;
     }
 
+    public Timestamp getCreate_at() {
+        return create_at;
+    }
+
+    public void setCreate_at(Timestamp create_at) {
+        this.create_at = create_at;
+    }
+
+ 
+
+    
 }

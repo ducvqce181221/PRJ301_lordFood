@@ -7,7 +7,7 @@ package controller;
 import DAO.MenuDAO;
 import Model.Cart;
 import Model.Item;
-import Model.Product;
+import Model.Product;;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -61,7 +61,7 @@ public class CartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        doPost(request, response);
     }
 
     /**
@@ -73,41 +73,101 @@ public class CartServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
+//    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+//            throws ServletException, IOException {
+//        Timestamp createdAt = new Timestamp(System.currentTimeMillis());
+//        Timestamp updatedAt = new Timestamp(System.currentTimeMillis());
+//
+//        Product product = new Product(1, "Sản phẩm mẫu", "Mô tả sản phẩm mẫu", 100.0, 50, "http://example.com/image.jpg", 1, createdAt, updatedAt);
+//        Product product1 = new Product(1, "Sản phẩm mẫu", "Mô tả sản phẩm mẫu", 100.0, 50, "http://example.com/image.jpg", 1, createdAt, updatedAt);
+//        Product product2 = new Product(1, "Sản phẩm mẫu", "Mô tả sản phẩm mẫu", 100.0, 50, "http://example.com/image.jpg", 1, createdAt, updatedAt);
+//        HttpSession session = request.getSession(true);
+//        Cart cart = null;
+//        Object o = session.getAttribute("cart");
+//        String action = "";
+//
+//        if (o != null) {
+//            cart = (Cart) o;
+//        } else {
+//            cart = new Cart();
+//            action = request.getParameter("action");
+//        }
+//        String quantity = request.getParameter("productID");
+//        String id = request.getParameter("quantity");
+//
+//        int num, Id;
+//        try {
+//            num = 4;
+//            Id = product.getProduct_id();
+////            num = Integer.parseInt(quantity);
+////            Id = Integer.parseInt(id);
+//            if (num == -1 && cart.getQuantityById(Id) <= 1) {
+//                cart.removeItem(Id);
+//            } else {
+////                    MenuDAO M = new MenuDAO();
+//                    Product p = new Product();
+//                    double price = p.getPrice() * 1.2;
+//                    Item i = new Item(p, price, num);
+//                    cart.addItem(i);
+//                }
+//        } catch (Exception e) {
+//            num = 1;
+//        }
+//        List<Item> list = cart.getItems();
+//        session.setAttribute("cart", cart);
+//        session.setAttribute("size", list.size());
+//        request.getRequestDispatcher("cart.jsp").forward(request, response);
+//
+//    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession(true);
-        Cart cart = null;
-        Object o = session.getAttribute("cart");
 
-        if (o != null) {
-            cart = (Cart) o;
-        } else {
+        HttpSession session = request.getSession(true);
+        Cart cart = (Cart) session.getAttribute("cart");
+        if (cart == null) {
             cart = new Cart();
         }
-        String quantity = "4";
-        String id = "2";
 
-        int num, Id;
+        // Get action, product ID, and quantity from request
+        String action = request.getParameter("action");
+        String productIdStr = request.getParameter("productId");
+        String quantityStr = request.getParameter("quantity");
+
+        int productId, quantity;
         try {
-            num = Integer.parseInt(quantity);
-            Id = Integer.parseInt(id);
-            if (num == -1 && cart.getQuantityById(Id) <= 1) {
-                cart.removeItem(Id);
-            } else {
-                MenuDAO M = new MenuDAO();
-                Product p = new Product();
-                double price = p.getPrice() * 1.2;
-                Item i = new Item(p, price, num);
-                cart.addItem(i);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+            productId = 1;
+            quantity = 2;
+//            productId = Integer.parseInt(productIdStr);
+//            quantity = Integer.parseInt(quantityStr);
+        } catch (NumberFormatException e) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid product ID or quantity");
+            return;
         }
-        List<Item> list = cart.getItems();
-        session.setAttribute("cart", cart);
-        session.setAttribute("size", list.size());
-        request.getRequestDispatcher("cart.jsp").forward(request, response);
 
+        // Load product details (example: from database or predefined list)
+        MenuDAO M = new MenuDAO();
+        Product product = M.getProduct(productId); // Assume this method gets the product by ID
+        if (product == null) {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND, "Product not found");
+            return;
+        }
+
+        // Handle the cart actions
+        if ("increase".equals(action)) {
+            cart.updateItemQuantity(productId, quantity);
+        } else if ("decrease".equals(action)) {
+            if (cart.getQuantityById(productId) > 1) {
+                cart.updateItemQuantity(productId, quantity);
+            } else {
+                cart.removeItem(productId);
+            }
+        }
+
+        // Update session and forward to cart.jsp
+        List<Item> items = cart.getItems();
+        session.setAttribute("cart", cart);
+        session.setAttribute("size", items.size());
+        request.getRequestDispatcher("cart.jsp").forward(request, response);
     }
 
     /**

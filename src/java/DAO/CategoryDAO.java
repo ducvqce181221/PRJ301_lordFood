@@ -19,12 +19,13 @@ public class CategoryDAO {
     protected static Connection Con;
     protected static String Select_All = "SELECT * FROM category";
     protected static String Delect_By_Id = "DELETE FROM category WHERE categoryId = ?";
-    protected static String Insert_Cate = "INSERT INTO category (categoryId, category_name) VALUES (?, ?)";
-    protected static String Update_Cate = "UPDATE category SET category_name = ? WHERE categoryId = ?";
+    protected static String Insert_Cate = "INSERT INTO category (categoryId, category_name, create_at) VALUES (?, ?, ?)";
+    protected static String Update_Cate = "UPDATE category SET category_name = ?, create_at = ? WHERE categoryId = ?";
     protected static String Find_Deleted_Id = "SELECT MIN(t1.categoryId + 1) AS nextId "
             + "FROM category t1 "
             + "LEFT JOIN category t2 ON t1.categoryId + 1 = t2.categoryId "
             + "WHERE t2.categoryId IS NULL AND t1.categoryId >= 1";
+    protected static String Find_Cate_By_Name = "SELECT CategoryName FROM category WHERE CategoryName LIKE '%?%';";
 
     public static List<Category> getAll() {
         List<Category> list = new ArrayList<>();
@@ -36,7 +37,8 @@ public class CategoryDAO {
             while (rs.next()) {
                 Category c = new Category(
                         rs.getString(1),
-                        rs.getString(2));
+                        rs.getString(2),
+                        rs.getTimestamp(3));
                 list.add(c);
             }
             rs.close();
@@ -78,7 +80,7 @@ public class CategoryDAO {
         return rs;
     }
 
-    public static boolean InsertCate(String CategoryName) {
+    public static boolean InsertCate(String CategoryName, Timestamp create_at) {
         boolean result = false;
         Connection con = null;
         PreparedStatement stm = null;
@@ -103,6 +105,7 @@ public class CategoryDAO {
             stm = con.prepareStatement(queryInsert);
             stm.setInt(1, nextId);
             stm.setString(2, CategoryName);
+            stm.setTimestamp(3, create_at);
 
             result = stm.executeUpdate() > 0;
 
@@ -128,13 +131,14 @@ public class CategoryDAO {
         return result;
     }
 
-    public static boolean UpdateCateById(String Id, String CategoryName) {
+    public static boolean UpdateCateById(String Id, String CategoryName, Timestamp create_at) {
         boolean rs = false;
         try {
             Con = ConnectDB.getConnection();
             PreparedStatement stm = Con.prepareStatement(Update_Cate);
             stm.setString(1, CategoryName);
-            stm.setInt(2, Integer.parseInt(Id));
+            stm.setInt(3, Integer.parseInt(Id));
+            stm.setTimestamp(2, create_at);
             rs = stm.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace();
@@ -149,6 +153,37 @@ public class CategoryDAO {
 
             return rs;
         }
+    }
 
+    public static List<Category> FindCateByName(String categoryName) {
+        List<Category> list = new ArrayList<>();
+        try {
+            Con = ConnectDB.getConnection();
+            PreparedStatement stm = Con.prepareStatement("SELECT * FROM category WHERE category_name LIKE ?;");
+            stm.setString(1, "%" + categoryName + "%");
+            ResultSet rs = stm.executeQuery();
+
+            while (rs.next()) {
+                Category c = new Category(
+                        rs.getString(1),
+                        rs.getString(2),
+                        rs.getTimestamp(3));
+                list.add(c);
+            }
+            rs.close();
+            stm.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (Con != null) {
+                    Con.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+        return list;
     }
 }

@@ -1,15 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Model;
 
 import java.util.List;
 
-/**
- *
- * @author Truong Van Khang - CE181852
- */
 public class Cart {
 
     private List<Item> items;
@@ -38,31 +30,36 @@ public class Cart {
         return null;
     }
 
-    public int getQuantityById(int id) {
-        return getItemById(id).getQuantity();
+    public int getQuantityById(int id) { // Get the quantity of a specific product
+        Item item = getItemById(id);
+        return (item != null) ? item.getQuantity() : 0; // Return 0 if the item doesn't exist
     }
 
-    public void addItem(Item t) {
-        if (getItemById(t.getProduct().getProduct_id()) != null) {
-            Item m = getItemById(t.getProduct().getProduct_id());
-            m.setQuantity(m.getQuantity() + t.getQuantity());
+    public void addItem(Item t) { // Add a new product to the cart
+        Item existingItem = getItemById(t.getProduct().getProduct_id());
+        if (existingItem != null) {
+            existingItem.setQuantity(existingItem.getQuantity() + t.getQuantity());
         } else {
             items.add(t);
         }
     }
 
-    public void removeItem(int id) {
-        if (getItemById(id) != null) {
-            items.remove(getItemById(id));
+    public void removeItem(int id) { // Remove a product from the cart
+        Item item = getItemById(id);
+        if (item != null) {
+            items.remove(item);
         }
     }
 
-    public double getTotalMoney() {
-        double t = 0;
+    public double getTotalMoney() { // Get the total cost of all items in the cart
+        double total = 0;
         for (Item i : items) {
-            t += (i.getQuantity() * i.getProduct().getPrice());
+            total += (i.getQuantity() * i.getProduct().getPrice());
         }
-        return t;
+        return total;
     }
 
+    public void updateItemQuantity(int productId, int quantity) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

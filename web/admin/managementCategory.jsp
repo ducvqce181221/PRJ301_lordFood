@@ -2,6 +2,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Model.Category" %>
 <%@page import="java.util.List" %>
+<%@page import="jakarta.servlet.http.HttpSession" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
@@ -53,6 +54,12 @@
             .custom-width{
                 width: 130px
             }
+            .custom-width-btn{
+                width: 100px
+            }
+            .custom-height-btn{
+                height: 50px
+            }
 
         </style>
 
@@ -103,6 +110,10 @@
                         <ol>
                             <li class="breadcrumb-item active">View Category</li>
                         </ol>
+                        <%
+      String er = (String) session.getAttribute("CateEx");
+       System.out.println("Lj " + er);
+                        %>
                         <c:forEach var="item" items="${dataCategory}">
                             <c:set var="lastCategoryId" value="${item.categoryId}" />
                         </c:forEach>
@@ -115,35 +126,54 @@
                                 <input type="text" value="${categoryCount}" readonly /> 
                                 <label>Category Name</label>
                                 <input type="text" name="categoryName" required /> 
+
                                 <button class="btn btn-primary ms-2" type="submit">Add Category</button>
                             </form>
+                            <%
+                        if(er != null){
+                            %>
+                            <span style="color: red"><%= er%></span>
+                            <%
+                                }
+session.removeAttribute("CateEx");
+                            %>
                         </div>
                         <div class="card mb-4">
                             <div class="card-header"><i class="fas fa-table me-1"></i>Category List</div>
-                            <form method="GET" action="categoryServlet" class="d-flex">
+                            <form method="GET" action="./categoryServlet" class="d-flex">
+                                <input name="action" type="hidden" value="find" >
                                 <input style="height: 70px" type="text" name="search" class="form-control" placeholder="Find Category..." aria-label="Search">
                                 <button class="btn btn-primary ms-2 taskFind" type="submit">Tìm kiếm</button>
                             </form>
-                            <div class="card-body">
+                            <div style="font-size: 20px;" class="card-body">
                                 <table class="table table-striped">
-                                    <thead>
+                                    <thead >
                                         <tr>
                                             <th>Category ID</th>
-                                            <th>Category Name</th>
+                                            <th>Category Name</th>                             
+                                            <th>Date Create</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach var="item" items="${dataCategory}">
-                                            <tr>
-                                                <td>${item.categoryId}</td>
-                                                <td>${item.category_name}</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-primary btn-sm" onclick="openUpdateModal(${item.categoryId}, '${item.category_name}')">Update</a>
-                                                    <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete(${item.categoryId})">Delete</button>
-                                                </td>
-                                            </c:forEach>
-                                        </tr>
+                                        <c:choose>
+                                            <c:when test="${dataCategory != null}">
+                                                <c:forEach var="item" items="${dataCategory}">
+                                                    <tr>
+                                                        <td>${item.categoryId}</td>
+                                                        <td>${item.category_name}</td>
+                                                        <td>${item.create_at}</td>>
+                                                        <td>
+                                                            <button class="custom-height-btn custom-width-btn btn btn-primary btn-sm" 
+                                                                    onclick="openUpdateModal(${item.categoryId}, '${item.category_name}')">Update</button>
+                                                            <button type="button" class="custom-height-btn custom-width-btn btn btn-danger btn-sm" 
+                                                                    onclick="confirmDelete(${item.categoryId})">Delete</button>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+                                            </c:when>
+                                        </c:choose>
+
                                     </tbody>
                                 </table>
                             </div>
@@ -197,8 +227,8 @@
                         <p>Are you sure you want to delete this record?</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal()">Hủy</button>
-                        <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Xóa</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal()">Cancel</button>
+                        <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
                     </div>
                 </div>
             </div>
