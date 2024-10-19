@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cart {
@@ -21,7 +22,7 @@ public class Cart {
         this.items = items;
     }
 
-    private Item getItemById(int id) {
+    private Item getItemById(int id) { // Lay ra san san pham da them vao gio
         for (Item i : items) {
             if (i.getProduct().getProduct_id() == id) {
                 return i;
@@ -30,28 +31,66 @@ public class Cart {
         return null;
     }
 
-    public int getQuantityById(int id) { // Get the quantity of a specific product
+    public int getQuantityById(int id) { // lay so luong san pham cua id do
         Item item = getItemById(id);
-        return (item != null) ? item.getQuantity() : 0; // Return 0 if the item doesn't exist
+        return (item != null) ? item.getQuantity() : 0;
     }
 
-    public void addItem(Item t) { // Add a new product to the cart
+    public void addItem(Item t) {
+        if (items == null) {
+            items = new ArrayList<>();
+        }
+        if (t.getProduct() == null) {
+            throw new IllegalArgumentException("Product cannot be null");
+        }
         Item existingItem = getItemById(t.getProduct().getProduct_id());
         if (existingItem != null) {
+            System.out.println("Current quantity: " + existingItem.getQuantity());
+            System.out.println("Adding quantity: " + t.getQuantity());
+
             existingItem.setQuantity(existingItem.getQuantity() + t.getQuantity());
+            System.out.println("New quantity: " + existingItem.getQuantity());
         } else {
             items.add(t);
         }
     }
 
-    public void removeItem(int id) { // Remove a product from the cart
+    public void DeleteItem(Item t) {
+        if (items == null) {
+            items = new ArrayList<>();
+        }
+        if (t.getProduct() == null) {
+            throw new IllegalArgumentException("Product cannot be null");
+        }
+
+        Item existingItem = getItemById(t.getProduct().getProduct_id());
+
+        if (existingItem != null) {
+            int newQuantity = existingItem.getQuantity() - t.getQuantity();
+            if (newQuantity <= 0) {
+                items.remove(existingItem);
+                System.out.println("Item removed from the cart.");
+            } else {
+                existingItem.setQuantity(newQuantity);
+                System.out.println("Updated quantity: " + existingItem.getQuantity());
+            }
+        } else {
+            System.out.println("Item not found in the cart.");
+        }
+    }
+
+    public void removeItem(int id) { // xoa san pham ra khoi gio
         Item item = getItemById(id);
         if (item != null) {
             items.remove(item);
         }
     }
+    
+    public void removeAll(){
+        items.clear();
+    }
 
-    public double getTotalMoney() { // Get the total cost of all items in the cart
+    public double getTotalMoney() { // lay tong so tieng
         double total = 0;
         for (Item i : items) {
             total += (i.getQuantity() * i.getProduct().getPrice());
@@ -59,7 +98,4 @@ public class Cart {
         return total;
     }
 
-    public void updateItemQuantity(int productId, int quantity) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

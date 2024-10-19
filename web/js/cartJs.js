@@ -1,21 +1,20 @@
-// Hàm để cập nhật số lượng sản phẩm
-function decreaseQuantity(button) {
-    let quantityInput = button.nextElementSibling;
-    let currentQuantity = parseInt(quantityInput.value);
-    if (currentQuantity > 1) {
-        quantityInput.value = currentQuantity - 1;
-        updateTotal(button);
-    }
-}
-
-// Tăng số lượng sản phẩm
-function increaseQuantity(button) {
-    let quantityInput = button.previousElementSibling;
-    let currentQuantity = parseInt(quantityInput.value);
-
-    quantityInput.value = currentQuantity + 1;
-    updateTotal(button);
-}
+//// Hàm để cập nhật số lượng sản phẩm
+//function decreaseQuantity(button) {
+//    let quantityInput = button.nextElementSibling;
+//    let currentQuantity = parseInt(quantityInput.value);
+//    if (currentQuantity > 1) {
+//        quantityInput.value = currentQuantity - 1;
+//        updateTotal(button);
+//    }
+//}
+//
+//// Tăng số lượng sản phẩm
+//function increaseQuantity(button) {
+//    let quantityInput = button.previousElementSibling;
+//    let currentQuantity = parseInt(quantityInput.value);
+//    quantityInput.value = currentQuantity + 1;
+//    updateTotal(button);
+//}
 
 // Cập nhật tổng tiền cho sản phẩm
 function updateTotal(button) {
@@ -29,7 +28,6 @@ function updateTotal(button) {
 
     let total = price * quantity;
     totalElement.textContent = total.toLocaleString('vi-VN') + " VND"; // Hiển thị tổng tiền mới
-
     updateOrderSummary();
 }
 
@@ -47,37 +45,5 @@ function updateOrderSummary() {
     let totalAmountElements = document.querySelectorAll('.total-amount');
     totalAmountElements.forEach(function (element) {
         element.textContent = totalAmount.toLocaleString('vi-VN') + " VND";
-    });
-}
-
-// Xóa sản phẩm khỏi giỏ hàng
-function removeItem(button) {
-    let row = button.closest('tr');
-    row.remove(); // Xóa hàng sản phẩm
-
-    updateOrderSummary(); // Cập nhật lại tổng tiền sau khi xóa
-}
-
-//Gọi đến Trang Cátervlet => Lưu lại vào session gọi lại trang Cart.jsp
-function updateCart(action, productID, quantity) {
-    // Tính toán số lượng mới
-    let newQuantity = (action === 'increase') ? quantity + 1 : quantity - 1;
-
-    // Gửi yêu cầu Ajax đến servlet
-    $.ajax({
-        type: 'POST',
-        url: 'CartServlet',
-        data: {
-            action: action,
-            productID: productID,
-            quantity: newQuantity
-        },
-        success: function (response) {
-            console.log(response);
-            location.reload(); // Refresh trang để cập nhật giỏ hàng
-        },
-        error: function (error) {
-            console.error("Error updating cart:", error);
-        }
     });
 }

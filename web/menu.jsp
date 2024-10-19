@@ -23,9 +23,10 @@
             <td>100.0 VND</td>
             <td><img src="http://example.com/imageA.jpg" width="50"/></td>
             <td>
-                <form action="CartServlet" method="post">
-                    <input type="hidden" name="productID" value="1"/>
-                    <input type="hidden" name="quantity" value="1"/>
+                <form action="cartServlet" method="Get">
+                      <input type="hidden" name="action" value="increase"/>
+                    <input type="hidden" name="productID" value="8"/>
+                    <input type="hidden" name="quantity" value="2"/>
                     <button type="submit">Thêm vào giỏ</button>
                 </form>
             </td>
@@ -35,8 +36,9 @@
             <td>150.0 VND</td>
             <td><img src="http://example.com/imageB.jpg" width="50"/></td>
             <td>
-                <form action="CartServlet" method="post">
-                    <input type="hidden" name="productID" value="2"/>
+                <form action="cartServlet" method="Get">     
+                    <input type="hidden" name="action" value="increase"/>
+                    <input type="hidden" name="productID" value="9"/>
                     <input type="hidden" name="quantity" value="1"/>
                     <button type="submit" >Thêm vào giỏ</button>
                 </form>
@@ -47,8 +49,9 @@
             <td>200.0 VND</td>
             <td><img src="http://example.com/imageC.jpg" width="50"/></td>
             <td>
-                <form action="CartServlet" method="post">
-                    <input type="hidden" name="productId" value="3"/>
+                <form action="cartServlet" method="Get">
+                      <input type="hidden" name="action" value="increase"/>
+                    <input type="hidden" name="productID" value="14"/>
                     <input type="hidden" name="quantity" value="1"/>
                     <button type="submit" name="action" value="add">Thêm vào giỏ</button>
                 </form>

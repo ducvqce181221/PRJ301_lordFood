@@ -7,7 +7,17 @@ package controller;
 import DAO.MenuDAO;
 import Model.Cart;
 import Model.Item;
-import Model.Product;;
+import Model.Product;
+;
+import java.io.IOException;
+import java.io.PrintWriter;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.sql.Timestamp;
+import java.util.List;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -21,6 +31,8 @@ import java.util.List;
  *
  * @author Truong Van Khang - CE181852
  */
+
+
 public class CartServlet extends HttpServlet {
 
     /**
@@ -73,101 +85,68 @@ public class CartServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
-//        Timestamp createdAt = new Timestamp(System.currentTimeMillis());
-//        Timestamp updatedAt = new Timestamp(System.currentTimeMillis());
-//
-//        Product product = new Product(1, "Sản phẩm mẫu", "Mô tả sản phẩm mẫu", 100.0, 50, "http://example.com/image.jpg", 1, createdAt, updatedAt);
-//        Product product1 = new Product(1, "Sản phẩm mẫu", "Mô tả sản phẩm mẫu", 100.0, 50, "http://example.com/image.jpg", 1, createdAt, updatedAt);
-//        Product product2 = new Product(1, "Sản phẩm mẫu", "Mô tả sản phẩm mẫu", 100.0, 50, "http://example.com/image.jpg", 1, createdAt, updatedAt);
-//        HttpSession session = request.getSession(true);
-//        Cart cart = null;
-//        Object o = session.getAttribute("cart");
-//        String action = "";
-//
-//        if (o != null) {
-//            cart = (Cart) o;
-//        } else {
-//            cart = new Cart();
-//            action = request.getParameter("action");
-//        }
-//        String quantity = request.getParameter("productID");
-//        String id = request.getParameter("quantity");
-//
-//        int num, Id;
-//        try {
-//            num = 4;
-//            Id = product.getProduct_id();
-////            num = Integer.parseInt(quantity);
-////            Id = Integer.parseInt(id);
-//            if (num == -1 && cart.getQuantityById(Id) <= 1) {
-//                cart.removeItem(Id);
-//            } else {
-////                    MenuDAO M = new MenuDAO();
-//                    Product p = new Product();
-//                    double price = p.getPrice() * 1.2;
-//                    Item i = new Item(p, price, num);
-//                    cart.addItem(i);
-//                }
-//        } catch (Exception e) {
-//            num = 1;
-//        }
-//        List<Item> list = cart.getItems();
-//        session.setAttribute("cart", cart);
-//        session.setAttribute("size", list.size());
-//        request.getRequestDispatcher("cart.jsp").forward(request, response);
-//
-//    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         HttpSession session = request.getSession(true);
-        Cart cart = (Cart) session.getAttribute("cart");
-        if (cart == null) {
+        Cart cart = null;
+        Object o = session.getAttribute("cart");
+
+        if (o != null) {
+            cart = (Cart) o;
+        } else {
             cart = new Cart();
         }
-
-        // Get action, product ID, and quantity from request
         String action = request.getParameter("action");
-        String productIdStr = request.getParameter("productId");
-        String quantityStr = request.getParameter("quantity");
+        String id = request.getParameter("productID");
+        String quantity = request.getParameter("quantity");
 
-        int productId, quantity;
+        if (id == null || quantity == null) {
+            throw new NullPointerException("Product ID or quantity is missing");
+        }
+        int num, Id;
         try {
-            productId = 1;
-            quantity = 2;
-//            productId = Integer.parseInt(productIdStr);
-//            quantity = Integer.parseInt(quantityStr);
-        } catch (NumberFormatException e) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid product ID or quantity");
-            return;
-        }
-
-        // Load product details (example: from database or predefined list)
-        MenuDAO M = new MenuDAO();
-        Product product = M.getProduct(productId); // Assume this method gets the product by ID
-        if (product == null) {
-            response.sendError(HttpServletResponse.SC_NOT_FOUND, "Product not found");
-            return;
-        }
-
-        // Handle the cart actions
-        if ("increase".equals(action)) {
-            cart.updateItemQuantity(productId, quantity);
-        } else if ("decrease".equals(action)) {
-            if (cart.getQuantityById(productId) > 1) {
-                cart.updateItemQuantity(productId, quantity);
-            } else {
-                cart.removeItem(productId);
+            System.out.println("Khang - Product ID: " + id + ", Quantity: " + quantity + ",Acction " + action);
+            Id = Integer.parseInt(id);
+            num = Integer.parseInt(quantity);
+            if (num == -1 && cart.getQuantityById(Id) <= 1) {
+                cart.removeItem(Id);
+            } else if ("increase".equalsIgnoreCase(action)) {
+                Item i = CheckItem(num, Id);
+                cart.addItem(i);
+            } else if ("decrease".equalsIgnoreCase(action)) {
+                Item e = CheckItem(num, Id);
+                cart.DeleteItem(e);
+            } else if ("delete".equalsIgnoreCase(action)) {
+                cart.removeItem(Id);
+            } else if ("deleteAll".equalsIgnoreCase(action)) {
+                cart.removeAll();
             }
-        }
-
-        // Update session and forward to cart.jsp
-        List<Item> items = cart.getItems();
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid number format for product ID or quantity.");
+            num = 1;
+        } catch (NullPointerException e) {
+            System.out.println("A required object is null: " + e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }   
+        List<Item> list = cart.getItems();
+        double totalMoney = cart.getTotalMoney();
+        session.setAttribute("totalMoney", totalMoney);  
         session.setAttribute("cart", cart);
-        session.setAttribute("size", items.size());
+        session.setAttribute("size", list.size());
         request.getRequestDispatcher("cart.jsp").forward(request, response);
+    }
+
+    public Item CheckItem(int num, int Id) {
+        MenuDAO M = new MenuDAO();
+        Product p = M.getProduct(Id);
+        if (p == null) {
+            throw new NullPointerException("Product not found for ID: " + Id);
+        }
+        double price = p.getPrice() * 1.2;
+        Item e = new Item(p, price, num);
+        return e;
     }
 
     /**

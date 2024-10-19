@@ -9,7 +9,11 @@
 <%@include file="components/header.jsp" %>
 <%@page import="jakarta.servlet.http.HttpSession"%>
 <%@page import="java.util.List"%>
+<%@page import="Model.Cart"%>
+<%@page import="Model.Item"%>
+<%@page import="Model.Product"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +23,8 @@
         <title>Giỏ hàng</title>
         <link rel="stylesheet" href="CSS/cart.css">
         <script src="js/cartJs.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     </head>
 
     <body>
@@ -27,7 +33,7 @@
             <div class="cart-content">
                 <div class="cart-items">
                     <div class="cart-header">
-                        <span>Sản phẩm trong giỏ hàng:</span> <span>3</span>
+                        <span>Sản phẩm trong giỏ hàng:</span> <span>${sessionScope.size}</span>
                     </div>
                     <div class="cart-table">
                         <table>
@@ -44,10 +50,10 @@
                             </thead>
                             <tbody>
                             <hr>
-                            <!-- Example row -->
                             <tr>
-                                <c:forEach var="item" items="${cart.items}">
-                                    <td>${item.id}</td>  
+                                <c:forEach var="item" items="${sessionScope.cart.items}">
+                                <tr>
+                                    <td>${item.product.product_id}</td>  
                                     <td>
                                         <img src="${item.product.imageURL}" alt="Product Image" class="product-img">
                                     </td>
@@ -58,19 +64,20 @@
                                     </td>
                                     <td>
                                         <div class="quantity-controls">
-                                            <button class="quantity-btn" onclick="updateCart('decrease', ${item.product.productId}, ${item.quantity})">-</button>
-                                            <input type="number" class="quantity-input" value="${item.quantity}" readonly> 
-                                            <button class="quantity-btn" onclick="updateCart('increase', ${item.product.productId}, ${item.quantity})">+</button>
+                                            <a style="text-decoration: none" href="cartServlet?action=decrease&productID=${item.product.product_id}&quantity=1" class="quantity-btn" >-</a>
+                                            <input type="number" class="quantity-input" value="${item.quantity}" readonly>
+                                            <a  style="text-decoration: none" href="cartServlet?action=increase&productID=${item.product.product_id}&quantity=1" class="quantity-btn">+</a>
                                         </div>
                                     </td>
-                                    <td class="total-price">  
+                                    <td class="total-price">
                                         <fmt:formatNumber value="${item.product.price * item.quantity}" pattern="#,###" />
                                         VND
                                     </td>
                                     <td> 
-                                        <button class="remove-btn" onclick="removeItem(this)">Delete</button>
+                                        <a  style="text-decoration: none" href="cartServlet?action=delete&productID=${item.product.product_id}&quantity=0" class="quantity-btn">Delete</a>
                                     </td>
-                                </c:forEach>
+                                </tr>
+                            </c:forEach>
                             </tr>
                             </tbody>
                         </table>
@@ -81,8 +88,10 @@
                         <a href="menu.jsp">← Tiếp tục mua hàng</a>
                     </div>
                     <div class="delete-all">
-                        <form method="POST" action="">
-                            <input type="hidden" name="delete_all" value="1">
+                        <form action="cartServlet" method="POST" >
+                            <input type="hidden" name="productID" value="0">
+                            <input type="hidden" name="quantity" value="0">
+                            <input type="hidden" name="action" value="deleteAll">
                             <button type="submit">Xóa tất cả sản phẩm</button>
                         </form>
                     </div>
@@ -93,12 +102,12 @@
             <div class="order-summary">
                 <h3>THÔNG TIN CHUNG</h3>
                 <div class="summary-details">
-                    <p>Tổng sản phẩm: <span><?php echo count($cartItems); ?></span></p>
-                    <!--                    - <1%= echo number_format($totalAmount, 3, ',', '.'); %>--->
-                    <p>Tổng tạm tính: <span class="total-amount"> 0 VND</span></p>
+                    <p>Tổng sản phẩm: <span>${sessionScope.size}</span></p>
+                    <p>Tổng tạm tính: <span class="total-amount"><fmt:formatNumber value="${sessionScope.totalMoney}" pattern="#,###" /> VND</span></p>
                 </div>
                 <div class="total">
-                    <p>Tổng đơn hàng: <span class="total-amount">0 VND</span></p>
+
+                    <p>Tổng đơn hàng: <span class="total-amount"><fmt:formatNumber value="${sessionScope.totalMoney}" pattern="#,###" /> VND</span></p>
                 </div>
                 <form action="checkout.php" method="POST" class="pay">
                     <input type="hidden" name="pay" value="1">
