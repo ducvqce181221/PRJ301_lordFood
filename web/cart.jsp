@@ -64,9 +64,20 @@
                                     </td>
                                     <td>
                                         <div class="quantity-controls">
-                                            <a style="text-decoration: none" href="cartServlet?action=decrease&productID=${item.product.product_id}&quantity=1" class="quantity-btn" >-</a>
+
+                                            <form action="cartServlet" method="POST" >
+                                                <input type="hidden" name="productID" value="${item.product.product_id}">
+                                                <input type="hidden" name="quantity" value="1">
+                                                <input type="hidden" name="action" value="decrease">
+                                                <button class="quantity-btn" type="submit">-</button>
+                                            </form>  
                                             <input type="number" class="quantity-input" value="${item.quantity}" readonly>
-                                            <a  style="text-decoration: none" href="cartServlet?action=increase&productID=${item.product.product_id}&quantity=1" class="quantity-btn">+</a>
+                                            <form action="cartServlet" method="POST" >
+                                                <input type="hidden" name="productID" value="${item.product.product_id}">
+                                                <input type="hidden" name="quantity" value="1">
+                                                <input type="hidden" name="action" value="increase">
+                                                <button class="quantity-btn" type="submit">+</button>
+                                            </form>  
                                         </div>
                                     </td>
                                     <td class="total-price">
@@ -74,7 +85,12 @@
                                         VND
                                     </td>
                                     <td> 
-                                        <a  style="text-decoration: none" href="cartServlet?action=delete&productID=${item.product.product_id}&quantity=0" class="quantity-btn">Delete</a>
+                                        <form action="cartServlet" method="POST" >
+                                            <input type="hidden" name="productID" value="${item.product.product_id}">
+                                            <input type="hidden" name="quantity" value="0">
+                                            <input type="hidden" name="action" value="deleteAll">
+                                            <button class="quantity-btn" type="submit">Delete</button>
+                                        </form>  
                                     </td>
                                 </tr>
                             </c:forEach>
