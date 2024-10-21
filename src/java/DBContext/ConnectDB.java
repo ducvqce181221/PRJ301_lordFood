@@ -20,6 +20,7 @@ public class ConnectDB {
         }
     }
 
+
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");

@@ -15,19 +15,19 @@ body {
 }
 
 .cart-container {
-    margin-top: 40px;
+    margin-top: 80px;
     background-color: #fff;
     padding: 20px;
-    padding-top: 60px;
+    padding-top: 160px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
-    justify-content: space-between;
+    justify-content:  space-evenly;
 }
 
 .cart-header {
     font-size: 18px;
-    margin-bottom: 10px;
+    margin-bottom: 57px;
 }
 
 .cart-table {
@@ -44,6 +44,7 @@ body {
     text-align: center;
     vertical-align: middle;
     padding: 10px 30px;
+    font-size: 18px;
 }
 
 .cart-table img {
@@ -127,7 +128,7 @@ body {
     margin-top: 80px;
     width: 30px;
     text-align: center;
-    padding: 3px; /* Fixed padding */   
+    padding: 3px; /* Fixed padding */
     border: 1px solid #ddd;
     border-radius: 4px;
 }
@@ -146,6 +147,7 @@ input[type="number"] {
 .section3 {
     display: flex;
     justify-content: space-between;
+    margin-top: 50px;
 }
 
 .delete-all {
@@ -166,12 +168,9 @@ input[type="number"] {
 }
 
 /* Add some padding and alignment for the table cells */
-.cart-table th,
-.cart-table td {
-    text-align: center;
-    vertical-align: middle;
-    padding: 10px;
-}
+
+
+
 
 /* Style for the quantity controls */
 .quantity-controls {

@@ -97,7 +97,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                                 Product Management
                             </a>
-                            <a class="nav-link" href="managementCategory.jsp">
+                            <a class="nav-link" href="categoryServlet?&action=showInfo">
                                 <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                                 Category Management
                             </a>
