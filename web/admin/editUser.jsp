@@ -164,7 +164,6 @@
         }
     </style>
 </head>
-
 <body>
     <div id="layoutSidenav_content">
         <% if (!modalMessage.isEmpty()) { %>

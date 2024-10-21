@@ -1,3 +1,4 @@
+
 package controller;
 
 import java.io.IOException;
@@ -11,7 +12,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/deleteUser")  // Ensure this URL pattern matches what you use in the JSP
+/**
+ *
+ * @author VU QUANG DUC - CE181221
+ */
+@WebServlet(name="deleteUser", urlPatterns={"/deleteUser"
 public class deleteUser extends HttpServlet {
 
     @Override
