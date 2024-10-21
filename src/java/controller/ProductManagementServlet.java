@@ -5,20 +5,27 @@
 
 package controller;
 
+import DBContext.ConnectDB;
+import dao.CategoryDAO;
+import dao.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.List;
+import model.Category;
+import model.Product;
 
 /**
  *
  * @author VU QUANG DUC - CE181221
  */
-@WebServlet(name="deleteUser", urlPatterns={"/deleteUser"})
-public class deleteUser extends HttpServlet {
+public class ProductManagementServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -35,10 +42,10 @@ public class deleteUser extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet deleteUser</title>");  
+            out.println("<title>Servlet ProductManagementServlet</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet deleteUser at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet ProductManagementServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -55,7 +62,28 @@ public class deleteUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+//        processRequest(request, response);
+        ProductDAO productDAO = new ProductDAO();
+        List<Product> listProduct = productDAO.getAllProduct();
+        if(listProduct.isEmpty()){
+            Connection conn = null;
+            PreparedStatement ps = null;
+            String resetAutoIncrementSQL = "DBCC CHECKIDENT ('product', RESEED, 0)";
+            try {
+                conn = ConnectDB.getConnection();
+                ps = conn.prepareStatement(resetAutoIncrementSQL);
+                ps.executeUpdate();
+            } catch (ClassNotFoundException | SQLException e) {
+                e.printStackTrace();
+            }
+            
+        }
+        
+        List<Category> listCate = CategoryDAO.getAll();
+      
+        request.setAttribute("listP", listProduct);
+        request.setAttribute("listC", listCate);
+        request.getRequestDispatcher("managementProduct.jsp").forward(request, response);
     } 
 
     /** 

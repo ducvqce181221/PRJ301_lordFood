@@ -95,6 +95,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Management</div>
+
                             <a class="nav-link" href="homeAdmin.jsp"><div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>User Management</a>
                             <a class="nav-link" href="managementContact.jsp"><div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>Contact Management</a>
                             <a class="nav-link" href="managementProduct.jsp"><div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>Product Management</a>

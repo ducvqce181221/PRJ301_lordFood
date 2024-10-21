@@ -5,20 +5,21 @@
 
 package controller;
 
+import dao.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author VU QUANG DUC - CE181221
  */
-@WebServlet(name="deleteUser", urlPatterns={"/deleteUser"})
-public class deleteUser extends HttpServlet {
+public class DeleteProductServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -35,10 +36,10 @@ public class deleteUser extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet deleteUser</title>");  
+            out.println("<title>Servlet DeleteProductServlet</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet deleteUser at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet DeleteProductServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -55,7 +56,19 @@ public class deleteUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+//        processRequest(request, response);
+        int productID = Integer.parseInt(request.getParameter("id").trim());
+        
+        ProductDAO productDAO = new ProductDAO();
+        boolean isDelete = false;
+        try {
+            isDelete = productDAO.deleteProduct(productID);
+            if(isDelete){
+                response.sendRedirect("productManagement");
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DeleteProductServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     } 
 
     /** 
