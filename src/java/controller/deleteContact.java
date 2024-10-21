@@ -1,4 +1,3 @@
-
 package controller;
 
 import java.io.IOException;
@@ -12,45 +11,43 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author VU QUANG DUC - CE181221
- */
-@WebServlet(name="deleteUser", urlPatterns={"/deleteUser"
-public class deleteUser extends HttpServlet {
+@WebServlet("/deleteContact")  // Đường dẫn URL cho servlet
+public class deleteContact extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String userID = request.getParameter("id");
+        // Lấy contactID từ URL
+        String contactID = request.getParameter("id");
 
-        if (userID != null && !userID.isEmpty()) {
+        // Kiểm tra xem contactID có hợp lệ không
+        if (contactID != null && !contactID.isEmpty()) {
             Connection conn = null;
             PreparedStatement stmt = null;
             try {
+                // Kết nối tới cơ sở dữ liệu
                 conn = ConnectDB.getConnection();
 
-                // Bước 1: Xóa các bản ghi liên quan trong bảng contact
-                String deleteContactsSQL = "DELETE FROM contact WHERE userID = ?";
-                stmt = conn.prepareStatement(deleteContactsSQL);
-                stmt.setInt(1, Integer.parseInt(userID));
-                stmt.executeUpdate();
+                // Tạo câu lệnh SQL để xóa liên hệ
+                String deleteContactSQL = "DELETE FROM contact WHERE contactID = ?";
+                stmt = conn.prepareStatement(deleteContactSQL);
+                stmt.setInt(1, Integer.parseInt(contactID));
 
-                // Bước 2: Xóa người dùng từ bảng users
-                String deleteUserSQL = "DELETE FROM users WHERE userID = ?";
-                stmt = conn.prepareStatement(deleteUserSQL);
-                stmt.setInt(1, Integer.parseInt(userID));
+                // Thực thi câu lệnh SQL
                 int rowsAffected = stmt.executeUpdate();
 
                 if (rowsAffected > 0) {
-                    response.sendRedirect("admin/homeAdmin.jsp");  // Chuyển hướng về trang quản lý người dùng
+                    // Nếu xóa thành công, chuyển hướng về trang quản lý liên hệ với thông báo
+                    response.sendRedirect("admin/managementContact.jsp?message=deleted");
                 } else {
-                    response.getWriter().write("Lỗi: Người dùng không tồn tại hoặc không thể xóa.");
+                    // Nếu không xóa được, thông báo lỗi
+                    response.getWriter().write("Lỗi: Không thể xóa liên hệ.");
                 }
             } catch (SQLException | ClassNotFoundException e) {
                 e.printStackTrace();
                 response.getWriter().write("Có lỗi xảy ra: " + e.getMessage());
             } finally {
+                // Đóng các kết nối cơ sở dữ liệu
                 try {
                     if (stmt != null) {
                         stmt.close();
@@ -63,14 +60,15 @@ public class deleteUser extends HttpServlet {
                 }
             }
         } else {
-            response.sendRedirect("admin/homeAdmin.jsp");
+            // Nếu contactID không hợp lệ, chuyển hướng về trang quản lý liên hệ
+            response.sendRedirect("managementContact.jsp");
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // If needed, handle POST requests in the same way or redirect to doGet
+        // Chuyển hướng các yêu cầu POST đến phương thức doGet
         doGet(request, response);
     }
 }

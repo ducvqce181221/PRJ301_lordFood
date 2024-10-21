@@ -1,12 +1,9 @@
-<%@page import="java.sql.Connection"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.SQLException"%>
+<%@ page import="DBContext.ConnectDB, java.sql.Connection, java.sql.PreparedStatement, java.sql.ResultSet, java.sql.SQLException" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -63,12 +60,6 @@
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand ps-3" href="index.html">Management Admin</a>
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" name="search" placeholder="Tìm kiếm người dùng..." aria-label="Search">
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="submit">Tìm kiếm</button>
-                </div>
-            </form>
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
@@ -78,12 +69,11 @@
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
-                        <li><a class="dropdown-item" href="./signInAdmin.jsp">Logout</a></li>
+                        <li><a class="dropdown-item" href="./signInAdmin.php">Logout</a></li>
                     </ul>
                 </li>
             </ul>
         </nav>
-
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
@@ -98,7 +88,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                                 Contact Management
                             </a>
-                            <a class="nav-link" href="productManagement">
+                            <a class="nav-link" href="managementProduct.jsp">
                                 <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                                 Product Management
                             </a>
@@ -126,82 +116,70 @@
                     </div>
                 </nav>
             </div>
-
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">User Management</h1>
+                        <h1 class="mt-4">Contact Management</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">View Users</li>
+                            <li class="breadcrumb-item active">View Orders</li>
                         </ol>
-                        <a style="text-decoration: none;" class="breadcrumb mb-4" href="addUser.jsp">Add User</a>
+                      
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                User List
+                                Contact List
                             </div>
                             <div class="card-body">
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>User ID</th>
-                                            <th>Username</th>
+                                            <th>ID</th>
+                                            <th>Full Name</th>
                                             <th>Email</th>
                                             <th>Phone Number</th>
-                                            <th>Password</th>
-                                            <th>Time</th>
+                                            <th>Complain</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <%
-                                            String URL = "jdbc:sqlserver://localhost:1433;databaseName=lorfood;encrypt=true;trustServerCertificate=true";
-                                            String USER = "sa";
-                                            String PASSWORD = "12345678";
-
                                             Connection conn = null;
-                                            PreparedStatement pstmt = null;
+                                            PreparedStatement stmt = null;
                                             ResultSet rs = null;
 
                                             try {
-                                                // Use the driver for SQL Server
-                                                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-                                                conn = DriverManager.getConnection(URL, USER, PASSWORD);
+                                                conn = ConnectDB.getConnection();
+                                                String sql = "SELECT contactID, fullname, Email, PhoneNumber, complain FROM contact";
+                                                stmt = conn.prepareStatement(sql);
+                                                rs = stmt.executeQuery();
 
-                                                // Query data from the users table
-                                                String sql = "SELECT userID, Username, Email, PhoneNumber, Password, created_at FROM users";
-                                                pstmt = conn.prepareStatement(sql);
-                                                rs = pstmt.executeQuery();
-
-                                                while (rs.next()) {
-                                                    int userID = rs.getInt("userID");
-                                                    String username = rs.getString("Username");
+                                                while(rs.next()) {
+                                                    int contactID = rs.getInt("contactID");
+                                                    String fullname = rs.getString("fullname");
                                                     String email = rs.getString("Email");
                                                     String phoneNumber = rs.getString("PhoneNumber");
-                                                    String password = rs.getString("Password");
-                                                    String createdAt = rs.getString("created_at"); // Get created_at
-
+                                                    String complain = rs.getString("complain");
                                         %>
                                         <tr>
-                                            <td><%= userID %></td>
-                                            <td><%= username %></td>
-                                            <td><%= email %></td>
-                                            <td><%= phoneNumber %></td>
-                                            <td><%= password %></td>
-                                            <td><%= createdAt %></td>
+                                            <td>   <%= contactID %>   </td>
+                                            <td>   <%= fullname %>   </td>
+                                            <td>   <%= email %>   </td>
+                                            <td>   <%= phoneNumber %>   </td>
+                                            <td>   <%= complain %>   </td>
                                             <td>
-                                                <a href="<%= request.getContextPath() %>/admin/editUser.jsp?id=<%= userID %>" class="btn btn-warning">Edit</a>
-                                                <a href="<%= request.getContextPath() %>/deleteUser?id=<%= userID %>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
+                                                <a href="<%= request.getContextPath() %>/deleteContact?id=<%= contactID %>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this contact?')">Delete</a>
+                                                <a href="<%= request.getContextPath() %>/admin/editContact.jsp?id=<%= contactID %>" class="btn btn-warning" onclick="return ">Edit</a>
+                                                
                                             </td>
                                         </tr>
                                         <%
                                                 }
-                                            } catch (Exception e) {
+                                            } catch (SQLException | ClassNotFoundException e) {
                                                 e.printStackTrace();
                                             } finally {
-                                                if (rs != null) try { rs.close(); } catch (SQLException ignore) {}
-                                                if (pstmt != null) try { pstmt.close(); } catch (SQLException ignore) {}
-                                                if (conn != null) try { conn.close(); } catch (SQLException ignore) {}
+                                                if (rs != null) rs.close();
+                                                if (stmt != null) stmt.close();
+                                                if (conn != null) conn.close();
                                             }
                                         %>
                                     </tbody>
@@ -213,16 +191,7 @@
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script>
-                                                    document.addEventListener("DOMContentLoaded", function () {
-                                                        const sidebarToggle = document.getElementById('sidebarToggle');
-                                                        if (sidebarToggle) {
-                                                            sidebarToggle.addEventListener('click', function (event) {
-                                                                event.preventDefault();
-                                                                document.body.classList.toggle('sb-sidenav-toggled');
-                                                            });
-                                                        }
-                                                    });
-        </script>
+        <script src="js/scripts.js"></script>
     </body>
+
 </html>
