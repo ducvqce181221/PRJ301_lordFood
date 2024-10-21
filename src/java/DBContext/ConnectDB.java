@@ -8,22 +8,20 @@ public class ConnectDB {
 
     private static String url = "jdbc:sqlserver://localhost:1433;databaseName=lorfood;encrypt=true;trustServerCertificate=true";
     private static String user = "sa";
-    private static String pass = "12345678";
-    
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        // Thử kết nối tới cơ sở dữ liệu
-        Connection conn = ConnectDB.getConnection();
-        if (conn != null) {
-            System.out.println("Kết nối thành công!");
-        } else {
-            System.out.println("Kết nối thất bại!");
-        }
-    }
+    private static String pass = "khangmc1502@";
 
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
         try {
+
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            return DriverManager.getConnection(url, user, pass);         
+
+            Connection conn = DriverManager.getConnection(url, user, pass);
+            if (conn != null) {
+                System.out.println("Kết nối thành công!");
+                return conn;
+            } else {
+                System.out.println("Kết nối thất bại!");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

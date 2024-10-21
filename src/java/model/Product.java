@@ -4,8 +4,8 @@
  */
 package model;
 
+import java.sql.Date;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 
 /**
  *
@@ -34,6 +34,11 @@ public class Product {
         this.created_at = created_at;
         this.updated_at = updated_at;
     }
+
+    public Product() {
+    }
+
+   
 
     public int getProduct_id() {
         return product_id;
@@ -91,28 +96,20 @@ public class Product {
         this.categoryID = categoryID;
     }
 
-    public String getCreated_at() {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-        return sdf.format(created_at);
+    public Timestamp getCreated_at() {
+        return created_at;
     }
 
     public void setCreated_at(Timestamp created_at) {
         this.created_at = created_at;
     }
 
-    public String getUpdated_at() {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-        return sdf.format(updated_at);
+    public Timestamp getUpdated_at() {
+        return updated_at;
     }
 
     public void setUpdated_at(Timestamp updated_at) {
         this.updated_at = updated_at;
-    }
-
-    @Override
-    public String toString() {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-        return "Product{" + "product_id=" + product_id + ", productName=" + productName + ", description=" + description + ", price=" + price + ", quantityOfStock=" + quantityOfStock + ", imageURL=" + imageURL + ", categoryID=" + categoryID + ", created_at=" + sdf.format(created_at) + ", updated_at=" + sdf.format(updated_at) + '}';
     }
     
     
