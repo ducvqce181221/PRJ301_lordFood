@@ -7,7 +7,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="Model.Category" %>
+<%@page import="model.Category" %>
 <%@page import="java.util.List" %>
 <%@page import="jakarta.servlet.http.HttpSession" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

@@ -4,10 +4,10 @@
  */
 package controller;
 
-import DAO.MenuDAO;
-import Model.Cart;
-import Model.Item;
-import Model.Product;
+import dao.MenuDAO;
+import model.Cart;
+import model.Item;
+import model.Product;
 ;
 import java.io.IOException;
 import java.io.PrintWriter;

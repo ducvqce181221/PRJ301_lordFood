@@ -9,9 +9,9 @@
 <%@include file="components/header.jsp" %>
 <%@page import="jakarta.servlet.http.HttpSession"%>
 <%@page import="java.util.List"%>
-<%@page import="Model.Cart"%>
-<%@page import="Model.Item"%>
-<%@page import="Model.Product"%>
+<%@page import="model.Cart"%>
+<%@page import="model.Item"%>
+<%@page import="model.Product"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 
