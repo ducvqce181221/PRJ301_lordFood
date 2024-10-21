@@ -1,5 +1,7 @@
 <%-- Document : menu Created on : Sep 30, 2024, 11:31:22 PM Author : Le Trong Luan _ CE181151 --%> <%@page
-    contentType="text/html" pageEncoding="UTF-8"%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    contentType="text/html" pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
     <!DOCTYPE html>
     <html lang="en">
@@ -47,7 +49,7 @@
                     <c:forEach items="${listProducts}" var="x">
                         <div class="col-md-6 col-lg-4">
                             <div class="card" style="cursor: pointer"
-                                 onclick="window.location.href='foodDetail?cateid=${x.categoryID}&productid=${x.product_id}'">
+                                 onclick="window.location.href = 'foodDetail?cateid=${x.categoryID}&productid=${x.product_id}'">
                                 <img class="card-img-top img-fluid" src="${x.imageURL}" alt="" />
                                 <div class="card-body">
                                     <h4 class="card-title">
@@ -58,8 +60,10 @@
                                         <a href="" class="btn btn-primary">
                                             <i class="bi bi-bag-check-fill"></i>
                                             ORDER NOW
-                                        </a>
-                                        <h4 class="text-danger">${x.price}VND</h4>
+                                        </a>                                  
+                                        <h4 class="text-danger">
+                                            <fmt:formatNumber value="${x.price}" pattern="#,###"/>VND
+                                        </h4>              
                                     </div>
                                 </div>
                             </div>

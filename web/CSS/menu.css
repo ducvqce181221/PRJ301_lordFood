@@ -1,5 +1,11 @@
 .card {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border: 2px solid #abb0b3;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    background-color: #f4f4f4;
 }
 
 .card:hover {
@@ -8,9 +14,14 @@
 }
 
 .card-img-top {
+    border-radius: 10px;
     height: 300px;
     object-fit: cover;
     width: 100%;
+}
+
+.card-body {
+    
 }
 
 .card-text {

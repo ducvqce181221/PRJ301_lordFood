@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Model;
+package model;
 
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -19,10 +20,10 @@ public class Product {
     private int quantityOfStock;
     private String imageURL;
     private int categoryID;
-    private Date created_at;
-    private Date updated_at;
+    private Timestamp created_at;
+    private Timestamp updated_at;
 
-    public Product(int product_id, String productName, String description, double price, int quantityOfStock, String imageURL, int categoryID, Date created_at, Date updated_at) {
+    public Product(int product_id, String productName, String description, double price, int quantityOfStock, String imageURL, int categoryID, Timestamp created_at, Timestamp updated_at) {
         this.product_id = product_id;
         this.productName = productName;
         this.description = description;
@@ -90,20 +91,28 @@ public class Product {
         this.categoryID = categoryID;
     }
 
-    public Date getCreated_at() {
-        return created_at;
+    public String getCreated_at() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        return sdf.format(created_at);
     }
 
-    public void setCreated_at(Date created_at) {
+    public void setCreated_at(Timestamp created_at) {
         this.created_at = created_at;
     }
 
-    public Date getUpdated_at() {
-        return updated_at;
+    public String getUpdated_at() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        return sdf.format(updated_at);
     }
 
-    public void setUpdated_at(Date updated_at) {
+    public void setUpdated_at(Timestamp updated_at) {
         this.updated_at = updated_at;
+    }
+
+    @Override
+    public String toString() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        return "Product{" + "product_id=" + product_id + ", productName=" + productName + ", description=" + description + ", price=" + price + ", quantityOfStock=" + quantityOfStock + ", imageURL=" + imageURL + ", categoryID=" + categoryID + ", created_at=" + sdf.format(created_at) + ", updated_at=" + sdf.format(updated_at) + '}';
     }
     
     

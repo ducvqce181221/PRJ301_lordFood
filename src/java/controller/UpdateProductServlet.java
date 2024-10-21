@@ -4,25 +4,31 @@
  */
 package controller;
 
-import dao.CategoryDAO;
 import dao.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
+import jakarta.servlet.http.Part;
+import java.io.File;
+import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.Category;
 import model.Product;
 
 /**
  *
  * @author VU QUANG DUC - CE181221
  */
-public class foodDetailServlet extends HttpServlet {
+@MultipartConfig(
+        fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+        maxFileSize = 1024 * 1024 * 10, // 10MB
+        maxRequestSize = 1024 * 1024 * 50 // 50MB
+)
+public class UpdateProductServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,10 +47,10 @@ public class foodDetailServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet foodDetailServlet</title>");
+            out.println("<title>Servlet UpdateProductServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet foodDetailServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UpdateProductServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,23 +68,7 @@ public class foodDetailServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        processRequest(request, response);
-
-        int productid = Integer.parseInt(request.getParameter("productid"));
-        int cateid = Integer.parseInt(request.getParameter("cateid"));
-
-        ProductDAO menuDAO = new ProductDAO();
-        Product product = menuDAO.getProductByProID(productid);
-        request.setAttribute("product", product);
-
-        try {
-            Category cate = CategoryDAO.getCateByID(cateid);
-            request.setAttribute("cate", cate);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(foodDetailServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        request.getRequestDispatcher("foodDetail.jsp").forward(request, response);
-
+        processRequest(request, response);
     }
 
     /**
@@ -92,7 +82,51 @@ public class foodDetailServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+//        processRequest(request, response);
+
+        int productID = Integer.parseInt(request.getParameter("productID").trim());
+        String productName = request.getParameter("productName").trim();
+        String productDescription = request.getParameter("productDescription").trim();
+        double productPrice = Double.parseDouble(request.getParameter("productPrice").trim());
+        int productQuantity = Integer.parseInt(request.getParameter("productQuantity").trim());
+        String oldURL = request.getParameter("img").trim();
+        String fileURL = "";
+
+        Part filePart = request.getPart("productURL"); // Lấy file từ form
+        if (filePart == null || filePart.getSize() == 0) {
+            fileURL = oldURL;
+        } else {
+            String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // Lấy tên file
+
+            // Đường dẫn lưu file trong thư mục "img/menu/" của ứng dụng
+            String applicationPath = getServletContext().getRealPath("");
+            String uploadPath = applicationPath.replace("build\\", "") + "img\\menu";
+
+            System.out.println("uploadPath: " + uploadPath);
+            File uploadDir = new File(uploadPath);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdirs(); // Tạo thư mục nếu chưa tồn tại
+            }
+
+            // Lưu file
+            filePart.write(uploadPath + File.separator + fileName);
+
+            // Trả về URL của file đã upload
+            fileURL = "../img/menu/" + fileName;
+        }
+
+        Product product = new Product(productID, productName, productDescription, productPrice, productQuantity, fileURL, 0, null, null);
+        ProductDAO productDAO = new ProductDAO();
+        boolean isUpdate = false;
+        try {
+            isUpdate = productDAO.updateProduct(product);
+            if (isUpdate) {
+                response.sendRedirect("productManagement");
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UpdateProductServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     /**

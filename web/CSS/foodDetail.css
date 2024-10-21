@@ -6,23 +6,53 @@
 }
 
 .breadcrumb-link {
-    font-size: 19px;
-    color: gray;
+    font-size: 17px;
+    color: #0d6efd;
     transition: color 0.3s; /* Hiệu ứng chuyển màu */
     text-decoration: none; /* Xóa gạch chân */
+    position: relative;
+}
+
+.breadcrumb-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 1.5px;
+    background-color: #0066ff;
+    transition: width 0.4s ease, left 0.4s ease; /* Setting time hiện hết underline thì width và left phải = nhau */
 }
 
 .breadcrumb-link:hover {
-    color: #007bff; /* Đổi màu khi hover */
+    color: #0011ff; /* Đổi màu khi hover */
 }
 
-.breadcrumb-separator {
-    margin: 0 5px; /* Khoảng cách xung quanh dấu phân cách */
-    color: #6c757d; /* Màu chữ cho dấu phân cách */
+.breadcrumb-link:hover::after {
+    width: 100%;
+    left: 0;
 }
 
 .breadcrumb-item {
-    font-size: 19px;
-    color: #007bff; /* Màu chữ cho link */
-    
+    font-size: 17px;
+}
+
+.custom-color {
+    background-color: #f5f5f5;
+}
+
+.custom-gap {
+    display: flex;
+    gap: 50px;
+}
+
+.border {
+    border-radius: 8px;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.25);
+}
+
+.currency {
+    font-size: 20px;
+    text-decoration: underline;
+    vertical-align: 7px;
 }
