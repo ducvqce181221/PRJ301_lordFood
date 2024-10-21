@@ -15,19 +15,19 @@ body {
 }
 
 .cart-container {
-    margin-top: 40px;
+    margin-top: 80px;
     background-color: #fff;
     padding: 20px;
-    padding-top: 60px;
+    padding-top: 160px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
-    justify-content: space-between;
+    justify-content:  space-evenly;
 }
 
 .cart-header {
     font-size: 18px;
-    margin-bottom: 10px;
+    margin-bottom: 57px;
 }
 
 .cart-table {
@@ -44,6 +44,7 @@ body {
     text-align: center;
     vertical-align: middle;
     padding: 10px 30px;
+    font-size: 18px;
 }
 
 .cart-table img {
@@ -71,6 +72,7 @@ body {
 }
 
 .order-summary {
+    margin: 80px 0 70px 0;
     width: 300px;
     padding: 20px;
     background-color: #fff;
@@ -121,12 +123,14 @@ body {
     border: none;
     font-size: 18px;
 }
+
 .cart-table .input-qty {
-    width: 30px; /* Thay đổi kích thước của ô */
-    text-align: center; /* Giúp số lượng được căn giữa */
-    padding: 3px 3; /* Thêm padding để làm ô trông gọn gàng hơn */
-    border: 1px solid #ddd; /* Đặt đường viền cho ô */
-    border-radius: 4px; /* Làm tròn các góc của ô */
+    margin-top: 80px;
+    width: 30px;
+    text-align: center;
+    padding: 3px; /* Fixed padding */
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
@@ -137,19 +141,19 @@ input[type="number"]::-webkit-inner-spin-button {
 
 input[type="number"] {
     -moz-appearance: textfield;
-}
-
-input[type="number"] {
     appearance: textfield;
 }
 
 .section3 {
     display: flex;
     justify-content: space-between;
+    margin-top: 50px;
 }
+
 .delete-all {
     margin-top: 20px;
 }
+
 .delete-all button {
     background-color: #ff4d4d;
     color: white;
@@ -161,4 +165,79 @@ input[type="number"] {
 
 .delete-all button:hover {
     background-color: #e60000;
+}
+
+/* Add some padding and alignment for the table cells */
+
+
+
+
+/* Style for the quantity controls */
+.quantity-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quantity-btn {
+    background-color: #4caf50; /* Green background */
+    color: white; /* White text */
+    border: none;
+    padding: 8px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.quantity-btn:hover {
+    background-color: #388e3c; /* Darker green on hover */
+}
+
+.quantity-input {
+    width: 40px; /* Adjusted width */
+    text-align: center;
+    padding: 6px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 0 5px; /* Space between the buttons */
+}
+
+/* Style for the product image */
+.product-img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Style for the price and total */
+.unit-price, .total-price {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Adjusting hover effects for a more interactive feel */
+.cart-table tr:hover {
+    background-color: #f1f1f1; /* Slight background change on hover */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .cart-table td {
+        padding: 8px;
+    }
+
+    .quantity-controls {
+        flex-direction: column;
+    }
+
+    .quantity-btn {
+        padding: 6px 10px;
+    }
+
+    .quantity-input {
+        width: 50px;
+        margin: 5px 0;
+    }
 }
