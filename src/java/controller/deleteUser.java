@@ -1,9 +1,10 @@
+package controller;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,9 +16,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author VU QUANG DUC - CE181221
+ * @author LE TRONG LUAN - CE181151
  */
-@WebServlet(name="deleteUser", urlPatterns={"/deleteUser"})
+@WebServlet(urlPatterns={"/deleteUser"})
 public class deleteUser extends HttpServlet {
    
     /** 
