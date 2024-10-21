@@ -93,7 +93,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                                 Contact Management
                             </a>
-                            <a class="nav-link" href="productManagement">
+                            <a class="nav-link" href="managementProduct.jsp">
                                 <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                                 Product Management
                             </a>
@@ -124,21 +124,18 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Category Management</h1>
+                        <h1 class="mt-4">Order Management</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">View Category</li>
+                            <li class="breadcrumb-item active">View Orders</li>
                         </ol>
-                        <form action="action">
-     
-                        </form>
-                        <a style="text-decoration: none;" class="breadcrumb mb-4" href="./categoryServlet">Add Category</a>
+                        <a style="text-decoration: none;" class="breadcrumb mb-4" href="./addOrder.php">Add Order</a>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                               Category List
+                                Order List
                             </div>
-                            <form method="GET" action="categoryServlet" class="d-flex">
-                                <input type="text" name="search" class="form-control" placeholder="Find Category..." aria-label="Search">
+                            <form method="GET" action="order.php" class="d-flex">
+                                <input type="text" name="search" class="form-control" placeholder="Tìm kiếm đơn hàng..." aria-label="Search">
                                 <button class="btn btn-primary ms-2" type="submit">Tìm kiếm</button>
                             </form>
                             <div class="card-body">
@@ -151,11 +148,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Ô 4</td>
-                                            <td>Ô 5</td>
-                                            <td>Ô 6</td>
-                                        </tr>
+
                                     </tbody>
                                 </table>
                             </div>

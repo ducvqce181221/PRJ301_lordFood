@@ -100,7 +100,7 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                             Contact Management
                         </a>
-                        <a class="nav-link" href="productManagement">
+                        <a class="nav-link" href="managementProduct.jsp">
                             <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                             Product Management
                         </a>

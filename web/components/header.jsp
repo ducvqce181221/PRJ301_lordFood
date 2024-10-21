@@ -14,7 +14,7 @@
                 <ul>
                     <li><a href="${pageContext.request.contextPath}/homePage.jsp">Home</a></li>
                     <li><a href="${pageContext.request.contextPath}/aboutUs.jsp">AboutUs</a></li>
-                    <li><a href="${pageContext.request.contextPath}/product">Menu</a></li> <!-- ??i t? PHP sang JSP -->
+                    <li><a href="${pageContext.request.contextPath}/menu.jsp">Menu</a></li> <!-- ??i t? PHP sang JSP -->
                 </ul>
             </nav>
 
