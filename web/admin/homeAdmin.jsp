@@ -134,7 +134,7 @@
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">View Users</li>
                         </ol>
-                        <a style="text-decoration: none;" class="breadcrumb mb-4" href="./addUser.php">Add User</a>
+                        <a style="text-decoration: none;" class="breadcrumb mb-4" href="addUser.jsp">Add User</a>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
@@ -164,12 +164,12 @@
                                             ResultSet rs = null;
 
                                             try {
-                                                // Sử dụng driver cho SQL Server
+                                                // Use the driver for SQL Server
                                                 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
                                                 conn = DriverManager.getConnection(URL, USER, PASSWORD);
 
-                                                // Truy vấn dữ liệu từ bảng user
-                                                String sql = "SELECT userID, Username, Email, PhoneNumber, Password, created_at FROM users";  // Chắc chắn rằng tên bảng đúng
+                                                // Query data from the users table
+                                                String sql = "SELECT userID, Username, Email, PhoneNumber, Password, created_at FROM users";
                                                 pstmt = conn.prepareStatement(sql);
                                                 rs = pstmt.executeQuery();
 
@@ -179,21 +179,22 @@
                                                     String email = rs.getString("Email");
                                                     String phoneNumber = rs.getString("PhoneNumber");
                                                     String password = rs.getString("Password");
-                                                    String createdAt = rs.getString("created_at"); // Lấy giá trị created_at
+                                                    String createdAt = rs.getString("created_at"); // Get created_at
 
-                                                    // Hiển thị dữ liệu trong bảng
-                                                    out.println("<tr>");
-                                                    out.println("<td>" + userID + "</td>");
-                                                    out.println("<td>" + username + "</td>");
-                                                    out.println("<td>" + email + "</td>");
-                                                    out.println("<td>" + phoneNumber + "</td>");
-                                                    out.println("<td>" + password + "</td>");
-                                                    out.println("<td>" + createdAt + "</td>");
-                                                    out.println("<td>");
-                                                    out.println("<a href='editUser.jsp?id=" + userID + "' class='btn btn-warning'>Edit</a> ");
-                                                    out.println("<a href='processAdmin/deleteUser.jsp?id=" + userID + "' class='btn btn-danger' onclick='return confirm(\"Are you sure?\")'>Delete</a>");
-                                                    out.println("</td>");
-                                                    out.println("</tr>");
+                                        %>
+                                        <tr>
+                                            <td><%= userID %></td>
+                                            <td><%= username %></td>
+                                            <td><%= email %></td>
+                                            <td><%= phoneNumber %></td>
+                                            <td><%= password %></td>
+                                            <td><%= createdAt %></td>
+                                            <td>
+                                                <a href="<%= request.getContextPath() %>/admin/editUser.jsp?id=<%= userID %>" class="btn btn-warning">Edit</a>
+                                                <a href="<%= request.getContextPath() %>/deleteUser?id=<%= userID %>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
+                                            </td>
+                                        </tr>
+                                        <%
                                                 }
                                             } catch (Exception e) {
                                                 e.printStackTrace();
@@ -204,7 +205,6 @@
                                             }
                                         %>
                                     </tbody>
-                                   
                                 </table>
                             </div>
                         </div>
@@ -214,16 +214,15 @@
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const sidebarToggle = document.getElementById('sidebarToggle');
-                if (sidebarToggle) {
-                    sidebarToggle.addEventListener('click', function (event) {
-                        event.preventDefault();
-                        document.body.classList.toggle('sb-sidenav-toggled');
-                    });
-                }
-            });
+                                                    document.addEventListener("DOMContentLoaded", function () {
+                                                        const sidebarToggle = document.getElementById('sidebarToggle');
+                                                        if (sidebarToggle) {
+                                                            sidebarToggle.addEventListener('click', function (event) {
+                                                                event.preventDefault();
+                                                                document.body.classList.toggle('sb-sidenav-toggled');
+                                                            });
+                                                        }
+                                                    });
         </script>
     </body>
-
 </html>
