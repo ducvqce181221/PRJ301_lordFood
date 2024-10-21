@@ -8,17 +8,15 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author VU QUANG DUC - CE181221
+ * @author Truong Van Khang - CE181852
  */
-@WebServlet(name="deleteUser", urlPatterns={"/deleteUser"})
-public class deleteUser extends HttpServlet {
+public class CartServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -35,10 +33,10 @@ public class deleteUser extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet deleteUser</title>");  
+            out.println("<title>Servlet CartServlet</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet deleteUser at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet CartServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

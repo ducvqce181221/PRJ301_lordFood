@@ -1,0 +1,80 @@
+// Hàm để cập nhật số lượng sản phẩm
+function decreaseQuantity(button) {
+    let quantityInput = button.nextElementSibling;
+    let currentQuantity = parseInt(quantityInput.value);
+    if (currentQuantity > 1) {
+        quantityInput.value = currentQuantity - 1;
+        updateTotal(button);
+    }
+}
+
+// Tăng số lượng sản phẩm
+function increaseQuantity(button) {
+    let quantityInput = button.previousElementSibling;
+    let currentQuantity = parseInt(quantityInput.value);
+
+    quantityInput.value = currentQuantity + 1;
+    updateTotal(button);
+}
+
+// Cập nhật tổng tiền cho sản phẩm
+function updateTotal(button) {
+    let row = button.closest('tr'); // Lấy hàng chứa sản phẩm
+    let priceElement = row.querySelector('.unit-price'); // Lấy giá của sản phẩm
+    let quantityInput = row.querySelector('.quantity-input'); // Lấy số lượng
+    let totalElement = row.querySelector('.total-price'); // Lấy phần tử hiển thị tổng tiền
+
+    let price = parseFloat(priceElement.textContent.replace(/[^0-9.-]+/g, "")); // Chuyển đổi giá thành số
+    let quantity = parseInt(quantityInput.value); // Lấy số lượng
+
+    let total = price * quantity;
+    totalElement.textContent = total.toLocaleString('vi-VN') + " VND"; // Hiển thị tổng tiền mới
+
+    updateOrderSummary();
+}
+
+// Cập nhật tổng tiền cho toàn bộ giỏ hàng
+function updateOrderSummary() {
+    let totalAmount = 0;
+
+    // Lặp qua tất cả các dòng sản phẩm
+    let totalPriceElements = document.querySelectorAll('.total-price');
+    totalPriceElements.forEach(function(totalElement) {
+        let total = parseFloat(totalElement.textContent.replace(/[^0-9.-]+/g, ""));
+        totalAmount += total;
+    });
+    // Hiển thị tổng tiền mới
+    let totalAmountElements = document.querySelectorAll('.total-amount');
+    totalAmountElements.forEach(function(element) {
+        element.textContent = totalAmount.toLocaleString('vi-VN') + " VND";
+    });
+}
+
+// Xóa sản phẩm khỏi giỏ hàng
+function removeItem(button) {
+    let row = button.closest('tr');
+    row.remove(); // Xóa hàng sản phẩm
+
+    updateOrderSummary(); // Cập nhật lại tổng tiền sau khi xóa
+}
+
+//Gọi đến Trang Cátervlet => Lưu lại vào session gọi lại trang Cart.jsp
+function updateCart(action, productId, quantity) {
+    $.ajax({
+        type: 'POST',
+        url: 'CartServlet',
+        data: {
+            action: action,
+            productId: productId,
+            quantity: quantity
+        },
+        success: function (response) {
+            // Update the cart display based on the response
+            // For example, update total price, item count, etc.
+            console.log(response);
+        },
+        error: function (error) {
+            console.error("Error updating cart:", error);
+        }
+    });
+}
