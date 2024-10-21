@@ -1,3 +1,10 @@
+<%-- 
+    Document   : managementAdmin
+    Created on : Oct 17, 2024, 12:02:59 PM
+    Author     : Truong Van Khang _ CE181151
+--%>
+
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Model.Category" %>
