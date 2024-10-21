@@ -4,7 +4,7 @@
  */
 package controller;
 
-import dao.MenuDAO;
+import dao.ProductDAO;
 import model.Cart;
 import model.Item;
 import model.Product;
@@ -139,7 +139,7 @@ public class CartServlet extends HttpServlet {
     }
 
     public Item CheckItem(int num, int Id) {
-        MenuDAO M = new MenuDAO();
+        ProductDAO M = new ProductDAO();
         Product p = M.getProduct(Id);
         if (p == null) {
             throw new NullPointerException("Product not found for ID: " + Id);

@@ -4,8 +4,6 @@
  */
 package controller;
 
-import dao.CategoryDAO;
-import dao.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,11 +13,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
 import dao.CategoryDAO;
 import model.Category;
-import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import jakarta.servlet.http.HttpSession;
-import java.sql.Date;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -84,7 +79,7 @@ public class CategoryServlet extends HttpServlet {
                 default:
                     showListCategory(request, response);
             }
-        } catch (Exception e) {
+        } catch (ServletException | IOException | SQLException e) {
             throw new ServletException(e);
         }
 
@@ -99,7 +94,7 @@ public class CategoryServlet extends HttpServlet {
             }
             request.setAttribute("dataCategory", list);
             request.getRequestDispatcher("managementCategory.jsp").forward(request, response);
-        } catch (Exception e) {
+        } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }
@@ -123,7 +118,7 @@ public class CategoryServlet extends HttpServlet {
                 System.out.println("Loi");
             }
 
-        } catch (Exception e) {
+        } catch (ServletException | IOException | SQLException e) {
             e.printStackTrace();
         }
     }
@@ -141,7 +136,7 @@ public class CategoryServlet extends HttpServlet {
             } else {
                 System.out.println("Loi Delete");
             }
-        } catch (Exception e) {
+        } catch (ServletException | IOException | SQLException e) {
             e.printStackTrace();
         }
     }
@@ -167,7 +162,7 @@ public class CategoryServlet extends HttpServlet {
             } else {
                 System.out.println("Loi Update");
             }
-        } catch (Exception e) {
+        } catch (ServletException | IOException | SQLException e) {
             e.printStackTrace();
         }
     }
@@ -183,7 +178,7 @@ public class CategoryServlet extends HttpServlet {
                 System.out.println(category.getCategory_name());
             }
             request.getRequestDispatcher("managementCategory.jsp").forward(request, response);
-        } catch (Exception e) {
+        } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }

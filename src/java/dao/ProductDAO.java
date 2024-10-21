@@ -28,11 +28,10 @@ public class ProductDAO {
     private static String SELECT_PRODUCT_BY_ProID = "SELECT * FROM product WHERE product_id = ?";
     private static String DELETE_PRODUCT_BY_ProID = "DELETE FROM product WHERE product_id = ?";
     private static String INSERT_PRODUCT = "INSERT INTO product (productName, description, price, qty, imageURL, categoryID) VALUES "
-                                        + "(?, ?, ?, ?, ?, ?)";
+            + "(?, ?, ?, ?, ?, ?)";
     private static String UPDATE_PRODUCT_BY_ProID = "UPDATE product SET productName = ?, description = ?, price = ?, qty = ?, imageURL = ? WHERE product_id = ?";
     private static String SEARCH_PRODUCT_BY_NAME = "SELECT * FROM product WHERE productName LIKE ?";
-    
-    
+
     public List<Product> searchProduct(String productName) {
         List<Product> listProducts = new ArrayList<>();
         try {
@@ -56,7 +55,7 @@ public class ProductDAO {
         }
         return listProducts;
     }
-    
+
     public List<Product> getAllProduct() {
         List<Product> listProducts = new ArrayList<>();
         try {
@@ -76,7 +75,7 @@ public class ProductDAO {
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-        } 
+        }
         return listProducts;
     }
     // TEST getAllProduct()
@@ -152,6 +151,7 @@ public class ProductDAO {
         }
         return rowUpdated;
     }
+
     // DEMO updateProduct(Product product)
 //        public static void main(String[] args) throws ClassNotFoundException {
 //        Product product = new Product(1, "Iced Milk Coffee", "Special iced milk coffee with a fragrant taste", 20000, 120, "../img/menu/peachTea.webp", 0, null, null);
@@ -182,7 +182,7 @@ public class ProductDAO {
         }
         return rowDelete;
     }
-    
+
     public boolean addProduct(Product product) throws ClassNotFoundException {
 // Logic để thêm mới một nhân viên vào cơ sở dữ liệu
         boolean rowAdd = false;
@@ -201,4 +201,30 @@ public class ProductDAO {
         }
         return rowAdd;
     }
+
+    public Product getProduct(int id) {
+        Product p = new Product();
+        try {
+            conn = ConnectDB.getConnection();
+            ps = conn.prepareStatement(SELECT_PRODUCT_BY_ProID);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                p = new Product(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getDouble(4),
+                        rs.getInt(5),
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getTimestamp(8),
+                        rs.getTimestamp(9));
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return p;
+
+    }
+
 }
