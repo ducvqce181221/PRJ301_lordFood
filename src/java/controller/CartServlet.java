@@ -87,8 +87,8 @@ public class CartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         HttpSession session = request.getSession(true);
+
         Cart cart = null;
         Object o = session.getAttribute("cart");
 
@@ -129,13 +129,14 @@ public class CartServlet extends HttpServlet {
             System.out.println("A required object is null: " + e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
-        }   
+        }
         List<Item> list = cart.getItems();
         double totalMoney = cart.getTotalMoney();
-        session.setAttribute("totalMoney", totalMoney);  
+        session.setAttribute("totalMoney", totalMoney);
         session.setAttribute("cart", cart);
         session.setAttribute("size", list.size());
         request.getRequestDispatcher("cart.jsp").forward(request, response);
+
     }
 
     public Item CheckItem(int num, int Id) {

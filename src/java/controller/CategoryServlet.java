@@ -105,9 +105,9 @@ public class CategoryServlet extends HttpServlet {
             String CategoryName = request.getParameter("categoryName");
             Timestamp create_at = new Timestamp(System.currentTimeMillis());
             boolean Complete = false;
-            if (check_Exist_Name(CategoryName)) {
+            if (check_Exist_Name(CategoryName) || !check_Name(CategoryName)) {
                 HttpSession session = request.getSession(true);
-                session.setAttribute("CateEx", "Add category Failed !! Category name already exists.");
+                session.setAttribute("CateEx", "Add category Failed !! Category name already exists or invalid character.");
                 showListCategory(request, response);
                 return;
             }
@@ -147,9 +147,9 @@ public class CategoryServlet extends HttpServlet {
             boolean Complete = false;
             String Id = request.getParameter("categoryId");
             String CategoryName = request.getParameter("categoryName");
-            if (check_Exist_Name(CategoryName)) {
+            if (check_Exist_Name(CategoryName) || !check_Name(CategoryName)) {
                 HttpSession session = request.getSession(true);
-                session.setAttribute("CateEx", "Update category Failed !! Category name already exists.");
+                session.setAttribute("CateEx", "Update category Failed !! Category name already exists or invalid character.");
                 System.out.println("Session ID: " + session.getId());
                 System.out.println("Khang bi trung");
                 showListCategory(request, response);
@@ -192,6 +192,11 @@ public class CategoryServlet extends HttpServlet {
         }
         return false;
     }
+    
+    private boolean check_Name(String cateName){
+        return cateName.matches("^[a-zA-Z\\s-]{3,50}$");
+    }
+
 
     /**
      * Handles the HTTP <code>POST</code> method.

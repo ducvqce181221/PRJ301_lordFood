@@ -88,7 +88,7 @@
                                         <form action="cartServlet" method="POST" >
                                             <input type="hidden" name="productID" value="${item.product.product_id}">
                                             <input type="hidden" name="quantity" value="0">
-                                            <input type="hidden" name="action" value="deleteAll">
+                                            <input type="hidden" name="action" value="delete">
                                             <button class="quantity-btn" type="submit">Delete</button>
                                         </form>  
                                     </td>
@@ -125,7 +125,7 @@
 
                     <p>Tổng đơn hàng: <span class="total-amount"><fmt:formatNumber value="${sessionScope.totalMoney}" pattern="#,###" /> VND</span></p>
                 </div>
-                <form action="checkout.php" method="POST" class="pay">
+                <form action="checkOutServlet" method="POST" class="pay">
                     <input type="hidden" name="pay" value="1">
                     <button type="submit">Thanh Toán</button>
                 </form>
