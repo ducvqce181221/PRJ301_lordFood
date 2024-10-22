@@ -83,6 +83,10 @@ public class ProductManagementServlet extends HttpServlet {
       
         request.setAttribute("listP", listProduct);
         request.setAttribute("listC", listCate);
+       
+        for (Category category : listCate) {
+            System.out.println(category.getCategory_name());
+        }
         request.getRequestDispatcher("managementProduct.jsp").forward(request, response);
     } 
 

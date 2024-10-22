@@ -102,6 +102,7 @@ public class UpdateProductServlet extends HttpServlet {
             String applicationPath = getServletContext().getRealPath("");
             String uploadPath = applicationPath.replace("build\\", "") + "img\\menu";
 
+            System.out.println("File name: " + fileName);
             System.out.println("uploadPath: " + uploadPath);
             File uploadDir = new File(uploadPath);
             if (!uploadDir.exists()) {
@@ -112,7 +113,7 @@ public class UpdateProductServlet extends HttpServlet {
             filePart.write(uploadPath + File.separator + fileName);
 
             // Trả về URL của file đã upload
-            fileURL = "../img/menu/" + fileName;
+            fileURL = "./img/menu/" + fileName;
         }
 
         Product product = new Product(productID, productName, productDescription, productPrice, productQuantity, fileURL, 0, null, null);

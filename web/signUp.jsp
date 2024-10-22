@@ -49,7 +49,9 @@
                             <input type="password" id="password" name="password" placeholder="Nhập mật khẩu của bạn tại đây" 
                                    value="<%= request.getAttribute("password") != null ? request.getAttribute("password") : "" %>" required>
                         </div>
-
+                        <div class="form-group">
+                            <p>Already have an account? <a href="${pageContext.request.contextPath}/signIn.jsp">Sign in</a></p>
+                        </div>
                         <button class="submit-signUp" type="submit" name="submit-signUp">Submit</button>
                     </form>
                 </div>

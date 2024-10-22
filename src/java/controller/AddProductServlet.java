@@ -72,6 +72,15 @@ public class AddProductServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 //        processRequest(request, response);
+        int cateid = Integer.parseInt(request.getParameter("cateid"));
+
+        ProductDAO menuDAO = new ProductDAO();
+        List<Category> listC = CategoryDAO.getAll();
+        request.setAttribute("listCate", listC);
+
+        List<Product> list = menuDAO.getProductByCateID(cateid);
+        request.setAttribute("listProducts", list);
+        request.getRequestDispatcher("menu.jsp").forward(request, response);
 
     }
 
@@ -113,6 +122,8 @@ public class AddProductServlet extends HttpServlet {
         // Lấy đường dẫn của dự án và lưu vào trong img/menu/
         String applicationPath = getServletContext().getRealPath("");
         String uploadPath = applicationPath.replace("build\\", "") + "img\\menu";
+        
+        System.out.println("IMG: " + uploadPath);
 
         File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) {

@@ -51,7 +51,7 @@ public class CategoryDAO {
                 if (Con != null) {
                     Con.close();
                 }
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
 
@@ -66,14 +66,14 @@ public class CategoryDAO {
             PreparedStatement stm = Con.prepareStatement(Delect_By_Id);
             stm.setString(1, Id);
             rs = stm.executeUpdate() > 0;
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         } finally {
             try {
                 if (Con != null) {
                     Con.close();
                 }
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
 
@@ -112,7 +112,7 @@ public class CategoryDAO {
 
             stmt.execute("SET IDENTITY_INSERT category OFF");
             con.commit();
-        } catch (Exception ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             ex.printStackTrace();
         } finally {
             try {
@@ -125,7 +125,7 @@ public class CategoryDAO {
                 if (con != null) {
                     con.close();
                 }
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
@@ -141,14 +141,14 @@ public class CategoryDAO {
             stm.setInt(3, Integer.parseInt(Id));
             stm.setTimestamp(2, create_at);
             rs = stm.executeUpdate() > 0;
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | NumberFormatException | SQLException e) {
             e.printStackTrace();
         } finally {
             try {
                 if (Con != null) {
                     Con.close();
                 }
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
 
@@ -173,7 +173,7 @@ public class CategoryDAO {
             }
             rs.close();
             stm.close();
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         } finally {
             try {

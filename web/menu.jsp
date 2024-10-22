@@ -37,7 +37,7 @@
                         <ul class="navbar-nav">
                             <c:forEach items="${listCate}" var="c">
                                 <li class="nav-item">
-                                    <a href="categoryServlet?cateid=${c.categoryId}" class="nav-link active" aria-current="page">${c.category_name}</a>
+                                    <a href="categoryServlet?cateid=${c.categoryId}&action=getCate" class="nav-link active" aria-current="page">${c.category_name}</a>
                                 </li>  
                             </c:forEach>
                         </ul>
@@ -58,10 +58,14 @@
                                     </h4>
                                     <p class="card-text">${x.description}</p>
                                     <div class="d-flex justify-content-between">
-                                        <a href="" class="btn btn-primary">
+                                        <form action="cartServlet" class="btn btn-primary" method="get">
+                                            <input type="hidden" name="action" value="increase">
+                                            <input type="hidden" name="productID" value="${x.product_id}">
+                                            <input type="hidden" name="quantity" value="1">
                                             <i class="bi bi-bag-check-fill"></i>
-                                            ORDER NOW
-                                        </a>                                  
+                                            <button type="submit">ORDER NOW</button>
+                                            
+                                        </form>                               
                                         <h4 class="text-danger">
                                             <fmt:formatNumber value="${x.price}" pattern="#,###"/>VND
                                         </h4>              
