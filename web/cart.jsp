@@ -101,7 +101,7 @@
                 </div>
                 <div class="section3">
                     <div class="continue-shopping">
-                        <a href="menu.jsp">← Tiếp tục mua hàng</a>
+                        <a href="${pageContext.request.contextPath}/product">← Tiếp tục mua hàng</a>
                     </div>
                     <div class="delete-all">
                         <form action="cartServlet" method="POST" >

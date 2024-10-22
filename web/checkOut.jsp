@@ -10,6 +10,7 @@
 <%@page import="model.Cart"%>
 <%@page import="model.Item"%>
 <%@page import="model.Product"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
@@ -175,10 +176,11 @@
             <div class="total">
                 <strong> <p>Tổng đơn hàng: <span class="total-amount"><fmt:formatNumber value="${sessionScope.totalMoney}" pattern="#,###" /> VND</span></p></strong>
             </div>
-
             <!-- Submit Button -->
-            <form action="ConfirmOrderServlet" method="post">
-                <input type="hidden" name="totalAmount" value="500000">
+            <form action="cartServlet" method="post">
+                <input type="hidden" name="action" value="deleteAll" >
+                <input type="hidden" name="productID" value="0">
+                <input type="hidden" name="quantity" value="0">
                 <button type="submit" class="btn-submit">Xác nhận đơn hàng</button>
             </form>
         </div>

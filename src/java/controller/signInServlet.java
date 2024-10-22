@@ -85,7 +85,7 @@ public class signInServlet extends HttpServlet {
 
         String URL = "jdbc:sqlserver://localhost:1433;databaseName=lorfood;encrypt=true;trustServerCertificate=true";
         String USER = "sa";
-        String PASSWORD = "12345678";
+        String PASSWORD = "khangmc1502@";
         String JDBC_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 
         Connection conn = null;
