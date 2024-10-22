@@ -62,19 +62,12 @@
                                     </span>
 
                                 </p>
-
-             
-
-
                                 <form id="cartForm" action="cartServlet" method="get" class="d-flex align-items-center">
                                     <button class="btn btn-outline-secondary quantity-btn" type="button" onclick="decreaseQuantity()"><span class="btn-text">-</span></button>
                                     <input type="number" class="quantity-input" name="quantity" value="1" id="quantityInput" readonly>
-                                    
                                     <button class="btn btn-outline-secondary quantity-btn" type="button" onclick="increaseQuantity()"><span class="btn-text">+</span></button>
-
                                     <input type="hidden" name="action" value="increase">
                                     <input type="hidden" name="productID" value="${product.product_id}">
-
                                     <button type="submit" class="btn btn-primary ms-4">
                                         <i class="bi bi-bag-check-fill"></i>
                                         ORDER NOW
