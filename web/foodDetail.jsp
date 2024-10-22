@@ -18,6 +18,7 @@
                 />
 
             <link rel="stylesheet" href="./CSS/foodDetail.css" />
+            <link href="CSS/contact.css" rel="stylesheet" type="text/css"/>
         </head>
         <body>
             <div class="container mb-5 mt-4">
@@ -26,7 +27,7 @@
                     <i class="bi bi-chevron-right mx-2"></i>
                     <a href="product" class="breadcrumb-link">MENU</a>
                     <i class="bi bi-chevron-right mx-2"></i>
-                    <a href="categoryServlet?cateid=${cate.categoryId}" class="breadcrumb-link">${cate.category_name}</a>
+                    <a href="categoryServlet?cateid=${cate.categoryId}&action=getCate" class="breadcrumb-link">${cate.category_name}</a>
                     <i class="bi bi-chevron-right mx-2"></i>
                     <span class="breadcrumb-item text-secondary">${product.productName}</span>
                 </div>
@@ -38,7 +39,7 @@
                     <div class="col-md-5">
                         <img src="${product.imageURL}" class="img-fluid" alt="" />
                     </div>
-                    <link href="CSS/contact.css" rel="stylesheet" type="text/css"/>
+
                     <!--Grid column-->
 
                     <!--Grid column-->
@@ -52,15 +53,14 @@
                                     <strong><span style="font-size: 20px">${product.productName}</span></strong>
                                 </div>
 
-                                <p>${product.description}</p>
+                                <p style="word-wrap: break-word; margin-top: 10px;">${product.description}</p>
 
-                                <p class="custom-color p-3">
+                                <p style="background-color: #e3e3e3;" class="custom-color p-3">
                                     <!--<span class="me-1"><del>$200</del></span>-->
                                     <span style="font: bold 26px 'MergeBlack', sans-serif; color: #ff5b6a">
                                         <fmt:formatNumber value="${product.price}"/>
                                         <span class="currency">đ</span>
                                     </span>
-
                                 </p>
                                 <form id="cartForm" action="cartServlet" method="get" class="d-flex align-items-center">
                                     <button class="btn btn-outline-secondary quantity-btn" type="button" onclick="decreaseQuantity()"><span class="btn-text">-</span></button>
@@ -69,7 +69,7 @@
                                     <input type="hidden" name="action" value="increase">
                                     <input type="hidden" name="productID" value="${product.product_id}">
                                     <button type="submit" class="btn btn-primary ms-4">
-                                        <i class="bi bi-bag-check-fill"></i>
+                                        <i class="bi bi-bag-check-fill ms-0 text-light"></i>
                                         ORDER NOW
                                     </button>
                                 </form>

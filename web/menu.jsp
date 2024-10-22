@@ -49,20 +49,22 @@
                 <div class="row g-4">
                     <c:forEach items="${listProducts}" var="x">
                         <div class="col-md-6 col-lg-4">
-                            <div class="card" style="cursor: pointer">
-                                <img class="card-img-top img-fluid" src="${x.imageURL}" alt="" onclick="window.location.href = 'foodDetail?cateid=${x.categoryID}&productid=${x.product_id}'" />
+                            <div class="card" style="cursor: pointer" onclick="window.location.href = 'foodDetail?cateid=${x.categoryID}&productid=${x.product_id}'">
+                                <img class="card-img-top img-fluid" src="${x.imageURL}" alt=""/>
                                 <div class="card-body">
                                     <h4 class="card-title">
                                         <a href="#" class="text-decoration-none">${x.productName}</a>
                                     </h4>
                                     <p class="card-text">${x.description}</p>
                                     <div class="d-flex justify-content-between">
-                                        <form action="cartServlet" class="btn btn-primary" method="get">
+                                        <form action="cartServlet" method="get">
                                             <input type="hidden" name="action" value="increase">
                                             <input type="hidden" name="productID" value="${x.product_id}">
                                             <input type="hidden" name="quantity" value="1">
-                                            <i class="bi bi-bag-check-fill"></i>
-                                            <button type="submit">ORDER NOW</button>
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="bi bi-bag-check-fill ms-0 text-light"></i>
+                                                ORDER NOW
+                                            </button>
                                             
                                         </form>                               
                                         <h4 class="text-danger">
