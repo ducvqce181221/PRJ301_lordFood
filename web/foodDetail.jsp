@@ -63,16 +63,25 @@
 
                                 </p>
 
-                                <form class="d-flex justify-content-left" action="increase?productID=${product.product_id} method="post">
-                                    <!-- Default input -->
-                                    <div class="form-outline me-1" style="width: 80px">
-                                        <input type="number" name="quantity" value="1" class="form-control" />
-                                    </div>
-                                    <button class="btn btn-primary ms-1" type="submit">
-                                        Add to cart
-                                        <i class="fas fa-shopping-cart ms-1"></i>
+             
+
+
+                                <form id="cartForm" action="cartServlet" method="get" class="d-flex align-items-center">
+                                    <button class="btn btn-outline-secondary quantity-btn" type="button" onclick="decreaseQuantity()"><span class="btn-text">-</span></button>
+                                    <input type="number" class="quantity-input" name="quantity" value="1" id="quantityInput" readonly>
+                                    
+                                    <button class="btn btn-outline-secondary quantity-btn" type="button" onclick="increaseQuantity()"><span class="btn-text">+</span></button>
+
+                                    <input type="hidden" name="action" value="increase">
+                                    <input type="hidden" name="productID" value="${product.product_id}">
+
+                                    <button type="submit" class="btn btn-primary ms-4">
+                                        <i class="bi bi-bag-check-fill"></i>
+                                        ORDER NOW
                                     </button>
                                 </form>
+
+
                             </div>
                         </div>
                         <!--Content-->
@@ -87,5 +96,22 @@
                 integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
                 crossorigin="anonymous"
             ></script>
+            <script>
+                                        // JavaScript to increase and decrease quantity
+                                        function decreaseQuantity() {
+                                            var quantityInput = document.getElementById('quantityInput');
+                                            var currentQuantity = parseInt(quantityInput.value);
+                                            if (currentQuantity > 1) { // Prevent quantity from going below 1
+                                                quantityInput.value = currentQuantity - 1;
+                                            }
+                                        }
+
+                                        function increaseQuantity() {
+                                            var quantityInput = document.getElementById('quantityInput');
+                                            var currentQuantity = parseInt(quantityInput.value);
+                                            quantityInput.value = currentQuantity + 1; // Increment the quantity
+                                        }
+
+            </script>
         </body>
     </html>

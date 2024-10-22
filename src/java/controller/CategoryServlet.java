@@ -12,10 +12,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
 import dao.CategoryDAO;
+import dao.ProductDAO;
 import model.Category;
 import jakarta.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.util.List;
+import model.Product;
 
 /**
  *
@@ -76,6 +78,9 @@ public class CategoryServlet extends HttpServlet {
                 case "find":
                     findCategory(request, response);
                     break;
+                case "getCate":
+                    getMenuCate(request, response);
+                    break;
                 default:
                     showListCategory(request, response);
             }
@@ -83,6 +88,19 @@ public class CategoryServlet extends HttpServlet {
             throw new ServletException(e);
         }
 
+    }
+
+    private void getMenuCate(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        int cateid = Integer.parseInt(request.getParameter("cateid"));
+
+        ProductDAO menuDAO = new ProductDAO();
+        List<Category> listC = CategoryDAO.getAll();
+        request.setAttribute("listCate", listC);
+
+        List<Product> list = menuDAO.getProductByCateID(cateid);
+        request.setAttribute("listProducts", list);
+        request.getRequestDispatcher("menu.jsp").forward(request, response);
     }
 
     private void showListCategory(HttpServletRequest request, HttpServletResponse response)
@@ -192,11 +210,10 @@ public class CategoryServlet extends HttpServlet {
         }
         return false;
     }
-    
-    private boolean check_Name(String cateName){
+
+    private boolean check_Name(String cateName) {
         return cateName.matches("^[a-zA-Z\\s-]{3,50}$");
     }
-
 
     /**
      * Handles the HTTP <code>POST</code> method.

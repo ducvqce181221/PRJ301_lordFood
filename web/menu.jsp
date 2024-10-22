@@ -49,9 +49,8 @@
                 <div class="row g-4">
                     <c:forEach items="${listProducts}" var="x">
                         <div class="col-md-6 col-lg-4">
-                            <div class="card" style="cursor: pointer"
-                                 onclick="window.location.href = 'foodDetail?cateid=${x.categoryID}&productid=${x.product_id}'">
-                                <img class="card-img-top img-fluid" src="${x.imageURL}" alt="" />
+                            <div class="card" style="cursor: pointer">
+                                <img class="card-img-top img-fluid" src="${x.imageURL}" alt="" onclick="window.location.href = 'foodDetail?cateid=${x.categoryID}&productid=${x.product_id}'" />
                                 <div class="card-body">
                                     <h4 class="card-title">
                                         <a href="#" class="text-decoration-none">${x.productName}</a>

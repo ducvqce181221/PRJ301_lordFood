@@ -56,3 +56,27 @@
     text-decoration: underline;
     vertical-align: 7px;
 }
+
+.quantity-btn {
+    background-color: #4caf50; /* Green background */
+    color: white; /* White text */
+    border: none;
+    padding: 1px 14px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-text {
+    font-size: 1.5rem; /* Điều chỉnh kích thước font */
+}
+
+.quantity-input {
+    width: 47px; /* Adjusted width */
+    text-align: center;
+    padding: 6px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 0 5px; /* Space between the buttons */
+}
