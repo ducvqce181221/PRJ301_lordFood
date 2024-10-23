@@ -7,6 +7,36 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <link rel="stylesheet" href="CSS/header.css">
     </head>
+    <style>
+
+        .cart-figure {
+            position: relative;
+            display: inline-block;
+            margin: 0;
+            padding: 10px;
+            background-color: #f9f9f9; /* Light background */
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .cart-icon {
+            font-size: 24px; /* Larger cart icon */
+            color: #333; /* Darker color for contrast */
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #ff4d4d; /* Eye-catching red for the count */
+            color: white;
+            border-radius: 50%;
+            padding: 4px 8px;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+        }
+    </style>
     <body>
         <header class="custom-header">
             <!-- Ph?n menu bên trái -->
@@ -14,7 +44,7 @@
                 <ul>
                     <li><a href="${pageContext.request.contextPath}/homePage.jsp">Home</a></li>
                     <li><a href="${pageContext.request.contextPath}/aboutUs.jsp">AboutUs</a></li>
-                    <li><a href="${pageContext.request.contextPath}/menu.jsp">Menu</a></li> <!-- ??i t? PHP sang JSP -->
+                    <li><a href="${pageContext.request.contextPath}/product">Menu</a></li> <!-- ??i t? PHP sang JSP -->
                 </ul>
             </nav>
 
@@ -31,9 +61,9 @@
                         <div class="custom-h_cart">
                             <a href="${pageContext.request.contextPath}/cart.jsp">
                                 <span>Cart</span>
-                                <figure>
-                                    <i class="fa fa-shopping-bag"></i>
-                                    <code></code>
+                                <figure class="cart-figure">
+                                    <i class="fa fa-shopping-bag cart-icon"></i>
+                                    <span class="cart-count">${sessionScope.size}</span>  <!-- Display number of items in cart -->
                                 </figure>
                             </a>
                         </div>

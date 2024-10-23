@@ -172,6 +172,8 @@ public class signUpServlet extends HttpServlet {
                 if (row > 0) {
                     request.setAttribute("modalMessage", "Đăng ký thành công!");
                     request.setAttribute("modalType", "success");
+                    response.sendRedirect("signIn.jsp");
+                    return;
                 } else {
                     request.setAttribute("modalMessage", "Đăng ký thất bại, vui lòng thử lại.");
                     request.setAttribute("modalType", "error");

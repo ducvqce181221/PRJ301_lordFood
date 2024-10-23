@@ -78,7 +78,7 @@
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
-                        <li><a class="dropdown-item" href="./signInAdmin.php">Logout</a></li>
+                        <li><a class="dropdown-item" href="./signInAdmin.jsp">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -98,11 +98,11 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                                 Contact Management
                             </a>
-                            <a class="nav-link" href="managementProduct.jsp">
+                            <a class="nav-link" href="productManagement">
                                 <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                                 Product Management
                             </a>
-                            <a class="nav-link" href="managementCategory.jsp">
+                            <a class="nav-link" href="categoryServlet?&action=showInfo">
                                 <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                                 Category Management
                             </a>

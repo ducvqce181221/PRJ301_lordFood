@@ -17,7 +17,7 @@
         <meta name="author" content="" />
         <title>Dashboard - Management Admin</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-       <link rel="stylesheet" href="css/styles.css" />
+        <link rel="stylesheet" href="css/styles.css" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <style>
             body {
@@ -93,11 +93,11 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                                 Contact Management
                             </a>
-                            <a class="nav-link" href="managementProduct.jsp">
+                            <a class="nav-link" href="productManagement">
                                 <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                                 Product Management
                             </a>
-                            <a class="nav-link" href="managementCategory.jsp">
+                            <a class="nav-link" href="categoryServlet?&action=showInfo">
                                 <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                                 Category Management
                             </a>
