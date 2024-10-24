@@ -12,6 +12,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -66,11 +67,17 @@ public class foodDetailServlet extends HttpServlet {
 
         int productid = Integer.parseInt(request.getParameter("productid"));
         int cateid = Integer.parseInt(request.getParameter("cateid"));
+        
+        
 
         ProductDAO menuDAO = new ProductDAO();
         Product product = menuDAO.getProductByProID(productid);
         request.setAttribute("product", product);
-
+        
+        List<Product> listP = menuDAO.getAllProduct();
+        Collections.shuffle(listP);
+        request.setAttribute("listProducts", listP);
+        
         try {
             Category cate = CategoryDAO.getCateByID(cateid);
             request.setAttribute("cate", cate);

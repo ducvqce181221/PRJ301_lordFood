@@ -46,7 +46,7 @@
             </nav>
 
             <div class="container menu-body">
-                <div class="row g-4">
+                <div class="row g-5">
                     <c:forEach items="${listProducts}" var="x">
                         <div class="col-md-6 col-lg-4">
                             <div class="card" style="cursor: pointer" onclick="window.location.href = 'foodDetail?cateid=${x.categoryID}&productid=${x.product_id}'">
