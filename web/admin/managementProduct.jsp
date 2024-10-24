@@ -173,7 +173,7 @@
                                             <div class="mb-3 row">
                                                 <label for="productDescription" class="col-sm-2 col-form-label">Description</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" name="productDescription" class="form-control" id="productDescription" required placeholder="Enter description">
+                                                    <textarea rows="3" name="productDescription" class="form-control" id="productDescription" required placeholder="Enter description"></textarea>
                                                 </div>
                                             </div>
                                             <div class="mb-3 row">
@@ -279,7 +279,7 @@
                                                                         <div class="mb-3 row">
                                                                             <label for="productDescription" class="col-sm-2 col-form-label">Description</label>
                                                                             <div class="col-sm-9">
-                                                                                <input type="text" name="productDescription" class="form-control" id="productDescription" value="${product.description}" placeholder="Enter description">
+                                                                                <textarea rows="3" name="productDescription" class="form-control" id="productDescription" placeholder="Enter description">${product.description}</textarea>
                                                                             </div>
                                                                         </div>
                                                                         <div class="mb-3 row">

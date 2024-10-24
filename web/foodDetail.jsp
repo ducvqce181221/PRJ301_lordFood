@@ -21,7 +21,7 @@
             <link href="CSS/contact.css" rel="stylesheet" type="text/css" />
         </head>
         <body>
-            <div class="container mb-5 mt-4">
+            <div class="container mb-5 mt-4 px-0">
                 <div class="d-flex align-items-center p-3 breadcrumb-container">
                     <a href="homePage.jsp" class="breadcrumb-link">HOME</a>
                     <i class="bi bi-chevron-right mx-2"></i>
@@ -39,7 +39,7 @@
                 <div class="row justify-content-center custom-gap">
                     <!--Grid column-->
                     <div class="col-md-5">
-                        <img src="${product.imageURL}" class="img-fluid" alt="" />
+                        <img src="${product.imageURL}" class="img-fluid image-custom" alt="" />
                     </div>
 
                     <!--Grid column-->
@@ -97,11 +97,11 @@
                                     <h6 class="m-0 ms-4">${product.quantityOfStock} Sản phẩm có sẵn</h6>
                                     <input type="hidden" name="action" value="increase" />
                                     <input type="hidden" name="productID" value="${product.product_id}" />
-                                    <button type="submit" class="btn btn-primary mt-4">
-                                        <i class="bi bi-cart-plus ms-0 pe-1 text-light"></i>
+                                    <button type="submit" class="text-primary btn btn-primary border-setting add-cart">
+                                        <i class="bi bi-cart-plus ms-0 pe-1"></i>
                                         Add To Cart
                                     </button>
-                                    <button type="submit" class="btn btn-primary ms-3 mt-4">
+                                    <button type="submit" class="btn btn-primary ms-3 border-setting">
                                         <i class="bi bi-bag-check-fill ms-0 pe-1 text-light"></i>
                                         Order Now
                                     </button>
