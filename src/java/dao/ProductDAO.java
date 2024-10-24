@@ -203,7 +203,7 @@ public class ProductDAO {
     }
 
     public Product getProduct(int id) {
-        Product p = new Product();
+        Product p = null;
         try {
             conn = ConnectDB.getConnection();
             ps = conn.prepareStatement(SELECT_PRODUCT_BY_ProID);

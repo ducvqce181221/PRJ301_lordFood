@@ -52,8 +52,9 @@
                             <hr>
                             <tr>
                                 <c:forEach var="item" items="${sessionScope.cart.items}">
+                                    <c:set var="t" value="${t +1 }"></c:set>
                                 <tr>
-                                    <td>${item.product.product_id}</td>  
+                                    <td>${t}</td>  
                                     <td>
                                         <img src="${item.product.imageURL}" alt="Product Image" class="product-img">
                                     </td>
