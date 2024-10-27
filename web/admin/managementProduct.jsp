@@ -167,13 +167,13 @@
                                             <div class="mb-3 row">
                                                 <label for="productName" class="col-sm-2 col-form-label">Product name</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" name="productName" class="form-control" id="productName" required placeholder="Enter name">
+                                                    <input type="text" name="productName" class="form-control" id="productName" maxlength="50" required placeholder="Enter name">
                                                 </div>
                                             </div>
                                             <div class="mb-3 row">
                                                 <label for="productDescription" class="col-sm-2 col-form-label">Description</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" name="productDescription" class="form-control" id="productDescription" required placeholder="Enter description">
+                                                    <textarea rows="3" name="productDescription" class="form-control" id="productDescription" required placeholder="Enter description"></textarea>
                                                 </div>
                                             </div>
                                             <div class="mb-3 row">
@@ -228,7 +228,7 @@
                                     <thead>
                                         <tr>
                                             <th>Product ID</th>
-                                            <th>Product Name</th>
+                                            <th style="text-align: left;">Product Name</th>
                                             <th>Description</th>
                                             <th>Price</th>
                                             <th>Quantity</th>
@@ -241,8 +241,8 @@
                                         <c:forEach var="product" items="${listP}">
                                             <tr>
                                                 <td>${product.product_id}</td>
-                                                <td>${product.productName}</td>
-                                                <td style="max-width: 250px; text-align: left">${product.description}</td>
+                                                <td style="max-width: 160px; text-align: left">${product.productName}</td>
+                                                <td style="max-width: 280px; text-align: left">${product.description}</td>
                                                 <td><fmt:formatNumber value="${product.price}" pattern="#,###"/> VND</td>
                                                 <td>${product.quantityOfStock}</td>
                                                 <td><img style="height: 60px; width: 65px" src=".${product.imageURL}" alt="Product Image"/></td>
@@ -273,25 +273,25 @@
                                                                         <div class="mb-3 row">
                                                                             <label for="productName" class="col-sm-2 col-form-label">Product name</label>
                                                                             <div class="col-sm-9">
-                                                                                <input type="text" name="productName" class="form-control" id="productName" value="${product.productName}" placeholder="Enter name">
+                                                                                <input type="text" name="productName" class="form-control" id="productName" value="${product.productName}" maxlength="50" required placeholder="Enter name">
                                                                             </div>
                                                                         </div>
                                                                         <div class="mb-3 row">
                                                                             <label for="productDescription" class="col-sm-2 col-form-label">Description</label>
                                                                             <div class="col-sm-9">
-                                                                                <input type="text" name="productDescription" class="form-control" id="productDescription" value="${product.description}" placeholder="Enter description">
+                                                                                <textarea rows="3" name="productDescription" class="form-control" id="productDescription" required placeholder="Enter description">${product.description}</textarea>
                                                                             </div>
                                                                         </div>
                                                                         <div class="mb-3 row">
                                                                             <label for="productPrice" class="col-sm-2 col-form-label">Price</label>
                                                                             <div class="col-sm-9">
-                                                                                <input type="number" name="productPrice" class="form-control" id="productPrice" min="1000" value="${product.price}" placeholder="Enter price">
+                                                                                <input type="number" name="productPrice" class="form-control" id="productPrice" min="1000" max="1000000" value="${product.price}" required placeholder="Enter price">
                                                                             </div>
                                                                         </div>
                                                                         <div class="mb-3 row">
                                                                             <label for="productQuantity" class="col-sm-2 col-form-label">Quantity</label>
                                                                             <div class="col-sm-9">
-                                                                                <input type="number" name="productQuantity" class="form-control" id="productQuantity" min="1" value="${product.quantityOfStock}" placeholder="Enter quantity">
+                                                                                <input type="number" name="productQuantity" class="form-control" id="productQuantity" min="1" max="199" value="${product.quantityOfStock}" required placeholder="Enter quantity">
                                                                             </div>
                                                                         </div>
                                                                         <div class="mb-3 row">

@@ -21,8 +21,8 @@ import java.sql.SQLException;
  *
  * @author LE TRONG LUAN - CE181151
  */
-@WebServlet(urlPatterns = {"/signUpServlet"})
-public class signUpServlet extends HttpServlet {
+@WebServlet(name = "addUserServlet", urlPatterns = {"/controller/addUserServlet"})
+public class addUserServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -103,7 +103,6 @@ public class signUpServlet extends HttpServlet {
             request.setAttribute("email", email);
             request.setAttribute("phoneNumber", phoneNumber);
             request.setAttribute("password", password);  // Không nên truyền mật khẩu trong thực tế vì lý do bảo mật
-            request.getRequestDispatcher("signUp.jsp").forward(request, response);
 
             return;
         }
@@ -118,7 +117,6 @@ public class signUpServlet extends HttpServlet {
             request.setAttribute("email", email);
             request.setAttribute("phoneNumber", phoneNumber);
             request.setAttribute("password", password);
-            request.getRequestDispatcher("signUp.jsp").forward(request, response);
 
             return;
         }
@@ -133,7 +131,6 @@ public class signUpServlet extends HttpServlet {
             request.setAttribute("email", email);
             request.setAttribute("phoneNumber", phoneNumber);
             request.setAttribute("password", password);
-            request.getRequestDispatcher("signUp.jsp").forward(request, response);
 
             return;
         }
@@ -157,7 +154,7 @@ public class signUpServlet extends HttpServlet {
                 request.setAttribute("email", email);
                 request.setAttribute("phoneNumber", phoneNumber);
                 request.setAttribute("password", password);
-                request.getRequestDispatcher("signUp.jsp").forward(request, response);
+
             } else {
                 // Nếu không có bản ghi nào trùng, thực hiện việc đăng ký
                 String sql = "INSERT INTO users (Username, Password, Email, PhoneNumber, created_at) VALUES (?, ?, ?, ?, GETDATE())";
@@ -171,19 +168,18 @@ public class signUpServlet extends HttpServlet {
                 if (row > 0) {
                     request.setAttribute("modalMessage", "Đăng ký thành công!");
                     request.setAttribute("modalType", "success");
-                    response.sendRedirect("signIn.jsp");
-                    return;
                 } else {
                     request.setAttribute("modalMessage", "Đăng ký thất bại, vui lòng thử lại.");
                     request.setAttribute("modalType", "error");
                 }
-                request.getRequestDispatcher("signUp.jsp").forward(request, response);
+                 response.sendRedirect(request.getContextPath() + "/admin/homeAdmin.jsp");
+
             }
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("modalMessage", "Đã xảy ra lỗi khi đăng ký. Vui lòng thử lại.");
             request.setAttribute("modalType", "error");
-            request.getRequestDispatcher("signUp.jsp").forward(request, response);
+
         } finally {
             if (stmt != null) {
                 try {

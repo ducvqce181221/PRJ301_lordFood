@@ -25,6 +25,24 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
+import java.io.IOException;
+import java.io.PrintWriter;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.sql.Timestamp;
+import java.util.List;
+import java.io.IOException;
+import java.io.PrintWriter;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -106,7 +124,6 @@ public class CartServlet extends HttpServlet {
         }
         int num, Id;
         try {
-            System.out.println("Khang - Product ID: " + id + ", Quantity: " + quantity + ",Acction " + action);
             Id = Integer.parseInt(id);
             num = Integer.parseInt(quantity);
             if (num == -1 && cart.getQuantityById(Id) <= 1) {
@@ -131,6 +148,29 @@ public class CartServlet extends HttpServlet {
             e.printStackTrace();
         }
         List<Item> list = cart.getItems();
+        List<Integer> itemsToRemove = new ArrayList<>();
+
+        for (Item item : list) {
+            int checkId = item.getProduct().getProduct_id();
+            ProductDAO M = new ProductDAO();
+            Product p = M.getProduct(checkId);
+
+            if (p == null) {
+                itemsToRemove.add(checkId);
+                System.out.println("Product with ID " + checkId + " has been removed from the cart as it's no longer available.");
+            } else {
+                if (item.getPrice() != p.getPrice()) {
+                    System.out.println(item.getPrice());
+                    System.out.println(p.getPrice());
+                  item.getProduct().setPrice(p.getPrice());
+                }
+            }
+        }
+
+        for (int productId : itemsToRemove) {
+            cart.removeItem(productId);
+        }
+
         double totalMoney = cart.getTotalMoney();
         session.setAttribute("totalMoney", totalMoney);
         session.setAttribute("cart", cart);

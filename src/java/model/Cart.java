@@ -45,11 +45,7 @@ public class Cart {
         }
         Item existingItem = getItemById(t.getProduct().getProduct_id());
         if (existingItem != null) {
-            System.out.println("Current quantity: " + existingItem.getQuantity());
-            System.out.println("Adding quantity: " + t.getQuantity());
-
             existingItem.setQuantity(existingItem.getQuantity() + t.getQuantity());
-            System.out.println("New quantity: " + existingItem.getQuantity());
         } else {
             items.add(t);
         }

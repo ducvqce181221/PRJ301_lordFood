@@ -30,7 +30,7 @@ public class ProductDAO {
     private static String INSERT_PRODUCT = "INSERT INTO product (productName, description, price, qty, imageURL, categoryID) VALUES "
             + "(?, ?, ?, ?, ?, ?)";
     private static String UPDATE_PRODUCT_BY_ProID = "UPDATE product SET productName = ?, description = ?, price = ?, qty = ?, imageURL = ? WHERE product_id = ?";
-    private static String SEARCH_PRODUCT_BY_NAME = "SELECT * FROM product WHERE productName LIKE ?";
+    private static String SEARCH_PRODUCT_BY_NAME = "SELECT * FROM product WHERE productName COLLATE Latin1_General_CI_AI LIKE ?";
 
     public List<Product> searchProduct(String productName) {
         List<Product> listProducts = new ArrayList<>();
@@ -203,7 +203,7 @@ public class ProductDAO {
     }
 
     public Product getProduct(int id) {
-        Product p = new Product();
+        Product p = null;
         try {
             conn = ConnectDB.getConnection();
             ps = conn.prepareStatement(SELECT_PRODUCT_BY_ProID);
