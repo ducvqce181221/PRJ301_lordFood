@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="./CSS/foodDetail.css" />
         <link href="CSS/contact.css" rel="stylesheet" type="text/css" />
     </head>
-    <body>
+    <body style="background-color: #eaf9ff">
         <div class="container mb-5 mt-4 px-0">
             <div class="d-flex align-items-center p-3 breadcrumb-container">
                 <a href="homePage.jsp" class="breadcrumb-link">HOME</a>
@@ -36,22 +36,22 @@
                 <span class="breadcrumb-item text-secondary">${product.productName}</span>
             </div>
         </div>
-        <div class="container" style="background-color: white;">
+        <div class="container">
             <!--Grid row-->
-            <div class="row justify-content-center custom-gap">
+            <div class="row justify-content-center custom-gap" style="background-color: white">
                 <!--Grid column-->
-                <div class="col-md-5">
-                    <img src="${product.imageURL}" class="img-fluid image-custom" alt="" />
+                <div class="col-md-4 justify-content-center">
+                    <img src="${product.imageURL}" class="img-fluid image-custom" alt="" style="background-color: white;"/>
                 </div>
 
                 <!--Grid column-->
 
                 <!--Grid column-->
-                <div class="col-md-5 mb-4">
+                <div class="col-md-6 mb-4">
                     <!--Content-->
 
                     <div class="border border-2 border-white">
-                        <div class="p-4">
+                        <div class="p-4" style="background-color: white;">
                             <div class="d-flex align-items-center">
                                 <span style="background-color: #ee4d2d" class="badge me-2">${cate.category_name}</span>
                                 <strong><span style="font-size: 20px">${product.productName}</span></strong>
@@ -64,13 +64,14 @@
                                     <span class="currency">đ</span>
                                 </span>
                             </p>
+                            <p class="description-text-custom" style="color: rgb(58, 58, 58);">${product.description}</p>
                             <form
                                 id="cartForm"
                                 action="cartServlet"
                                 method="get"
                                 class="d-flex align-items-center flex-wrap"
                                 >
-                                <h6 class="m-0 me-4">Số lượng</h6>
+                                <h6 class="m-0 me-4" style="color: rgb(129, 129, 129);">Số lượng</h6>
                                 <button
                                     class="btn btn-outline-secondary quantity-btn"
                                     type="button"
@@ -94,7 +95,7 @@
                                     >
                                     <span class="btn-text">+</span>
                                 </button>
-                                <h6 class="m-0 ms-4">${product.quantityOfStock} Sản phẩm có sẵn</h6>
+                                <h6 class="m-0 ms-4" style="color: rgb(129, 129, 129); padding-right: 25px;">${product.quantityOfStock} Sản phẩm có sẵn</h6>
                                 <input type="hidden" name="action" value="increase" />
                                 <input type="hidden" name="productID" value="${product.product_id}" />
                                 <button type="submit" class="text-primary btn btn-primary border-setting add-cart">
@@ -116,14 +117,14 @@
         </div>
 
 
-        <div class="container bg-white" style="margin-top: 30px; border: solid 0.5px #aeaeae;">
+        <!-- <div class="container bg-white" style="margin-top: 30px; border: solid 0.5px #aeaeae;">
             <div class="row description-title-custom">
                 <h5 style="padding: 15px 13px; margin: 0; font-weight: bold;">PRODUCT DESCRIOTION</h5>
             </div>
             <div class="row" style="margin-top: 20px;">
                 <p class="description-text-custom" style="color: rgb(58, 58, 58);">${product.description}</p>
             </div>
-        </div>
+        </div> -->
 
         <div class="container menu-body" style="margin-bottom: 80px;">
             <div class="row">

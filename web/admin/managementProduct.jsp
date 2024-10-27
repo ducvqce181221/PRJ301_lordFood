@@ -291,7 +291,7 @@
                                                                         <div class="mb-3 row">
                                                                             <label for="productQuantity" class="col-sm-2 col-form-label">Quantity</label>
                                                                             <div class="col-sm-9">
-                                                                                <input type="number" name="productQuantity" class="form-control" id="productQuantity" min="1" value="${product.quantityOfStock}" required placeholder="Enter quantity">
+                                                                                <input type="number" name="productQuantity" class="form-control" id="productQuantity" min="1" max="199" value="${product.quantityOfStock}" required placeholder="Enter quantity">
                                                                             </div>
                                                                         </div>
                                                                         <div class="mb-3 row">

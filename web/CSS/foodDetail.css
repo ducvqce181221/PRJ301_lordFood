@@ -1,5 +1,5 @@
 .breadcrumb-container {
-    background-color: #f8f9fa; /* Màu nền nhạt */
+    background-color: white; /* Màu nền nhạt */
     border-radius: 5px; /* Bo góc */
     padding: 10px; /* Padding cho breadcrumb */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Đổ bóng */
@@ -45,15 +45,16 @@
 .custom-gap {
     display: flex;
     gap: 50px;
-    border: #aeaeae solid 0.5px;
+    border: #eaf9ff solid 0.5px;
     padding: 15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
 .image-custom {
-    height: 450px;
-    width: 450px;
+    height: 400px;
+    width: 400px;
     object-fit: cover;
-    border: 0.5px solid rgb(228, 228, 228);
+    border: 0.5px solid rgb(219, 219, 219);
 }
 
 .border {
@@ -105,6 +106,7 @@
 .add-cart {
     border: #0d6efd solid 2px;
     background-color: #bce0ff;
+    margin-left: 10px;
 }
 
 .add-cart:hover {
@@ -124,8 +126,9 @@
 .description-text-custom {
     font-size: 18px;
     word-wrap: break-word; 
-    margin-top: 10px; 
-    padding: 0 40px;
+    margin-top: 10px;
+    margin-bottom: 20px; 
+    padding: 0;
 }
 
 .menu-body {
