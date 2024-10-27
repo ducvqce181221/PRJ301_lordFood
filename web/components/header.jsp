@@ -59,13 +59,14 @@
                     <li><a href="${pageContext.request.contextPath}/contact.jsp">Contact</a></li>
                     <li>
                         <div class="custom-h_cart">
-                            <a href="${pageContext.request.contextPath}/cart.jsp">
+                            <a href="cartServlet?productID=0&quantity=0&action=increase" style="text-decoration: none;"> <!-- Prevent default link behavior -->
                                 <span>Cart</span>
-                                <figure class="cart-figure">
+                                <figure class="cart-figure" style="display: inline; vertical-align: middle;">
                                     <i class="fa fa-shopping-bag cart-icon"></i>
                                     <span class="cart-count">${sessionScope.size}</span>  <!-- Display number of items in cart -->
                                 </figure>
                             </a>
+
                         </div>
                     </li>
                     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
@@ -93,7 +94,7 @@
                                     <% 
                                         } else { 
                                     %>
-                                <!-- N?u ?ã ??ng nh?p, hi?n th? nút Logout -->
+
                                 <li><a class="custom-dropdown-item" href="${pageContext.request.contextPath}/logOutServlet">Logout</a></li>
                                     <% 
                                         }

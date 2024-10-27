@@ -26,9 +26,20 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     </head>
+    <style>
+        .error-message {
+            color: red;
+            font-weight: bold;
+            margin: 10px 0;
+        }
 
+    </style>
     <body>
-
+        <c:if test="${not empty sessionScope.errorMessage}">
+            <div class="error-message">
+                ${sessionScope.errorMessage}
+            </div>
+        </c:if>
         <div class="cart-container">
             <div class="cart-content">
                 <div class="cart-items">
@@ -53,8 +64,8 @@
                             <tr>
                                 <c:forEach var="item" items="${sessionScope.cart.items}">
                                     <c:set var="t" value="${t +1 }"></c:set>
-                                <tr>
-                                    <td>${t}</td>  
+                                    <tr>
+                                        <td>${t}</td>  
                                     <td>
                                         <img src="${item.product.imageURL}" alt="Product Image" class="product-img">
                                     </td>
