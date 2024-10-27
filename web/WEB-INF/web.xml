@@ -53,7 +53,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CategoryServlet</servlet-name>
-        <url-pattern>/admin/categoryServlet</url-pattern>  Change this 
+        <url-pattern>/admin/categoryServlet</url-pattern> 
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ProductServlet</servlet-name>
