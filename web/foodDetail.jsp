@@ -68,7 +68,7 @@
                             <form
                                 id="cartForm"
                                 action="cartServlet"
-                                method="get"
+                                method="post"
                                 class="d-flex align-items-center flex-wrap"
                                 >
                                 <h6 class="m-0 me-4" style="color: rgb(129, 129, 129);">Số lượng</h6>

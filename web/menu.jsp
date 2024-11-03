@@ -74,7 +74,7 @@
                                     </h4>
                                     <p class="card-text">${x.description}</p>
                                     <div class="d-flex justify-content-between">
-                                        <form action="cartServlet" method="get">
+                                        <form action="cartServlet" method="post">
                                             <input type="hidden" name="action" value="increase">
                                             <input type="hidden" name="productID" value="${x.product_id}">
                                             <input type="hidden" name="quantity" value="1">

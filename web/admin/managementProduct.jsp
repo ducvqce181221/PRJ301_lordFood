@@ -303,7 +303,7 @@
                                                                         <div class="mb-3 row">
                                                                             <label for="cateID" class="col-sm-2 col-form-label">Caterogy ID</label>
                                                                             <div class="col-sm-3">
-                                                                                <select class="form-select" aria-label="Default select example" required>
+                                                                                <select name="categoryID" class="form-select" aria-label="Default select example" required>
                                                                                     <c:forEach items="${listC}" var="c">
                                                                                         <option value="${c.categoryId}"
                                                                                                 <c:if test="${c.categoryId == product.categoryID}">

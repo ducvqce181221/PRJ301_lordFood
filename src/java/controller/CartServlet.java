@@ -4,20 +4,11 @@
  */
 package controller;
 
+import dao.CategoryDAO;
 import dao.ProductDAO;
 import model.Cart;
 import model.Item;
 import model.Product;
-;
-import java.io.IOException;
-import java.io.PrintWriter;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import java.sql.Timestamp;
-import java.util.List;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -27,30 +18,12 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
-import java.io.IOException;
-import java.io.PrintWriter;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import java.sql.Timestamp;
-import java.util.List;
-import java.io.IOException;
-import java.io.PrintWriter;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import java.util.List;
+import model.Category;
 
 /**
  *
  * @author Truong Van Khang - CE181852
  */
-
-
 public class CartServlet extends HttpServlet {
 
     /**
@@ -92,6 +65,7 @@ public class CartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doPost(request, response);
+
     }
 
     /**
@@ -105,8 +79,11 @@ public class CartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession(true);
+        String action = request.getParameter("action");
+        String id = request.getParameter("productID");
+        String quantity = request.getParameter("quantity");
 
+        HttpSession session = request.getSession(true);
         Cart cart = null;
         Object o = session.getAttribute("cart");
 
@@ -115,9 +92,6 @@ public class CartServlet extends HttpServlet {
         } else {
             cart = new Cart();
         }
-        String action = request.getParameter("action");
-        String id = request.getParameter("productID");
-        String quantity = request.getParameter("quantity");
 
         if (id == null || quantity == null) {
             throw new NullPointerException("Product ID or quantity is missing");
@@ -149,32 +123,36 @@ public class CartServlet extends HttpServlet {
         }
         List<Item> list = cart.getItems();
         List<Integer> itemsToRemove = new ArrayList<>();
+        try {
+            ProductDAO productDAO = new ProductDAO();
+            CategoryDAO categoryDAO = new CategoryDAO();
+            for (Item item : list) {
+                int checkId = item.getProduct().getProduct_id();
+                System.out.println(checkId);
+                Product p = productDAO.getProduct(checkId);
 
-        for (Item item : list) {
-            int checkId = item.getProduct().getProduct_id();
-            ProductDAO M = new ProductDAO();
-            Product p = M.getProduct(checkId);
+                if (p == null) {
+                    System.out.println("Product with ID " + checkId + " is no longer available and has been removed from the cart.");
+                    itemsToRemove.add(checkId);
+                    continue;
+                }
 
-            if (p == null) {
-                itemsToRemove.add(checkId);
-                System.out.println("Product with ID " + checkId + " has been removed from the cart as it's no longer available.");
-            } else {
                 if (item.getPrice() != p.getPrice()) {
-                    System.out.println(item.getPrice());
-                    System.out.println(p.getPrice());
-                  item.getProduct().setPrice(p.getPrice());
+                    item.getProduct().setPrice(p.getPrice());
                 }
             }
+            for (int productId : itemsToRemove) {
+                System.out.println("ID XOA" + productId);
+                cart.removeItem(productId);
+            }
+            double totalMoney = cart.getTotalMoney();
+            session.setAttribute("totalMoney", totalMoney);
+            session.setAttribute("cart", cart);
+            session.setAttribute("size", list.size());
+        } catch (Exception e) {
+            System.err.println("An error occurred while updating the cart: " + e.getMessage());
+            e.printStackTrace();
         }
-
-        for (int productId : itemsToRemove) {
-            cart.removeItem(productId);
-        }
-
-        double totalMoney = cart.getTotalMoney();
-        session.setAttribute("totalMoney", totalMoney);
-        session.setAttribute("cart", cart);
-        session.setAttribute("size", list.size());
         request.getRequestDispatcher("cart.jsp").forward(request, response);
 
     }

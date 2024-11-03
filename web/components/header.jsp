@@ -59,13 +59,17 @@
                     <li><a href="${pageContext.request.contextPath}/contact.jsp">Contact</a></li>
                     <li>
                         <div class="custom-h_cart">
-                            <a href="${pageContext.request.contextPath}/cart.jsp">
-                                <span>Cart</span>
-                                <figure class="cart-figure">
-                                    <i class="fa fa-shopping-bag cart-icon"></i>
-                                    <span class="cart-count">${sessionScope.size}</span>  <!-- Display number of items in cart -->
-                                </figure>
-                            </a>
+                            <form action="cartServlet" method="POST" style="display: inline;">
+                                <input type="hidden" name="productID" value="0" />
+                                <input type="hidden" name="quantity" value="1" /> <!-- Set a default quantity or any value you need -->
+                                <button type="submit" style="border: none; background: none; padding: 0; cursor: pointer; text-decoration: none;">
+                                    <span>Cart</span>
+                                    <figure class="cart-figure" style="display: inline; vertical-align: middle;">
+                                        <i class="fa fa-shopping-bag cart-icon"></i>
+                                        <span class="cart-count">${sessionScope.size} </span>  <!-- Display number of items in cart -->
+                                    </figure>
+                                </button>
+                            </form>
                         </div>
                     </li>
                     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
@@ -93,7 +97,7 @@
                                     <% 
                                         } else { 
                                     %>
-                                <!-- N?u ?ã ??ng nh?p, hi?n th? nút Logout -->
+
                                 <li><a class="custom-dropdown-item" href="${pageContext.request.contextPath}/logOutServlet">Logout</a></li>
                                     <% 
                                         }

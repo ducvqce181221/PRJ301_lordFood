@@ -58,7 +58,6 @@ public class Cart {
         if (t.getProduct() == null) {
             throw new IllegalArgumentException("Product cannot be null");
         }
-
         Item existingItem = getItemById(t.getProduct().getProduct_id());
 
         if (existingItem != null) {
