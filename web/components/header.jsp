@@ -14,7 +14,6 @@
             display: inline-block;
             margin: 0;
             padding: 10px;
-            background-color: #f9f9f9; /* Light background */
             border-radius: 8px;
             cursor: pointer;
         }

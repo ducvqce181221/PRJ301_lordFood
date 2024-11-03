@@ -1,30 +1,25 @@
-/*
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
-*/
-/* 
-    Created on : Sep 29, 2024, 2:42:02 PM
-    Author     : Le Trong Luan _ CE181151
-*/
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
 }
-.contact-header {
+
+.contact-form {
     margin-top: 150px;
 }
+
 .container {
     width: 80%;
     margin: 0 auto;
 }
+
 .phone-group {
     display: flex;
     flex-direction: column;
 }
-.contact-header {
+
+.feedback-section {
     margin-top: 50px;
     background: linear-gradient(45deg, #0066cc, #0099cc);
     padding: 50px 0;
@@ -32,12 +27,12 @@ body {
     color: #333;
 }
 
-.contact-header h1 {
+.feedback-section h1 {
     font-size: 36px;
     margin: 0;
 }
 
-.contact-header p {
+.feedback-section p {
     font-size: 18px;
     margin: 10px 0 0;
 }
@@ -79,7 +74,7 @@ body {
     margin-bottom: 10px;
 }
 
-.form-group > .xamlol {
+.form-group > .input-container {
     display: flex;
     flex-basis: 50%;
     flex-direction: column;
@@ -95,52 +90,51 @@ textarea {
     resize: none;
 }
 
-.feedback-options {
+.submit-button-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.feedback-options label {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    gap: 5px;
+    justify-content: center;
+    margin-top: 30px;
 }
 
 button:hover {
     background-color: #c13642;
 }
-z .info {
+
+.info {
     display: flex;
     justify-content: center;
 }
+
 .right-img,
 .breadcrumb {
     width: 45%;
 }
+
 .right-img img {
     width: 100%;
 }
-/* section 2 */
+
 .content-container {
     display: flex;
     justify-content: center;
 }
-.text-content {
+
+.info-content {
     text-align: center;
     width: 45%;
 }
-.video-aboutUs {
+
+.video-section {
     width: 50%;
     margin-left: 50px;
 }
-.video-aboutUs video {
+
+.video-section video {
     width: 100%;
     text-align: center;
 }
-.text-content h2 {
+
+.info-content h2 {
     line-height: 35px;
     color: #333;
     font-size: 22px;
@@ -148,28 +142,28 @@ z .info {
     text-transform: uppercase;
 }
 
-.text-content p {
+.info-content p {
     line-height: 30px;
     font-size: 16px;
     color: #636363;
     text-align: justify;
 }
-.text-content div {
+
+.info-content div {
     margin: 10px 0;
     width: 60px;
     height: 3px;
     background: #00aeed;
 }
-.business {
+
+.company-info {
     margin-bottom: 20px;
 }
+
 button {
     padding: 15px 30px;
-    margin-top: 30px;
     background-color: #d44851;
     color: white;
-    margin-left: 1100px;
     border-radius: 4px;
     cursor: pointer;
 }
-/* ---------------------------------- */

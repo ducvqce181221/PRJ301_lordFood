@@ -33,7 +33,7 @@
             <div class="row g-4">
                 <div class="col-md-6">
                     <div class="section-item">
-                        <img src="img/homePage/img1.jpg" alt="Lịch sử hình thành" />
+                        <img src="img/homePage/IMG1.pgn.jpeg" alt="Lịch sử hình thành" />
                         <div class="overlay">
                             <a
                                 style="
@@ -42,7 +42,7 @@
                                 color: white;
                                 text-decoration: none;
                                 "
-                                href="./aboutUs.php"
+                                href="aboutUs.jsp"
                                 >LỊCH SỬ HÌNH THÀNH</a
                             >
                         </div>
@@ -50,7 +50,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="section-item section-item2">
-                        <img src="img/homePage/img2.png" alt="Thực đơn" />
+                        <img src="img/homePage/img3.jpeg" alt="Thực đơn" />
                         <div class="overlay">
                             <a
                                 style="
@@ -59,7 +59,7 @@
                                 color: white;
                                 text-decoration: none;
                                 "
-                                href="./menu.php"
+                                href="product"
                                 >Thực Đơn</a
                             >
                         </div>
@@ -71,20 +71,21 @@
         <!-- section 3 -->
 
         <div class="section2-item">
-            <img src="img/homePage/img5.png" alt="Background Image" />
+            <img src="img/homePage/img2.webp" alt="Background Image" />
             <div class="section2-overlay">
                 <div>
-                    <h2>Trải Nghiệm Hương Vị Tuyệt Vời</h2>
+                    <h2>Trải Nghiệm Ẩm Thực Truyền Thống Việt Nam</h2>
                     <div class="section2-underline"></div>
                     <p>
-                        Tại LorFood, chúng tôi cam kết mang đến những bữa ăn nhanh tiện lợi, đầy đủ dinh dưỡng và hương vị hấp dẫn.
-                        Từ những chiếc hamburger thơm ngon với nhân thịt bò nướng, rau tươi, sốt đặc biệt và bánh mì giòn, cho đến pizza với phô mai tan chảy,
-                        phủ lên xúc xích, nấm và ớt chuông tươi ngon.
-                        Mỗi món ăn đều giữ trọn hương vị truyền thống và đảm bảo chất lượng cao nhất.
+                        Tại LorFood, chúng tôi tự hào mang đến những món ăn đậm đà bản sắc Việt Nam. 
+                        Từ phở bò thơm nồng nước dùng hầm xương, bún bò Huế cay nồng đến bánh xèo giòn rụm, 
+                        mỗi món ăn đều được chế biến tỉ mỉ từ nguyên liệu tươi ngon nhất. Hãy trải nghiệm hương vị tinh túy 
+                        của các món ăn truyền thống, hòa quyện cùng những giá trị văn hóa lâu đời.
                     </p>
                 </div>
             </div>
         </div>
+
 
         <!-- section 4 -->
         <div class="container mt-5 text-center">
@@ -93,7 +94,7 @@
                 alt="Logo"
                 class="header-logo"
                 />
-            <h2>TIN KHUYẾN MÃI</h2>
+            <h2>Món Ăn Truyền Thống Việt Nam</h2>
 
             <!-- Swiper -->
             <div class="swiper-container">
@@ -102,21 +103,20 @@
                     <div class="swiper-slide swiper-slide-visible">
                         <div class="card">
                             <img
-                                src="img/homePage/img6.jpg"
+                                src="img/homePage/bun-bo-1.webp"
                                 class="card-img-top"
-                                alt="Event Image 3"
+                                alt="Image of Bún Bò Huế"
                                 />
                             <div class="card-body-sec3">
                                 <p class="card-text">
                                     <small class="text-muted">15-04-23</small>
                                 </p>
                                 <h5 class="card-title">
-                                    Trung Thu Cho Em 2023 Cùng Hồng Trà Ngô Gia
+                                    Lịch Sử Bún Bò Huế
                                 </h5>
                                 <p class="card-text">
-                                    Trung thu là một trong những ngày lễ truyền thống quan trọng
-                                    của Việt Nam, Trung thu còn là đêm trăng rước đèn của các em,
-                                    đồ chơi và phá cỗ nhộn nhịp tùng dinh tùng phách.
+                                    Bún bò Huế, xuất phát từ cố đô Huế, nổi tiếng với hương vị đậm đà và cay nồng. 
+                                    Món ăn này gắn liền với văn hóa ẩm thực Việt Nam và được yêu thích rộng rãi trong và ngoài nước.
                                 </p>
                             </div>
                         </div>
@@ -126,22 +126,19 @@
                     <div class="swiper-slide swiper-slide-visible">
                         <div class="card">
                             <img
-                                src="img/homePage/img7.jpg"
+                                src="img/homePage/goi-cuon.jpg"
                                 class="card-img-top"
-                                alt="Event Image 1"
+                                alt="Gỏi Cuốn"
                                 />
                             <div class="card-body-sec3">
                                 <p class="card-text">
-                                    <small class="text-muted">31-08-23</small>
+                                    <small class="text-muted">Lịch sử Gỏi Cuốn</small>
                                 </p>
                                 <h5 class="card-title">
-                                    Hồng Trà Ngô Gia | Thông báo Sự kiện Livestream Công bố Khách
-                                    hàng Trúng thưởng Chương trình Vòng Quay May Mắn
+                                    Gỏi Cuốn: Món Ăn Truyền Thống Việt Nam
                                 </h5>
                                 <p class="card-text">
-                                    Hồng Trà Ngô Gia xin trân trọng thông báo rằng chúng tôi sẽ tổ
-                                    chức một buổi livestream trên fanpage và tiktok “Hồng Trà Ngô
-                                    Gia” vào lúc 11:00 sáng ngày 1 tháng 9.
+                                    Gỏi cuốn, hay "nem cuốn," là món ăn nổi tiếng từ miền Nam Việt Nam, được làm từ bánh tráng và nhồi tôm, thịt, rau sống. Xuất hiện từ thế kỷ 19, món ăn này không chỉ ngon mà còn mang đậm văn hóa ẩm thực Việt Nam.
                                 </p>
                             </div>
                         </div>
@@ -151,21 +148,19 @@
                     <div class="swiper-slide swiper-slide-visible">
                         <div class="card">
                             <img
-                                src="img/homePage/img8.jpg"
+                                src="img/homePage/mi-quang-thit-ech.jpg"
                                 class="card-img-top"
-                                alt="Event Image 2"
+                                alt="Mì Quảng"
                                 />
                             <div class="card-body-sec3">
                                 <p class="card-text">
                                     <small class="text-muted">05-06-23</small>
                                 </p>
                                 <h5 class="card-title">
-                                    CÔNG BỐ KẾT QUẢ KHÁCH HÀNG TRÚNG THƯỞNG | VÒNG QUAY MAY MẮN s
+                                    Mì Quảng: Hương Vị Đặc Trưng Miền Trung
                                 </h5>
                                 <p class="card-text">
-                                    Hồng Trà Ngô Gia công bố danh sách khách hàng trúng thưởng và
-                                    tiến hành trao thưởng cho những khách hàng may mắn trong
-                                    chương trình "Vòng Quay May Mắn" vừa qua.
+                                    Mì Quảng là món ăn đặc sản của miền Trung Việt Nam, thường được làm từ mì gạo, tôm, thịt, và rau sống. Nước dùng của mì Quảng có vị đậm đà, thường được chế biến từ xương và gia vị. Món ăn này không chỉ ngon mà còn mang đậm bản sắc văn hóa ẩm thực của vùng đất Quảng Nam.
                                 </p>
                             </div>
                         </div>
@@ -175,121 +170,112 @@
                     <div class="swiper-slide">
                         <div class="card">
                             <img
-                                src="img/homePage/img9.png"
+                                src="img/homePage/banh-xeo.jpg"
                                 class="card-img-top"
-                                alt="Event Image 4"
+                                alt="Bánh Xèo"
                                 />
                             <div class="card-body-sec3">
                                 <p class="card-text">
-                                    <small class="text-muted">31-08.23</small>
+                                    <small class="text-muted">31-08-23</small>
                                 </p>
                                 <h5 class="card-title">
-                                    CHƯƠNG TRÌNH THIỆN NGUYỆN SẺ CHIA YÊU THƯƠNG - HỒNG TRÀ NGÔ
-                                    GIA
+                                    Bánh Xèo: Hương Vị Đặc Trưng Miền Nam
                                 </h5>
                                 <p class="card-text">
-                                    Ngày 03/08/2024, đại diện Hồng Trà Ngô Gia đã đến thăm hỏi và
-                                    trao quà cho 16 cụ già neo đơn tại Mái Ấm Đức Ái (Đức Hòa,
-                                    Long An). Hồng Trà Ngô Gia hy vọng những giá trị vật chất...
+                                    Bánh xèo là món ăn truyền thống của miền Nam Việt Nam, được làm từ bột gạo, nước cốt dừa và gia vị. Bánh có hình dạng giống như cái chảo, bên trong được nhồi thịt, tôm và giá đỗ. Sau khi chiên giòn, bánh thường được cuốn với rau sống và chấm với nước mắm pha, mang đến hương vị thơm ngon và hấp dẫn.
                                 </p>
                             </div>
                         </div>
+
                     </div>
 
                     <!-- Card 5 -->
                     <div class="swiper-slide">
                         <div class="card">
                             <img
-                                src="img/homePage/img9.jpg"
+                                src="img/homePage/bunCha.png"
                                 class="card-img-top"
-                                alt="Event Image 5"
+                                alt="Bún Chả"
                                 />
                             <div class="card-body-sec3">
                                 <p class="card-text">
-                                    <small class="text-muted">17-07.23</small>
+                                    <small class="text-muted">17-07-23</small>
                                 </p>
                                 <h5 class="card-title">
-                                    THỬ HƯƠNG VỊ MỚI - RINH IPHONE 14 PROMAX VỀ NHÀ
+                                    Bún Chả: Món Ăn Đặc Sản Hà Nội
                                 </h5>
                                 <p class="card-text">
-                                    Cơn bão thay mới “dế yêu” đang được diễn ra từ ngày 15/7/2023
-                                    đến hết 15/8/2023. Ngoài quà tặng là những chiếc Iphone 14
-                                    Promax 256GB, Hồng Trà Ngô Gia còn...
+                                    Bún chả là một trong những món ăn đặc sản nổi tiếng của Hà Nội, bao gồm bún (mì gạo) ăn kèm với thịt nướng (thường là thịt heo) và nước chấm. Thịt được tẩm ướp gia vị, nướng trên than hồng, tạo ra hương vị thơm ngon. Món ăn thường được phục vụ với rau sống và nước mắm chua ngọt, mang lại trải nghiệm ẩm thực phong phú và hấp dẫn.
                                 </p>
                             </div>
                         </div>
+
                     </div>
 
                     <!-- Card 6 -->
                     <div class="swiper-slide">
                         <div class="card">
                             <img
-                                src="img/homePage/img11.jpg"
+                                src="img/homePage/bunRieut.jpg"
                                 class="card-img-top"
-                                alt="Event Image 5"
+                                alt="Bún Riêu"
                                 />
                             <div class="card-body-sec3">
                                 <p class="card-text">
-                                    <small class="text-muted">17-07.23</small>
+                                    <small class="text-muted">17-07-23</small>
                                 </p>
                                 <h5 class="card-title">
-                                    Hồng Trà Ngô Gia đạt danh hiệu giải thưởng hương vị xuất sắc
-                                    iTQi
+                                    Bún Riêu: Món Ngon Đặc Trưng Miền Bắc
                                 </h5>
                                 <p class="card-text">
-                                    Hồng Trà Ngô Gia đã đạt được danh hiệu giải thưởng hương vị
-                                    xuất sắc iTQi do Viện Thẩm định Hương vị Quốc Tế
-                                    (International Taste & Quality Institute) tại Brussels, Bỉ.
+                                    Bún riêu là món ăn nổi tiếng ở miền Bắc Việt Nam, được làm từ bún gạo và nước dùng có vị chua đặc trưng từ cà chua và riêu cua. Món ăn thường được nấu với các nguyên liệu như tôm, thịt, và rau sống, tạo nên hương vị phong phú và hấp dẫn. Bún riêu thường được thưởng thức cùng với rau thơm và nước chấm, mang đến trải nghiệm ẩm thực thú vị.
                                 </p>
                             </div>
                         </div>
+
                     </div>
 
                     <!-- Card 7 -->
                     <div class="swiper-slide">
                         <div class="card">
                             <img
-                                src="img/homePage/img10.jpg"
+                                src="img/homePage/banhMi2.jfif"
                                 class="card-img-top"
-                                alt="Event Image 5"
+                                alt="Bánh Mì"
                                 />
                             <div class="card-body-sec3">
                                 <p class="card-text">
-                                    <small class="text-muted">17-07.23</small>
+                                    <small class="text-muted">17-07-23</small>
                                 </p>
                                 <h5 class="card-title">
-                                    KHẮC HẠNH PHÚC - TRAO YÊU THƯƠNG: MÁI ẤM ĐỨC ÁI
+                                    Bánh Mì: Biểu Tượng Ẩm Thực Việt Nam
                                 </h5>
                                 <p class="card-text">
-                                    Ngày 03/08/2024, đại diện Hồng Trà Ngô Gia đã đến thăm hỏi và
-                                    trao quà cho 16 cụ già neo đơn tại Mái Ấm Đức Ái (Đức Hòa,
-                                    Long An). Hồng Trà Ngô Gia hy vọng những giá trị vật chất cũng
-                                    như tinh thần mà mình mang lại dù nhỏ bé nhưng sẽ tiếp thêm
-                                    sức mạnh cho những cụ già đang an dưỡng tại đây.
+                                    Bánh mì là món ăn vặt nổi tiếng của Việt Nam, được làm từ bánh baguette giòn và nhồi với nhiều nguyên liệu như thịt, pate, dưa leo, rau sống và nước sốt. Với hương vị đa dạng và phong phú, bánh mì không chỉ mang lại cảm giác ngon miệng mà còn thể hiện sự sáng tạo trong ẩm thực Việt Nam. 
                                 </p>
                             </div>
                         </div>
+
                     </div>
 
                     <!-- Card 8 -->
                     <div class="swiper-slide">
+
                         <div class="card">
                             <img
-                                src="img/homePage/img12.jpg"
+                                src="img/homePage/224132-bun-nuoc-leo-soc-trang-ngon.jpg"
                                 class="card-img-top"
-                                alt="Event Image 5"
+                                alt="Bún Nước Lèo"
                                 />
                             <div class="card-body-sec3">
                                 <p class="card-text">
                                     <small class="text-muted">12-9.23</small>
                                 </p>
                                 <h5 class="card-title">
-                                    CHƯƠNG TRÌNH "KHOE THẺ DẤU XỊN - NHẬN ÁO MƯA XINH"
+                                    Bún Nước Lèo: Đặc Sản Sóc Trăng
                                 </h5>
                                 <p class="card-text">
-                                    Bắt đầu từ 22/07 đến 25/08/2024, khi tích đủ 8 dấu trên thẻ
-                                    tích điểm, thay vì chọn đổi 1 thức uống 16.000 như trước, các
-                                    bạn có thể chọn đổi 1 Áo mưa Wujia cực xinh cực xịn
+                                    Bún nước lèo là món ăn nổi tiếng của Sóc Trăng, được làm từ bún tươi và nước dùng ngọt từ xương và cá lóc. Món ăn thường đi kèm với rau sống, mang đến hương vị thơm ngon và hấp dẫn, phản ánh bản sắc ẩm thực miền Tây Nam Bộ.
                                 </p>
                             </div>
                         </div>
@@ -299,22 +285,19 @@
                     <div class="swiper-slide">
                         <div class="card">
                             <img
-                                src="img/homePage/img13.jpg"
+                                src="img/homePage/bun-bo-1.webp"
                                 class="card-img-top"
-                                alt="Event Image 5"
+                                alt="Bò Kho"
                                 />
                             <div class="card-body-sec3">
                                 <p class="card-text">
                                     <small class="text-muted">17-07.23</small>
                                 </p>
                                 <h5 class="card-title">
-                                    HỒNG TRÀ NGÔ GIA ĐỒNG HÀNH CÙNG BTEC FFT TRONG CHƯƠNG TRÌNH
-                                    NGÀN LY TRÀ - NGÀN LỜI CHÚC GỬI CHO 2K6
+                                    Bò Kho: Món Ăn Ngon Đậm Đà
                                 </h5>
                                 <p class="card-text">
-                                    Hồng Trà Ngô Gia sẽ đồng hành cùng BTEC FPT mang 10.000 ly trà
-                                    sữa tới tay các bạn học sinh trong chương trình “Ngàn ly trà -
-                                    Ngàn lời chúc gửi cho 2K6...
+                                    Bò kho là món ăn truyền thống của Việt Nam, được chế biến từ thịt bò hầm với gia vị như hành, tỏi, và cà rốt. Món ăn có hương vị đậm đà, thường được ăn kèm với bánh mì hoặc bún, mang đến trải nghiệm ẩm thực thơm ngon và ấm áp.
                                 </p>
                             </div>
                         </div>
