@@ -43,6 +43,10 @@
         <servlet-name>checkOutServlet</servlet-name>
         <servlet-class>controller.checkOutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>loginAdminServlet</servlet-name>
+        <servlet-class>controller.loginAdminServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CartServlet</servlet-name>
         <url-pattern>/cartServlet</url-pattern>
@@ -86,6 +90,10 @@
     <servlet-mapping>
         <servlet-name>checkOutServlet</servlet-name>
         <url-pattern>/checkOutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>loginAdminServlet</servlet-name>
+        <url-pattern>/loginAdmin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
