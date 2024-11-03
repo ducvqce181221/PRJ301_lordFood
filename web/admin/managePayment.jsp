@@ -162,9 +162,9 @@
                                 <table class="table table-striped">
                                     <thead >
                                         <tr>
-                                            <th>Category ID</th>
-                                            <th>Category Name</th>                             
-                                            <th>Date Create</th>
+                                            <th>Payment ID</th>
+                                            <th>Payment Name</th>                             
+                                            <th>Amount</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>

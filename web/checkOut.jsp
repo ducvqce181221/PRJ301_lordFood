@@ -107,6 +107,14 @@
                     <input type="hidden" name="time" value="${timeCurrent}" />
                 </nav>
                 <h2>Thanh Toán</h2>
+                <div style="display: flex; align-items: center;">
+                    <label for="Name" style="margin-right: 10px;">Tên Khách Hàng:</label>
+                    <strong style="margin-bottom: 6px;"></strong>
+                </div>
+                <div class="form-section" style="margin-top: 35px; margin-right: 20px;"">
+                    <label for="phoneNumber">Số Điện Thoại:</label>
+                    <input style="margin-right: 20px;" type="text" id="phoneNumber" name="phoneNumber" placeholder="Nhập số điện thoại" required pattern="[0-9]{10,11}" title="Vui lòng nhập số điện thoại hợp lệ (10-11 chữ số)" />
+                </div>
                 <!-- Shipping Address -->
                 <div class="form-section" style="margin-right: 20px; margin-top: 30px">
                     <label for="address">Địa chỉ giao hàng</label>
