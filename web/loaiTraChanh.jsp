@@ -5,51 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<?php
-session_start();
-include("../components/header.php");
-
-$link = mysqli_connect('localhost', 'root', '', 'hongtrangogia');
-if ($link->connect_error) {
-    die("Connection failed: " . $link->connect_error);
-}
-
-$category_id = isset($_GET['category_id']) ? intval($_GET['category_id']) : 9;
-$products = [];
-$categoryName = "Danh mục không xác định";
-
-// Lấy tên danh mục dựa vào category_id
-$category_sql = "SELECT category_name FROM category WHERE categoryId = ?";
-$stmt = $link->prepare($category_sql);
-$stmt->bind_param("i", $category_id);
-$stmt->execute();
-$category_result = $stmt->get_result();
-
-if ($category_result->num_rows > 0) {
-    $category_row = $category_result->fetch_assoc();
-    $categoryName = $category_row['category_name'];
-} else {
-    $categoryName = "Danh mục không tồn tại. (Không có hàng nào với ID: $category_id)";
-}
-
-// Lấy danh sách sản phẩm dựa vào category_id
-$sql = "SELECT * FROM product WHERE categoryId = ?";
-$stmt = $link->prepare($sql);
-$stmt->bind_param("i", $category_id);
-$stmt->execute();
-$result = $stmt->get_result();
-
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $products[] = $row;
-    }
-} else {
-    $message = "Không có sản phẩm nào trong danh mục này.";
-}
-
-$link->close();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 

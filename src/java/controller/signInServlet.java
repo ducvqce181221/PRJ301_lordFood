@@ -83,17 +83,11 @@ public class signInServlet extends HttpServlet {
         String identifier = request.getParameter("identifier");
         String password = request.getParameter("password");
 
-        String URL = "jdbc:sqlserver://localhost:1433;databaseName=lorfood;encrypt=true;trustServerCertificate=true";
-        String USER = "sa";
-        String PASSWORD = "12345678";
-        String JDBC_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
-            Class.forName(JDBC_DRIVER);
-            conn = DriverManager.getConnection(URL, USER, PASSWORD);
+            conn = DBContext.ConnectDB.getConnection();
 
             String sql = "select * from users where (Email =? or PhoneNumber =?) and Password =?";
             stmt = conn.prepareStatement(sql);
