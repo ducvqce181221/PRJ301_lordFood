@@ -155,18 +155,13 @@
                                     </thead>
                                     <tbody>
                                         <%
-                                            String URL = "jdbc:sqlserver://localhost:1433;databaseName=lorfood;encrypt=true;trustServerCertificate=true";
-                                            String USER = "sa";
-                                            String PASSWORD = "12345678";
-
                                             Connection conn = null;
                                             PreparedStatement pstmt = null;
                                             ResultSet rs = null;
 
                                             try {
                                                 // Use the driver for SQL Server
-                                                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-                                                conn = DriverManager.getConnection(URL, USER, PASSWORD);
+                                                conn = DBContext.ConnectDB.getConnection();
 
                                                 // Query data from the users table
                                                 String sql = "SELECT userID, Username, Email, PhoneNumber, Password, created_at FROM users";
