@@ -1,4 +1,10 @@
 <%-- 
+    Document   : managementShipMethod
+    Created on : Nov 3, 2024, 1:12:04 PM
+    Author     : Truong Van Khang _ CE181852
+--%>
+
+<%-- 
     Document   : managementAdmin
     Created on : Oct 17, 2024, 12:02:59 PM
     Author     : Truong Van Khang _ CE181151
@@ -114,27 +120,27 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Category Management</h1>
+                        <h1 class="mt-4">Shipping Method Management</h1>
                         <ol>
-                            <li class="breadcrumb-item active">View Category</li>
+                            <li class="breadcrumb-item active">View Shipping Method</li>
                         </ol>
                         <%
-                            String er = (String) session.getAttribute("CateEx");
+                            String er = (String) session.getAttribute("SMer");
                         %>
-                        <c:forEach var="item" items="${dataCategory}">
-                            <c:set var="lastCategoryId" value="${item.categoryId}" />
+                        <c:forEach var="item" items="${ShippingMethod}">
+                            <c:set var="lastShipId" value="${item.shipID}" />
                         </c:forEach>
-                        <c:set var="categoryCount" value="${lastCategoryId + 1}" /> 
+                        <c:set var="ShipCount" value="${lastShipId + 1}" /> 
 
                         <div class="form-container btn ms-2">
-                            <form action="./categoryServlet" method="GET"> 
+                            <form action="./ShippingMethodServlet" method="GET"> 
                                 <input type="hidden" name="action" value="add"> 
-                                <label>Category ID</label>
-                                <input type="text" value="${categoryCount}" readonly /> 
-                                <label>Category Name</label>
-                                <input type="text" name="categoryName" required /> 
+                                <label>Shipping Method ID</label>
+                                <input type="text" value="${ShipCount}" readonly /> 
+                                <label>Shipping Method Name</label>
+                                <input type="text" name="ShipMName" required /> 
 
-                                <button class="btn btn-primary ms-2" type="submit">Add Category</button>
+                                <button class="btn btn-primary ms-2" type="submit">Add Shipping Method</button>
                             </form>
                             <%
                         if(er != null){
@@ -142,39 +148,37 @@
                             <span style="color: red"><%= er%></span>
                             <%
                                 }
-                                            session.removeAttribute("CateEx");
+                                            session.removeAttribute("SMer");
                             %>
                         </div>
                         <div class="card mb-4">
-                            <div class="card-header"><i class="fas fa-table me-1"></i>Category List</div>
-                            <form method="GET" action="./categoryServlet" class="d-flex">
+                            <div class="card-header"><i class="fas fa-table me-1"></i>Shipping Method List</div>
+                            <form method="GET" action="./ShippingMethodServlet" class="d-flex">
                                 <input name="action" type="hidden" value="find" >
                                 <input style="height: 70px" type="text" name="search" class="form-control" placeholder="Find Category..." aria-label="Search">
-                                <button class="btn btn-primary ms-2" type="submit">Tìm kiếm</button>
+                                <button class="btn btn-primary ms-2 taskFind" type="submit">Tìm kiếm</button>
                             </form>
                             <div style="font-size: 20px;" class="card-body">
                                 <table class="table table-striped">
                                     <thead >
                                         <tr>
-                                            <th>Category ID</th>
-                                            <th>Category Name</th>                             
-                                            <th>Date Create</th>
+                                            <th>Shipping Method ID</th>
+                                            <th>Shipping Method Name</th>                             
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <c:choose>
-                                            <c:when test="${dataCategory != null}">
-                                                <c:forEach var="item" items="${dataCategory}">
+                                            <c:when test="${ShippingMethod != null}">
+                                                <c:forEach var="item" items="${ShippingMethod}">
                                                     <tr>
-                                                        <td>${item.categoryId}</td>
-                                                        <td>${item.category_name}</td>
-                                                        <td>${item.create_at}</td>
+                                                        <td>${item.shipID}</td>
+                                                        <td>${item.methodName}</td>
                                                         <td>
                                                             <button class="custom-height-btn custom-width-btn btn btn-primary btn-sm" 
-                                                                    onclick="openUpdateModal(${item.categoryId}, '${item.category_name}')">Update</button>
+                                                                    onclick="openUpdateModal(${item.shipID}, '${item.methodName}')">Update</button>
                                                             <button type="button" class="custom-height-btn custom-width-btn btn btn-danger btn-sm" 
-                                                                    onclick="confirmDelete(${item.categoryId})">Delete</button>
+                                                                    onclick="confirmDelete(${item.shipID})">Delete</button>
                                                         </td>
                                                     </tr>
                                                 </c:forEach>
@@ -194,19 +198,19 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="updateModalLabel">Update Category</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeUpdateModal()">
+                        <h5 class="modal-title" id="updateModalLabel">Update Shipping Method</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeUpdateModal()">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="./categoryServlet" method="get">
+                        <form action="./ShippingMethodServlet" method="get">
                             <input type="hidden" name="action" value="update" />
-                            <input type="hidden" id="categoryId" name="categoryId" />
+                            <input type="hidden" id="ShippId" name="ShippId" />
 
                             <div class="form-group">
-                                <label for="categoryName">Category Name</label>
-                                <input type="text" class="form-control" id="categoryNameInput" name="categoryName" required />
+                                <label for="categoryName">Shipping Method Name</label>
+                                <input type="text" class="form-control" id="ShipNameInput" name="ShipNameInput" required />
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeUpdateModal()">Cancel</button>
@@ -249,7 +253,7 @@
 
             document.getElementById('confirmDeleteBtn').addEventListener('click', function () {
                 if (recordId) {
-                    window.location.href = 'categoryServlet?id=' + recordId + '&action=delete';
+                    window.location.href = 'ShippingMethodServlet?id=' + recordId + '&action=delete';
                 } else {
                     console.error('No record ID defined for deletion.');
                 }
@@ -263,9 +267,9 @@
                 element.addEventListener('click', closeModal);
             });
 
-            function openUpdateModal(categoryId, categoryName) {
-                document.getElementById('categoryId').value = categoryId;
-                document.getElementById('categoryNameInput').value = categoryName;
+            function openUpdateModal(ShipID, ShipName) {
+                document.getElementById('ShippId').value = ShipID;
+                document.getElementById('ShipNameInput').value = ShipName;
                 $('#updateModal').modal('show');
             }
 
@@ -275,3 +279,4 @@
         </script>
     </body>
 </html>
+

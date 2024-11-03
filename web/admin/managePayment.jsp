@@ -1,4 +1,10 @@
 <%-- 
+    Document   : managePayment
+    Created on : Nov 3, 2024, 1:12:27 PM
+    Author     : Truong Van Khang _ CE181852
+--%>
+
+<%-- 
     Document   : managementAdmin
     Created on : Oct 17, 2024, 12:02:59 PM
     Author     : Truong Van Khang _ CE181151
@@ -150,7 +156,7 @@
                             <form method="GET" action="./categoryServlet" class="d-flex">
                                 <input name="action" type="hidden" value="find" >
                                 <input style="height: 70px" type="text" name="search" class="form-control" placeholder="Find Category..." aria-label="Search">
-                                <button class="btn btn-primary ms-2" type="submit">Tìm kiếm</button>
+                                <button class="btn btn-primary ms-2 taskFind" type="submit">Tìm kiếm</button>
                             </form>
                             <div style="font-size: 20px;" class="card-body">
                                 <table class="table table-striped">
@@ -169,7 +175,7 @@
                                                     <tr>
                                                         <td>${item.categoryId}</td>
                                                         <td>${item.category_name}</td>
-                                                        <td>${item.create_at}</td>
+                                                        <td>${item.create_at}</td>>
                                                         <td>
                                                             <button class="custom-height-btn custom-width-btn btn btn-primary btn-sm" 
                                                                     onclick="openUpdateModal(${item.categoryId}, '${item.category_name}')">Update</button>
@@ -195,7 +201,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="updateModalLabel">Update Category</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeUpdateModal()">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -244,6 +250,7 @@
             let recordId;
             function confirmDelete(id) {
                 recordId = id;
+                console.log("Record ID set to:", recordId); // Hiển thị ID bản ghi khi click
                 $('#confirmModal').modal('show');
             }
 
@@ -275,3 +282,4 @@
         </script>
     </body>
 </html>
+

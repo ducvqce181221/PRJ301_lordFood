@@ -1,4 +1,9 @@
 <%-- 
+    Document   : managementPaymentMethod
+    Created on : Nov 3, 2024, 1:11:32 PM
+    Author     : Truong Van Khang _ CE181852
+--%>
+<%-- 
     Document   : managementAdmin
     Created on : Oct 17, 2024, 12:02:59 PM
     Author     : Truong Van Khang _ CE181151
@@ -114,27 +119,26 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Category Management</h1>
+                        <h1 class="mt-4">Payment Method Management</h1>
                         <ol>
-                            <li class="breadcrumb-item active">View Category</li>
+                            <li class="breadcrumb-item active">View PaymentMethod</li>
                         </ol>
                         <%
-                            String er = (String) session.getAttribute("CateEx");
+                            String er = (String) session.getAttribute("PMer");
                         %>
-                        <c:forEach var="item" items="${dataCategory}">
-                            <c:set var="lastCategoryId" value="${item.categoryId}" />
+                        <c:forEach var="item" items="${paymentMethods}">
+                            <c:set var="lastPaymentMTId" value="${item.paymentMethodID}" />
                         </c:forEach>
-                        <c:set var="categoryCount" value="${lastCategoryId + 1}" /> 
+                        <c:set var="paymentMCount" value="${lastPaymentMTId + 1}" /> 
 
                         <div class="form-container btn ms-2">
-                            <form action="./categoryServlet" method="GET"> 
+                            <form action="./PaymentMethodServlet" method="GET"> 
                                 <input type="hidden" name="action" value="add"> 
-                                <label>Category ID</label>
-                                <input type="text" value="${categoryCount}" readonly /> 
-                                <label>Category Name</label>
-                                <input type="text" name="categoryName" required /> 
-
-                                <button class="btn btn-primary ms-2" type="submit">Add Category</button>
+                                <label>Payment Method ID</label>
+                                <input type="text" value="${paymentMCount}" readonly /> 
+                                <label>Payment Method Name</label>
+                                <input type="text" name="PaymentMName" required /> 
+                                <button class="btn btn-primary ms-2" type="submit">Add Payment Method</button>
                             </form>
                             <%
                         if(er != null){
@@ -142,39 +146,37 @@
                             <span style="color: red"><%= er%></span>
                             <%
                                 }
-                                            session.removeAttribute("CateEx");
+                                            session.removeAttribute("PMer");
                             %>
                         </div>
                         <div class="card mb-4">
-                            <div class="card-header"><i class="fas fa-table me-1"></i>Category List</div>
-                            <form method="GET" action="./categoryServlet" class="d-flex">
+                            <div class="card-header"><i class="fas fa-table me-1"></i>PaymentMethod List</div>
+                            <form method="GET" action="./PaymentMethod" class="d-flex">
                                 <input name="action" type="hidden" value="find" >
-                                <input style="height: 70px" type="text" name="search" class="form-control" placeholder="Find Category..." aria-label="Search">
-                                <button class="btn btn-primary ms-2" type="submit">Tìm kiếm</button>
+                                <input style="height: 70px" type="text" name="search" class="form-control" placeholder="Find Payment Method..." aria-label="Search">
+                                <button class="btn btn-primary ms-2 taskFind" type="submit">Tìm kiếm</button>
                             </form>
                             <div style="font-size: 20px;" class="card-body">
                                 <table class="table table-striped">
                                     <thead >
                                         <tr>
-                                            <th>Category ID</th>
-                                            <th>Category Name</th>                             
-                                            <th>Date Create</th>
+                                            <th>Payment Method ID</th>
+                                            <th>Payment Method Name</th>                             
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <c:choose>
-                                            <c:when test="${dataCategory != null}">
-                                                <c:forEach var="item" items="${dataCategory}">
+                                            <c:when test="${not empty paymentMethods}">
+                                                <c:forEach var="item" items="${paymentMethods}">
                                                     <tr>
-                                                        <td>${item.categoryId}</td>
-                                                        <td>${item.category_name}</td>
-                                                        <td>${item.create_at}</td>
+                                                        <td>${item.paymentMethodID}</td>
+                                                        <td>${item.paymentMethName}</td>
                                                         <td>
                                                             <button class="custom-height-btn custom-width-btn btn btn-primary btn-sm" 
-                                                                    onclick="openUpdateModal(${item.categoryId}, '${item.category_name}')">Update</button>
+                                                                    onclick="openUpdateModal(${item.paymentMethodID}, '${item.paymentMethName}')">Update</button>
                                                             <button type="button" class="custom-height-btn custom-width-btn btn btn-danger btn-sm" 
-                                                                    onclick="confirmDelete(${item.categoryId})">Delete</button>
+                                                                    onclick="confirmDelete(${item.paymentMethodID})">Delete</button>
                                                         </td>
                                                     </tr>
                                                 </c:forEach>
@@ -194,19 +196,18 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="updateModalLabel">Update Category</h5>
+                        <h5 class="modal-title" id="updateModalLabel">Update Payment Method</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeUpdateModal()">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="./categoryServlet" method="get">
+                        <form action="./PaymentMethodServlet" method="get">
                             <input type="hidden" name="action" value="update" />
-                            <input type="hidden" id="categoryId" name="categoryId" />
-
+                            <input type="hidden" id="PaymentMID" name="PaymentMID" />
                             <div class="form-group">
-                                <label for="categoryName">Category Name</label>
-                                <input type="text" class="form-control" id="categoryNameInput" name="categoryName" required />
+                                <label for="PaymentMName">Payment Method Name</label>
+                                <input type="text" class="form-control" id="PaymentMName" name="PaymentMName" required />
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeUpdateModal()">Cancel</button>
@@ -217,7 +218,6 @@
                 </div>
             </div>
         </div>
-
 
         <!-- Modal Xác Nhận -->
         <div id="confirmModal" class="modal" tabindex="-1" role="dialog">
@@ -244,12 +244,13 @@
             let recordId;
             function confirmDelete(id) {
                 recordId = id;
+                console.log("Record ID set to:", recordId); // Hiển thị ID bản ghi khi click
                 $('#confirmModal').modal('show');
             }
 
             document.getElementById('confirmDeleteBtn').addEventListener('click', function () {
                 if (recordId) {
-                    window.location.href = 'categoryServlet?id=' + recordId + '&action=delete';
+                    window.location.href = 'PaymentMethodServlet?id=' + recordId + '&action=delete';
                 } else {
                     console.error('No record ID defined for deletion.');
                 }
@@ -263,14 +264,15 @@
                 element.addEventListener('click', closeModal);
             });
 
-            function openUpdateModal(categoryId, categoryName) {
-                document.getElementById('categoryId').value = categoryId;
-                document.getElementById('categoryNameInput').value = categoryName;
-                $('#updateModal').modal('show');
+            function openUpdateModal(paymentMID, paymentMName) {
+                // Set the hidden input and text input values
+                document.getElementById('PaymentMID').value = paymentMID;
+                document.getElementById('PaymentMName').value = paymentMName; // Ensure you use the correct ID
+                $('#updateModal').modal('show'); // Show the modal
             }
 
             function closeUpdateModal() {
-                $('#updateModal').modal('hide');
+                $('#updateModal').modal('hide'); // Hide the modal
             }
         </script>
     </body>

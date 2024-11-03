@@ -43,6 +43,18 @@
         <servlet-name>checkOutServlet</servlet-name>
         <servlet-class>controller.checkOutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PaymentServlet</servlet-name>
+        <servlet-class>controller.PaymentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PaymentMethodServlet</servlet-name>
+        <servlet-class>controller.PaymentMethodServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShippingMethodServlet</servlet-name>
+        <servlet-class>controller.ShippingMethodServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CartServlet</servlet-name>
         <url-pattern>/cartServlet</url-pattern>
@@ -87,9 +99,29 @@
         <servlet-name>checkOutServlet</servlet-name>
         <url-pattern>/checkOutServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PaymentServlet</servlet-name>
+        <url-pattern>/PaymentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PaymentMethodServlet</servlet-name>
+        <url-pattern>/PaymentMethodServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShippingMethodServlet</servlet-name>
+        <url-pattern>/ShippingMethodServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             60
         </session-timeout>
     </session-config>
+    <servlet-mapping>
+        <servlet-name>PaymentMethodServlet</servlet-name>
+        <url-pattern>/admin/PaymentMethodServlet</url-pattern>
+    </servlet-mapping>
+      <servlet-mapping>
+        <servlet-name>ShippingMethodServlet</servlet-name>
+        <url-pattern>/admin/ShippingMethodServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

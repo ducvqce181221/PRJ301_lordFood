@@ -10,19 +10,19 @@ package model;
  */
 public class ShippingMethod {
 
-    private int shipID;
+    private String shipID;
     private String methodName;
 
-    public ShippingMethod(int shipID, String methodName) {
+    public ShippingMethod(String shipID, String methodName) {
         this.shipID = shipID;
         this.methodName = methodName;
     }
 
-    public int getShipID() {
+    public String getShipID() {
         return shipID;
     }
 
-    public void setShipID(int shipID) {
+    public void setShipID(String shipID) {
         this.shipID = shipID;
     }
 
@@ -34,6 +34,9 @@ public class ShippingMethod {
         this.methodName = methodName;
     }
     
+    
+
+   
     
 
 }
