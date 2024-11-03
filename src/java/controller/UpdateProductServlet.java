@@ -90,6 +90,8 @@ public class UpdateProductServlet extends HttpServlet {
         double productPrice = Double.parseDouble(request.getParameter("productPrice").trim());
         int productQuantity = Integer.parseInt(request.getParameter("productQuantity").trim());
         String oldURL = request.getParameter("img").trim();
+        int categoryID = Integer.parseInt(request.getParameter("categoryID").trim());
+        
         String fileURL = "";
 
         Part filePart = request.getPart("productURL"); // Lấy file từ form
@@ -116,7 +118,7 @@ public class UpdateProductServlet extends HttpServlet {
             fileURL = "./img/menu/" + fileName;
         }
 
-        Product product = new Product(productID, productName, productDescription, productPrice, productQuantity, fileURL, 0, null, null);
+        Product product = new Product(productID, productName, productDescription, productPrice, productQuantity, fileURL, categoryID, null, null);
         ProductDAO productDAO = new ProductDAO();
         boolean isUpdate = false;
         try {

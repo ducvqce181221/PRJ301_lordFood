@@ -29,7 +29,7 @@ public class ProductDAO {
     private static String DELETE_PRODUCT_BY_ProID = "DELETE FROM product WHERE product_id = ?";
     private static String INSERT_PRODUCT = "INSERT INTO product (productName, description, price, qty, imageURL, categoryID) VALUES "
             + "(?, ?, ?, ?, ?, ?)";
-    private static String UPDATE_PRODUCT_BY_ProID = "UPDATE product SET productName = ?, description = ?, price = ?, qty = ?, imageURL = ? WHERE product_id = ?";
+    private static String UPDATE_PRODUCT_BY_ProID = "UPDATE product SET productName = ?, description = ?, price = ?, qty = ?, imageURL = ?, categoryID = ? WHERE product_id = ?";
     private static String SEARCH_PRODUCT_BY_NAME = "SELECT * FROM product WHERE productName COLLATE Latin1_General_CI_AI LIKE ?";
 
     public List<Product> searchProduct(String productName) {
@@ -144,7 +144,8 @@ public class ProductDAO {
             ps.setDouble(3, product.getPrice());
             ps.setInt(4, product.getQuantityOfStock());
             ps.setString(5, product.getImageURL());
-            ps.setInt(6, product.getProduct_id());
+            ps.setInt(6, product.getCategoryID());
+            ps.setInt(7, product.getProduct_id());
             rowUpdated = ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
