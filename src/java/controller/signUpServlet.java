@@ -173,7 +173,7 @@ public class signUpServlet extends HttpServlet {
                 }
                 request.getRequestDispatcher("signUp.jsp").forward(request, response);
             }
-        } catch (Exception e) {
+        } catch (ServletException | IOException | ClassNotFoundException | SQLException e) {
             e.printStackTrace();
             request.setAttribute("modalMessage", "Đã xảy ra lỗi khi đăng ký. Vui lòng thử lại.");
             request.setAttribute("modalType", "error");

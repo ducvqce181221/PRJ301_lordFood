@@ -1,25 +1,27 @@
-package controller;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
+package controller;
 
+import DBContext.ConnectDB;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
- * @author LE TRONG LUAN - CE181151
+ * @author VU QUANG DUC - CE181221
  */
-@WebServlet(urlPatterns = {"/logOutServlet"})
-public class logOutServlet extends HttpServlet {
+public class signInAdmin extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +40,10 @@ public class logOutServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet logOutServlet</title>");
+            out.println("<title>Servlet signInAdmin</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet logOutServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet signInAdmin at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,11 +61,7 @@ public class logOutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession(false);
-        if (session != null) {
-            session.invalidate();
-        }
-        response.sendRedirect("/admin/signInAdmin.jsp");
+        processRequest(request, response);
     }
 
     /**
@@ -77,7 +75,33 @@ public class logOutServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+//        processRequest(request, response);
+        String user = request.getParameter("user").trim();
+        String pass = request.getParameter("password").trim();
+
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            conn = ConnectDB.getConnection();
+            ps = conn.prepareStatement("SELECT * FROM admin WHERE Username = ? AND Password = ?");
+            ps.setString(1, user);
+            ps.setString(2, pass);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                HttpSession session = request.getSession();
+                session.setAttribute("userAdmin", user);
+                response.sendRedirect("homeAdmin.jsp");
+                return;
+            }
+
+            request.setAttribute("user", user);
+            request.setAttribute("successMessage", "Invalid username or password!");
+            request.getRequestDispatcher("signInAdmin.jsp").forward(request, response);
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

@@ -44,8 +44,20 @@
         <servlet-class>controller.checkOutServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>loginAdminServlet</servlet-name>
-        <servlet-class>controller.loginAdminServlet</servlet-class>
+        <servlet-name>signUpAdmin</servlet-name>
+        <servlet-class>controller.signUpAdmin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>signInAdmin</servlet-name>
+        <servlet-class>controller.signInAdmin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editAdmin</servlet-name>
+        <servlet-class>controller.editAdmin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteAdmin</servlet-name>
+        <servlet-class>controller.deleteAdmin</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CartServlet</servlet-name>
@@ -92,12 +104,24 @@
         <url-pattern>/checkOutServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>loginAdminServlet</servlet-name>
-        <url-pattern>/loginAdmin</url-pattern>
+        <servlet-name>signUpAdmin</servlet-name>
+        <url-pattern>/admin/signUpAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>signInAdmin</servlet-name>
+        <url-pattern>/admin/signInAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editAdmin</servlet-name>
+        <url-pattern>/admin/editAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteAdmin</servlet-name>
+        <url-pattern>/admin/deleteAdmin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
-            60
+            30
         </session-timeout>
     </session-config>
 </web-app>
