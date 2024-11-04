@@ -96,10 +96,17 @@
         <%
     if (session.getAttribute("username") == null) {
         response.sendRedirect("signIn.jsp");
-        return; // Ensure no further processing occurs after the redirect
+        return; 
     }
+   Integer size = (Integer) session.getAttribute("size"); // Assuming `size` is stored as an Integer
+if (size == null || size == 0) {
+    response.sendRedirect("homePage.jsp");
+    return;
+}
+    
         %>
         <div class="container">
+            <c:set var="userName" value="${sessionScope.username}" scope="session" />
             <form action="checkOutServlet" method="get">
                 <nav>
                     <button type="button" class="btn-back" onclick="location.href = 'homePage.jsp';">Back</button>
@@ -109,11 +116,21 @@
                 <h2>Thanh Toán</h2>
                 <div style="display: flex; align-items: center;">
                     <label for="Name" style="margin-right: 10px;">Tên Khách Hàng:</label>
-                    <strong style="margin-bottom: 6px;"></strong>
+                    <input type="hidden" name="txtName" value="${userName}" />
+                    <strong style="margin-bottom: 6px;">${userName}</strong>
                 </div>
-                <div class="form-section" style="margin-top: 35px; margin-right: 20px;"">
+                <div class="form-section" style="margin-top: 35px; margin-right: 20px;">
                     <label for="phoneNumber">Số Điện Thoại:</label>
-                    <input style="margin-right: 20px;" type="text" id="phoneNumber" name="phoneNumber" placeholder="Nhập số điện thoại" required pattern="[0-9]{10,11}" title="Vui lòng nhập số điện thoại hợp lệ (10-11 chữ số)" />
+                    <input
+                        style="margin-right: 20px;"
+                        type="text"
+                        id="txtPhone"
+                        name="txtPhone"
+                        placeholder="Nhập số điện thoại"
+                        required
+                        pattern="[0-9]{10,11}"
+                        title="Vui lòng nhập số điện thoại hợp lệ (10-11 chữ số, chỉ bao gồm số)"
+                        />
                 </div>
                 <!-- Shipping Address -->
                 <div class="form-section" style="margin-right: 20px; margin-top: 30px">

@@ -112,6 +112,18 @@
                             <a class="nav-link" href="managementOrder.jsp"><div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>Order Management</a>
                             <a class="nav-link" href="managementOrderDetail.jsp"><div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>Order Detail</a>
                             <a class="nav-link" href="managementAdmin.jsp"><div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>Admin account</a>
+                            <a class="nav-link" href="ShippingMethodServlet?&action=showInfo">
+                                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+                                Shipping Method
+                            </a>
+                            <a class="nav-link" href="PaymentMethodServlet?&action=showInfo">
+                                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+                                Payment Method
+                            </a>
+                            <a class="nav-link" href="PaymentServlet?&action=show">
+                                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+                                Payment Management
+                            </a>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer"><div class="small">Logged in as:</div>Management Admin</div>
@@ -199,7 +211,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="updateModalLabel">Update Shipping Method</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeUpdateModal()">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeUpdateModal()">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>

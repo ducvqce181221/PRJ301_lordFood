@@ -124,4 +124,8 @@
         <servlet-name>ShippingMethodServlet</servlet-name>
         <url-pattern>/admin/ShippingMethodServlet</url-pattern>
     </servlet-mapping>
+      <servlet-mapping>
+        <servlet-name>PaymentServlet</servlet-name>
+        <url-pattern>/admin/PaymentServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -126,7 +126,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                                 Payment Method
                             </a>
-                            <a class="nav-link" href="managementAdmin.jsp">
+                            <a class="nav-link" href="PaymentServlet?&action=show">
                                 <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                                 Payment Management
                             </a>

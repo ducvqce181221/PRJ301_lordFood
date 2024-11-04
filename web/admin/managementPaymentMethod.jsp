@@ -3,11 +3,6 @@
     Created on : Nov 3, 2024, 1:11:32 PM
     Author     : Truong Van Khang _ CE181852
 --%>
-<%-- 
-    Document   : managementAdmin
-    Created on : Oct 17, 2024, 12:02:59 PM
-    Author     : Truong Van Khang _ CE181151
---%>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -111,6 +106,18 @@
                             <a class="nav-link" href="managementOrder.jsp"><div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>Order Management</a>
                             <a class="nav-link" href="managementOrderDetail.jsp"><div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>Order Detail</a>
                             <a class="nav-link" href="managementAdmin.jsp"><div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>Admin account</a>
+                            <a class="nav-link" href="ShippingMethodServlet?&action=showInfo">
+                                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+                                Shipping Method
+                            </a>
+                            <a class="nav-link" href="PaymentMethodServlet?&action=showInfo">
+                                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+                                Payment Method
+                            </a>
+                            <a class="nav-link" href="PaymentServlet?&action=show">
+                                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+                                Payment Management
+                            </a>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer"><div class="small">Logged in as:</div>Management Admin</div>

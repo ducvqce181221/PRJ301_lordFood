@@ -126,33 +126,29 @@ public class CartServlet extends HttpServlet {
         try {
             ProductDAO productDAO = new ProductDAO();
             CategoryDAO categoryDAO = new CategoryDAO();
-            for (Item item : list) {
-                int checkId = item.getProduct().getProduct_id();
-                System.out.println(checkId);
-                Product p = productDAO.getProduct(checkId);
+         if(list != null) {
+                for (Item item : list) {
+                    int checkId = item.getProduct().getProduct_id();
+                    Product p = productDAO.getProduct(checkId);
+                    if (p == null) {
+                        itemsToRemove.add(checkId);
+                        continue;
+                    }
 
-                if (p == null) {
-                    System.out.println("Product with ID " + checkId + " is no longer available and has been removed from the cart.");
-                    itemsToRemove.add(checkId);
-                    continue;
+                    if (item.getPrice() != p.getPrice()) {
+                        item.getProduct().setPrice(p.getPrice());
+                    }
                 }
-
-                if (item.getPrice() != p.getPrice()) {
-                    item.getProduct().setPrice(p.getPrice());
-                }
+                double totalMoney = cart.getTotalMoney();
+                session.setAttribute("totalMoney", totalMoney);
+                session.setAttribute("cart", cart);
+                session.setAttribute("size", list.size());
             }
-            for (int productId : itemsToRemove) {
-                System.out.println("ID XOA" + productId);
-                cart.removeItem(productId);
-            }
-            double totalMoney = cart.getTotalMoney();
-            session.setAttribute("totalMoney", totalMoney);
-            session.setAttribute("cart", cart);
-            session.setAttribute("size", list.size());
         } catch (Exception e) {
             System.err.println("An error occurred while updating the cart: " + e.getMessage());
             e.printStackTrace();
         }
+
         request.getRequestDispatcher("cart.jsp").forward(request, response);
 
     }

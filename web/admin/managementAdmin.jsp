@@ -120,6 +120,18 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                             Admin account
                         </a>
+                        <a class="nav-link" href="ShippingMethodServlet?&action=showInfo">
+                            <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+                            Shipping Method
+                        </a>
+                        <a class="nav-link" href="PaymentMethodServlet?&action=showInfo">
+                            <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+                            Payment Method
+                        </a>
+                        <a class="nav-link" href="PaymentServlet?&action=show">
+                            <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+                            Payment Management
+                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
@@ -158,27 +170,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php
-                                    if ($result && $result->num_rows > 0) {
-
-                                    while ($row = $result->fetch_assoc()) {
-
-                                    echo "<tr>";
-                                    echo "<td>" . $row["userID"] . "</td>";
-                                    echo "<td>" . $row["Username"] . "</td>";
-                                    echo "<td>" . $row["Email"] . "</td>";
-                                    echo "<td>" . $row["PhoneNumber"] . "</td>";
-                                    echo "<td>" . $row["Password"] . "</td>";
-                                    echo "<td>";
-                                    echo "<a href='managementUser.php?id=" . $row["userID"] . "' class='btn btn-danger' onclick='return confirm(\"Are you sure?\")'>Delete</a> ";
-                                    echo "<a href='editUser.php?id=" . $row["userID"] . "' class='btn btn-warning'>Edit</a>";
-                                    echo "</td>";
-                                    echo "</tr>";
-                                    }
-                                    } else {
-                                    echo "<tr><td colspan='6'>Không có người dùng nào khớp với từ khóa tìm kiếm của bạn</td></tr>";
-                                    }
-                                    ?>
                                 </tbody>
                             </table>
                         </div>

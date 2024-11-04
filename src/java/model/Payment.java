@@ -16,14 +16,16 @@ public class Payment {
     private String ShipMedthod;
     private String paymentMethod;
     private String shipAddress;
+    private String NameUser;
 
-    public Payment(String PaymentID, double Amount, String DateTime, String ShipMedthod, String paymentMethod, String shipAddress) {
+    public Payment(String PaymentID, double Amount, String DateTime, String ShipMedthod, String paymentMethod, String shipAddress, String NameUser) {
         this.PaymentID = PaymentID;
         this.Amount = Amount;
         this.DateTime = DateTime;
         this.ShipMedthod = ShipMedthod;
         this.paymentMethod = paymentMethod;
         this.shipAddress = shipAddress;
+        this.NameUser = NameUser;
     }
 
     public String getPaymentID() {
@@ -32,14 +34,6 @@ public class Payment {
 
     public void setPaymentID(String PaymentID) {
         this.PaymentID = PaymentID;
-    }
-
-    public String getShipAddress() {
-        return shipAddress;
-    }
-
-    public void setShipAddress(String shipAddress) {
-        this.shipAddress = shipAddress;
     }
 
     public double getAmount() {
@@ -72,6 +66,22 @@ public class Payment {
 
     public void setPaymentMethod(String paymentMethod) {
         this.paymentMethod = paymentMethod;
+    }
+
+    public String getShipAddress() {
+        return shipAddress;
+    }
+
+    public void setShipAddress(String shipAddress) {
+        this.shipAddress = shipAddress;
+    }
+
+    public String getNameUser() {
+        return NameUser;
+    }
+
+    public void setNameUser(String NameUser) {
+        this.NameUser = NameUser;
     }
 
 }

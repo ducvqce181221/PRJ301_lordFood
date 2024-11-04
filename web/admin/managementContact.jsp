@@ -107,7 +107,19 @@
                             <a class="nav-link" href="managementAdmin.jsp">
                                 <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                                 Admin account
+                            </a>   <a class="nav-link" href="ShippingMethodServlet?&action=showInfo">
+                                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+                                Shipping Method
                             </a>
+                            <a class="nav-link" href="PaymentMethodServlet?&action=showInfo">
+                                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+                                Payment Method
+                            </a>
+                            <a class="nav-link" href="PaymentServlet?&action=show">
+                                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+                                Payment Management
+                            </a>
+
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">

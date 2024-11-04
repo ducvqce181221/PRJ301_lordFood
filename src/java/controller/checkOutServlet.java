@@ -65,8 +65,10 @@ public class checkOutServlet extends HttpServlet {
             System.out.println("Thời gian nhận được: " + Datime);
             String ShippingMethodID = request.getParameter("shippingMethod");
             String PaymentMethodID = request.getParameter("paymentMethod");
+            String nameUser = request.getParameter("txtName");
+            String phone = request.getParameter("txtPhone");
 
-            if (PaymentDAO.addPayment(Amount, Datime, ShippingMethodID, PaymentMethodID, address)) {
+            if (PaymentDAO.addPayment(Amount, Datime, ShippingMethodID, PaymentMethodID, address, nameUser, phone)) {
                response.sendRedirect("succesPayment.jsp");
             }
 
