@@ -55,6 +55,22 @@
         <servlet-name>ShippingMethodServlet</servlet-name>
         <servlet-class>controller.ShippingMethodServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>signInAdmin</servlet-name>
+        <servlet-class>controller.signInAdmin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>signUpAdmin</servlet-name>
+        <servlet-class>controller.signUpAdmin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editAdmin</servlet-name>
+        <servlet-class>controller.editAdmin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteAdmin</servlet-name>
+        <servlet-class>controller.deleteAdmin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CartServlet</servlet-name>
         <url-pattern>/cartServlet</url-pattern>
@@ -111,6 +127,22 @@
         <servlet-name>ShippingMethodServlet</servlet-name>
         <url-pattern>/ShippingMethodServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>signInAdmin</servlet-name>
+        <url-pattern>/admin/signInAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>signUpAdmin</servlet-name>
+        <url-pattern>/admin/signUpAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editAdmin</servlet-name>
+        <url-pattern>/admin/editAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteAdmin</servlet-name>
+        <url-pattern>/admin/deleteAdmin</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             60
@@ -120,11 +152,11 @@
         <servlet-name>PaymentMethodServlet</servlet-name>
         <url-pattern>/admin/PaymentMethodServlet</url-pattern>
     </servlet-mapping>
-      <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ShippingMethodServlet</servlet-name>
         <url-pattern>/admin/ShippingMethodServlet</url-pattern>
     </servlet-mapping>
-      <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>PaymentServlet</servlet-name>
         <url-pattern>/admin/PaymentServlet</url-pattern>
     </servlet-mapping>

@@ -74,17 +74,31 @@
 
 
     <body class="sb-nav-fixed"> 
+        <c:if test="${empty sessionScope.userAdmin}">
+            <% 
+               response.sendRedirect("signInAdmin.jsp");
+            %>
+        </c:if>
+
+        <% 
+                String userAdmin = (String) session.getAttribute("userAdmin");
+        %>
+
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand ps-3" href="index.html">Management Admin</a>
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i>
+                        <% if (userAdmin != null) { %> 
+                        <span><%= userAdmin %></span> <!-- Hiển thị tên admin -->
+                        <% } %>
+                    </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#!">Settings</a></li>
                         <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="./signInAdmin.jsp">Logout</a></li>
+                        <li><a class="dropdown-item" href="/logOutServlet">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -131,7 +145,8 @@
                             <li class="breadcrumb-item active">View Category</li>
                         </ol>
                         <%
-                            String er = (String) session.getAttribute("CateEx");
+      String er = (String) session.getAttribute("CateEx");
+       System.out.println("Lj " + er);
                         %>
                         <c:forEach var="item" items="${dataCategory}">
                             <c:set var="lastCategoryId" value="${item.categoryId}" />
@@ -154,7 +169,7 @@
                             <span style="color: red"><%= er%></span>
                             <%
                                 }
-                                            session.removeAttribute("CateEx");
+session.removeAttribute("CateEx");
                             %>
                         </div>
                         <div class="card mb-4">
@@ -162,7 +177,7 @@
                             <form method="GET" action="./categoryServlet" class="d-flex">
                                 <input name="action" type="hidden" value="find" >
                                 <input style="height: 70px" type="text" name="search" class="form-control" placeholder="Find Category..." aria-label="Search">
-                                <button class="btn btn-primary ms-2" type="submit">Tìm kiếm</button>
+                                <button class="btn btn-primary ms-2 taskFind" type="submit">Tìm kiếm</button>
                             </form>
                             <div style="font-size: 20px;" class="card-body">
                                 <table class="table table-striped">
@@ -181,7 +196,7 @@
                                                     <tr>
                                                         <td>${item.categoryId}</td>
                                                         <td>${item.category_name}</td>
-                                                        <td>${item.create_at}</td>
+                                                        <td>${item.create_at}</td>>
                                                         <td>
                                                             <button class="custom-height-btn custom-width-btn btn btn-primary btn-sm" 
                                                                     onclick="openUpdateModal(${item.categoryId}, '${item.category_name}')">Update</button>
@@ -192,6 +207,7 @@
                                                 </c:forEach>
                                             </c:when>
                                         </c:choose>
+
                                     </tbody>
                                 </table>
                             </div>
@@ -207,7 +223,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="updateModalLabel">Update Category</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeUpdateModal()">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -256,6 +272,7 @@
             let recordId;
             function confirmDelete(id) {
                 recordId = id;
+                console.log("Record ID set to:", recordId); // Hiển thị ID bản ghi khi click
                 $('#confirmModal').modal('show');
             }
 
@@ -271,13 +288,17 @@
                 $('#confirmModal').modal('hide');
             }
 
+            // Đóng modal khi click vào nút close
             document.querySelectorAll('.close').forEach(function (element) {
                 element.addEventListener('click', closeModal);
             });
 
             function openUpdateModal(categoryId, categoryName) {
+                // Gán giá trị ID và tên Category vào modal
                 document.getElementById('categoryId').value = categoryId;
                 document.getElementById('categoryNameInput').value = categoryName;
+
+                // Hiển thị modal
                 $('#updateModal').modal('show');
             }
 
