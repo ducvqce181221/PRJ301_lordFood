@@ -196,7 +196,7 @@ session.removeAttribute("CateEx");
                                                     <tr>
                                                         <td>${item.categoryId}</td>
                                                         <td>${item.category_name}</td>
-                                                        <td>${item.create_at}</td>>
+                                                        <td>${item.create_at}</td>
                                                         <td>
                                                             <button class="custom-height-btn custom-width-btn btn btn-primary btn-sm" 
                                                                     onclick="openUpdateModal(${item.categoryId}, '${item.category_name}')">Update</button>
