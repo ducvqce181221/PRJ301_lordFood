@@ -95,17 +95,26 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Management</div>
-
-                            <a class="nav-link" href="homeAdmin.jsp"><div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>User Management</a>
-                            <a class="nav-link" href="managementContact.jsp"><div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>Contact Management</a>
-                            <a class="nav-link" href="productManagement"><div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>Product Management</a>
+                            <a class="nav-link" href="homeAdmin.jsp">
+                                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+                                User Management
+                            </a>
+                            <a class="nav-link" href="managementContact.jsp">
+                                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+                                Contact Management
+                            </a>
+                            <a class="nav-link" href="productManagement">
+                                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+                                Product Management
+                            </a>
                             <a class="nav-link" href="categoryServlet?&action=showInfo">
                                 <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                                 Category Management
                             </a>
-                            <a class="nav-link" href="managementOrder.jsp"><div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>Order Management</a>
-                            <a class="nav-link" href="managementOrderDetail.jsp"><div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>Order Detail</a>
-                            <a class="nav-link" href="managementAdmin.jsp"><div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>Admin account</a>
+                            <a class="nav-link" href="managementAdmin.jsp">
+                                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+                                Admin account
+                            </a>
                             <a class="nav-link" href="ShippingMethodServlet?&action=showInfo">
                                 <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                                 Shipping Method
@@ -120,9 +129,13 @@
                             </a>
                         </div>
                     </div>
-                    <div class="sb-sidenav-footer"><div class="small">Logged in as:</div>Management Admin</div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        Management Admin
+                    </div>
                 </nav>
             </div>
+
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">

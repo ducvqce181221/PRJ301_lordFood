@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="./CSS/foodDetail.css" />
         <link href="CSS/contact.css" rel="stylesheet" type="text/css" />
     </head>
-    <body style="background-color: #eaf9ff">
+    <body>
         <div class="container mb-5 mt-4 px-0">
             <div class="d-flex align-items-center p-3 breadcrumb-container">
                 <a href="homePage.jsp" class="breadcrumb-link">HOME</a>

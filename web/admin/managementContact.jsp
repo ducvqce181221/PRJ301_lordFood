@@ -110,14 +110,6 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                                 Category Management
                             </a>
-                            <a class="nav-link" href="managementOrder.jsp">
-                                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
-                                Order Management
-                            </a>
-                            <a class="nav-link" href="managementOrderDetail.jsp">
-                                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
-                                Order Detail
-                            </a>
                             <a class="nav-link" href="managementAdmin.jsp">
                                 <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                                 Admin account
@@ -142,6 +134,7 @@
                     </div>
                 </nav>
             </div>
+
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
