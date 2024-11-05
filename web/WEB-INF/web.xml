@@ -71,6 +71,10 @@
         <servlet-name>deleteAdmin</servlet-name>
         <servlet-class>controller.deleteAdmin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>logOutAdmin</servlet-name>
+        <servlet-class>controller.logOutAdmin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CartServlet</servlet-name>
         <url-pattern>/cartServlet</url-pattern>
@@ -142,6 +146,10 @@
     <servlet-mapping>
         <servlet-name>deleteAdmin</servlet-name>
         <url-pattern>/admin/deleteAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>logOutAdmin</servlet-name>
+        <url-pattern>/logOutAdmin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

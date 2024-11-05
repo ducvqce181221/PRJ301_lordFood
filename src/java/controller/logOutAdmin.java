@@ -1,14 +1,12 @@
-package controller;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
+package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -16,10 +14,9 @@ import jakarta.servlet.http.HttpSession;
 
 /**
  *
- * @author LE TRONG LUAN - CE181151
+ * @author VU QUANG DUC - CE181221
  */
-@WebServlet(urlPatterns = {"/logOutServlet"})
-public class logOutServlet extends HttpServlet {
+public class logOutAdmin extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +35,10 @@ public class logOutServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet logOutServlet</title>");
+            out.println("<title>Servlet logOutAdmin</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet logOutServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet logOutAdmin at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,11 +56,12 @@ public class logOutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+//        processRequest(request, response);
         HttpSession session = request.getSession(false);
         if (session != null) {
             session.invalidate();
         }
-        response.sendRedirect("signIn.jsp");
+        response.sendRedirect("/admin/signInAdmin.jsp");
     }
 
     /**

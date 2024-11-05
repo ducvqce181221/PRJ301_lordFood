@@ -99,7 +99,7 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="/logOutServlet">Logout</a></li>
+                    <li><a class="dropdown-item" href="/logOutAdmin">Logout</a></li>
                 </ul>
             </li>
         </ul>
