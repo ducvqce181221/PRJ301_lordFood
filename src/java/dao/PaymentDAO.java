@@ -61,7 +61,6 @@ public class PaymentDAO {
             stm.setString(4, PaymentID);
             stm.setString(5, Address);
             stm.setString(6, NameUser);
-            stm.setString(7, phone);
             complete = stm.executeUpdate() > 0;
         } catch (Exception e) {
             System.out.println(e);

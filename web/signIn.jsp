@@ -12,7 +12,7 @@
     <body>
         <div class="sign-in">
             <div class="left-logo">
-                <img src="${pageContext.request.contextPath}/img/logo.png" alt="Logo">
+                <img src="/img/logoLorFood.png" alt="Logo">
             </div>
             <div class="login-container">
                 <form class="login-form" method="POST" action="signInServlet" onsubmit="return validateLogin()">

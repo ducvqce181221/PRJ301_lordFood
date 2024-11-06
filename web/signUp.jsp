@@ -18,7 +18,7 @@
     <body>
         <div class="sign-up-container">
             <div class="left-logo">
-                <img src="img/logo.png" alt="Logo">
+                <img src="img/logoLorFood.png" alt="Logo">
             </div>
             <div class="sign-up">
                 <div class="login-container">
