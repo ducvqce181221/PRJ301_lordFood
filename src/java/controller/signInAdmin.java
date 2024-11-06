@@ -12,10 +12,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -77,30 +81,95 @@ public class signInAdmin extends HttpServlet {
             throws ServletException, IOException {
 //        processRequest(request, response);
         String user = request.getParameter("user").trim();
-        String pass = request.getParameter("password").trim();
-
-        Connection conn = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
+        String pass = EncryMD5(request.getParameter("password").trim());
+        
+        System.out.println(user);
+        System.out.println(pass);
 
         try {
-            conn = ConnectDB.getConnection();
-            ps = conn.prepareStatement("SELECT * FROM admin WHERE Username = ? AND Password = ?");
-            ps.setString(1, user);
-            ps.setString(2, pass);
-            rs = ps.executeQuery();
-            if (rs.next()) {
+            if (isValidUser(user, pass)) {
                 HttpSession session = request.getSession();
                 session.setAttribute("userAdmin", user);
                 response.sendRedirect("homeAdmin.jsp");
-                return;
+            } else {
+                request.setAttribute("user", user);
+                request.setAttribute("successMessage", "Invalid username or password!");
+                request.getRequestDispatcher("signInAdmin.jsp").forward(request, response);
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(signInAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+//        Connection conn = null;
+//        PreparedStatement ps = null;
+//        ResultSet rs = null;
+//
+//        try {
+//            conn = ConnectDB.getConnection();
+//            ps = conn.prepareStatement("SELECT * FROM admin WHERE Username = ? AND Password = ?");
+//            ps.setString(1, user);
+//            ps.setString(2, pass);
+//            rs = ps.executeQuery();
+//            if (rs.next()) {
+//                HttpSession session = request.getSession();
+//                session.setAttribute("userAdmin", user);
+//                response.sendRedirect("homeAdmin.jsp");
+//                return;
+//            }
+//
+//            request.setAttribute("user", user);
+//            request.setAttribute("successMessage", "Invalid username or password!");
+//            request.getRequestDispatcher("signInAdmin.jsp").forward(request, response);
+//        } catch (ClassNotFoundException | SQLException e) {
+//            e.printStackTrace();
+//        }
+    }
+
+    public boolean isValidUser(String user, String pass) throws ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement pr = null;
+        ResultSet rs = null;
+
+        try {
+            con = ConnectDB.getConnection();
+            pr = con.prepareStatement("SELECT * FROM admin WHERE Username = ? AND Password = ?");
+            pr.setString(1, user);
+            pr.setString(2, pass);
+            rs = pr.executeQuery();
+
+            if (rs.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+
+    }
+
+    private static String EncryMD5(String pass) {
+        try {
+            // Create a MessageDigest instance for MD5
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            // Add password bytes to digest
+            md.update(pass.getBytes());
+            // Get the hash's bytes
+            byte[] digest = md.digest();
+            // Convert byte array to hexadecimal format
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : digest) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                }
+                hexString.append(hex);
             }
 
-            request.setAttribute("user", user);
-            request.setAttribute("successMessage", "Invalid username or password!");
-            request.getRequestDispatcher("signInAdmin.jsp").forward(request, response);
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+            // Return the hashed value as a hex string
+            return hexString.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
         }
     }
 

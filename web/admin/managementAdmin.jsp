@@ -209,7 +209,7 @@
                                             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editUserModal_<%= rs.getInt("adminID") %>">
                                                 Edit
                                             </button>
-                                            <a href="deleteAdmin?id=<%= rs.getInt("adminID") %>" class="btn btn-danger" role="button" onclick="return confirmDelete('<%= rs.getString("Username") %>');">Delete</a>
+                                            <a href="deleteAdmin?id=<%= rs.getInt("adminID") %>&userAdmin=<%= rs.getString("Username") %>" class="btn btn-danger" role="button" onclick="return confirmDelete('<%= rs.getString("Username") %>');">Delete</a>
 
                                         </td>
 

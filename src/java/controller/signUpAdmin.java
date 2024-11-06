@@ -11,6 +11,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -81,6 +83,10 @@ public class signUpAdmin extends HttpServlet {
         String password = request.getParameter("pass").trim();
         String email = request.getParameter("email").trim();
 
+        System.out.println(username);
+        System.out.println(password);
+        System.out.println(email);
+
         StringBuilder errorMessage = new StringBuilder();
 
         // Regular expressions for validation
@@ -119,7 +125,7 @@ public class signUpAdmin extends HttpServlet {
                 ps = conn.prepareStatement("DBCC CHECKIDENT ('admin', RESEED, 0)");
                 ps.executeUpdate();
             }
-            
+
             ps = conn.prepareStatement("SELECT * FROM admin WHERE Username = ? OR Email = ?");
             ps.setString(1, username);
             ps.setString(2, email);
@@ -130,9 +136,9 @@ public class signUpAdmin extends HttpServlet {
                 request.getRequestDispatcher("signUpAdmin.jsp").forward(request, response);
                 return;
             }
-            ps = conn.prepareStatement("INSERT INTO Admin (Username, Password, Email) VALUES (?, ?, ?)");
+            ps = conn.prepareStatement("INSERT INTO admin (Username, Password, Email) VALUES (?, ?, ?)");
             ps.setString(1, username);
-            ps.setString(2, password);
+            ps.setString(2, EncryMD5(password));
             ps.setString(3, email);
             ps.executeUpdate();
 
@@ -145,6 +151,32 @@ public class signUpAdmin extends HttpServlet {
             e.printStackTrace();
         }
 
+    }
+
+    private static String EncryMD5(String pass) {
+        try {
+            // Create a MessageDigest instance for MD5
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            // Add password bytes to digest
+            md.update(pass.getBytes());
+            // Get the hash's bytes
+            byte[] digest = md.digest();
+            // Convert byte array to hexadecimal format
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : digest) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                }
+                hexString.append(hex);
+            }
+
+            // Return the hashed value as a hex string
+            return hexString.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**

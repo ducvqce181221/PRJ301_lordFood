@@ -11,6 +11,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -64,6 +65,7 @@ public class deleteAdmin extends HttpServlet {
 //        processRequest(request, response);
 
         int adminID = Integer.parseInt(request.getParameter("id").trim());
+        String userAdmin = request.getParameter("userAdmin").trim();
 
         Connection conn = null;
         PreparedStatement ps = null;
@@ -72,16 +74,34 @@ public class deleteAdmin extends HttpServlet {
                 conn = ConnectDB.getConnection();
                 ps = conn.prepareStatement("DELETE FROM admin WHERE adminID = ?");
                 ps.setInt(1, adminID);
-                if( ps.executeUpdate() > 0){
+                if (ps.executeUpdate() > 0) {
+                    HttpSession session = request.getSession(false);
+                    if (session != null && userAdmin.equals(session.getAttribute("userAdmin"))) {
+                        session.invalidate();
+                        response.sendRedirect("managementAdmin.jsp");
+                        return;
+                    }
                     response.sendRedirect("managementAdmin.jsp");
                     return;
                 }
+
                 System.out.println("DELETE ERROR");
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(deleteAdmin.class.getName()).log(Level.SEVERE, null, ex);
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            if (ps != null) try {
+                ps.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            if (conn != null) try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 

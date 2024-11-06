@@ -65,7 +65,7 @@
                                     <span>Cart</span>
                                     <figure class="cart-figure" style="display: inline; vertical-align: middle;">
                                         <i class="fa fa-shopping-bag cart-icon"></i>
-                                        <span class="cart-count">${sessionScope.size} </span>  <!-- Display number of items in cart -->
+                                        <span class="cart-count">${sessionScope.size}? 0 : ${sessionScope.size} </span>  <!-- Display number of items in cart -->
                                     </figure>
                                 </button>
                             </form>
