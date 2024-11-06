@@ -71,10 +71,10 @@
             <a class="navbar-brand ps-3" href="index.html">Management Admin</a>
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
+<!--                <div class="input-group">
                     <input class="form-control" type="text" name="search" placeholder="Tìm kiếm người dùng..." aria-label="Search">
                     <button class="btn btn-primary" id="btnNavbarSearch" type="submit">Tìm kiếm</button>
-                </div>
+                </div>-->
             </form>
             <% 
                 String userAdmin = (String) session.getAttribute("userAdmin");
