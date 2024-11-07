@@ -81,12 +81,6 @@ public class signUpServlet extends HttpServlet {
         String email = request.getParameter("email");
         String phoneNumber = request.getParameter("phoneNumber");
         String password = request.getParameter("password");
-
-        String URL = "jdbc:sqlserver://localhost:1433;databaseName=lorfood;encrypt=true;trustServerCertificate=true";
-        String USER = "sa";
-        String PASSWORD = "12345678";
-        String JDBC_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-
         Connection conn = null;
         PreparedStatement stmt = null;
         PreparedStatement checkStmt = null;
@@ -139,8 +133,8 @@ public class signUpServlet extends HttpServlet {
         }
 
         try {
-            Class.forName(JDBC_DRIVER);
-            conn = DriverManager.getConnection(URL, USER, PASSWORD);
+         
+            conn = DBContext.ConnectDB.getConnection();
 
             // Sử dụng truy vấn chính xác để kiểm tra trùng lặp
             String checksql = "SELECT * from users where (Email) = ? or (PhoneNumber) = ?";

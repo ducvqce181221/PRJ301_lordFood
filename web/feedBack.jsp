@@ -12,7 +12,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Contact Us</title>
+        <title>Liên Hệ</title>
         <link rel="stylesheet" href="CSS/feedBack.css">
     </head>
 
@@ -33,33 +33,31 @@
                         </div>
                         <div class="video-content" style="margin-left: 30px">
                             <iframe width="560" height="315"
-                                    src="https://www.youtube.com/embed/V5w1OGknhlc?autoplay=1&mute=1"
+                                    src="https://www.youtube.com/embed/V5w1OGknhlcz?autoplay=1&mute=1"
                                     frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                             </iframe>
                         </div>
-
                     </div>
                 </section>
 
                 <form method="POST" action="contactServlet" onsubmit="return validateForm()">
-
                     <div class="form-group">
-                        <div class="xamlol">
-                            <input class="fullName" type="text" name="fullName" placeholder="Họ và tên" required onchange="validateFullName()">
-                            <span id="nameError" style="color: red; display: none;"></span>
+                        <div class="input-container">
+                            <input class="full-name input-style" type="text" name="fullName" placeholder="Họ và tên" required onchange="validateFullName()">
+                            <span id="nameError" class="error-message"></span>
                         </div>
-                        <div class="xamlol">
-                            <input class="email" type="email" name="email" placeholder="Email" required>
-                            <span id="emailError" style="color: red; display: none;"></span>
+                        <div class="input-container">
+                            <input class="email-address input-style" type="email" name="email" placeholder="Email" required>
+                            <span id="emailError" class="error-message"></span>
                         </div>
                     </div>
 
                     <div class="form-group phone-group">
-                        <input type="text" name="phoneNumber" placeholder="Số điện thoại" required onchange="validatePhoneNumber()">
-                        <span id="phoneError" style="color: red; display: none;"></span>
+                        <input class="phone-number input-style" type="text" name="phoneNumber" placeholder="Số điện thoại" required onchange="validatePhoneNumber()">
+                        <span id="phoneError" class="error-message"></span>
                     </div>
 
-                    <textarea name="message" placeholder="Nội dung phản hồi" required></textarea>
+                    <textarea class="feedback-textarea textarea-style" name="feedbackMessage" placeholder="Vui lòng nhập phản hồi của bạn" rows="5" required></textarea>
 
                     <section class="privacy-agreement">
                         <h3>THỎA THUẬN BẢO MẬT THÔNG TIN</h3>
@@ -68,10 +66,10 @@
                     </section>
 
                     <div class="submit-container">
-                        <button type="submit" name="submit-feedback">Submit</button>
+                        <button class="submit-button button-style" type="submit" name="submitFeedback">Gửi phản hồi</button>
                     </div>
-
                 </form>
+
             </div>
         </section>
         <%@include file="components/modal.jsp" %>

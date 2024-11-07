@@ -18,10 +18,6 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet(name = "updateUserServlet", urlPatterns = {"/controller/updateUserServlet"})
 public class updateUserServlet extends HttpServlet {
 
-    private static final String URL = "jdbc:sqlserver://localhost:1433;databaseName=lorfood;encrypt=true;trustServerCertificate=true";
-    private static final String USER = "sa";
-    private static final String PASSWORD = "12345678";
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -37,11 +33,9 @@ public class updateUserServlet extends HttpServlet {
         PreparedStatement pstmt = null;
 
         try {
-            // Load the JDBC driver
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
             // Establish the connection to the database
-            conn = DriverManager.getConnection(URL, USER, PASSWORD);
+            conn = DBContext.ConnectDB.getConnection();
 
             // SQL update query to update the user information
             String updateQuery = "UPDATE users SET Username = ?, Email = ?, PhoneNumber = ?, Password = ? WHERE userID = ?";

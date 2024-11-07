@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="right-img">
-                <img src="img/logoLorFood.pngs" alt="alt"/>
+                <img src="img/logoLorFood.png" alt="alt"/>
             </div>
         </section>
         <%@include file="components/footer.jsp" %>

@@ -4,6 +4,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.SQLException"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,25 +61,38 @@
     </head>
 
     <body class="sb-nav-fixed">
+        <c:if test="${empty sessionScope.userAdmin}">
+            <% 
+               response.sendRedirect("signInAdmin.jsp");
+            %>
+        </c:if>
+        
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand ps-3" href="index.html">Management Admin</a>
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
+<!--                <div class="input-group">
                     <input class="form-control" type="text" name="search" placeholder="Tìm kiếm người dùng..." aria-label="Search">
                     <button class="btn btn-primary" id="btnNavbarSearch" type="submit">Tìm kiếm</button>
-                </div>
+                </div>-->
             </form>
+            <% 
+                String userAdmin = (String) session.getAttribute("userAdmin");
+            %>
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i>
+                        <% if (userAdmin != null) { %> 
+                        <span><%= userAdmin %></span> <!-- Hiển thị tên admin -->
+                        <% } %>
+                    </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#!">Settings</a></li>
                         <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
-                        <li><a class="dropdown-item" href="./signInAdmin.jsp">Logout</a></li>
+                        <li><a class="dropdown-item" href="/logOutAdmin">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -106,17 +120,21 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                                 Category Management
                             </a>
-                            <a class="nav-link" href="managementOrder.jsp">
-                                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
-                                Order Management
-                            </a>
-                            <a class="nav-link" href="managementOrderDetail.jsp">
-                                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
-                                Order Detail
-                            </a>
                             <a class="nav-link" href="managementAdmin.jsp">
                                 <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                                 Admin account
+                            </a>
+                            <a class="nav-link" href="ShippingMethodServlet?&action=showInfo">
+                                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+                                Shipping Method
+                            </a>
+                            <a class="nav-link" href="PaymentMethodServlet?&action=showInfo">
+                                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+                                Payment Method
+                            </a>
+                            <a class="nav-link" href="PaymentServlet?&action=show">
+                                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+                                Payment Management
                             </a>
                         </div>
                     </div>
@@ -155,18 +173,13 @@
                                     </thead>
                                     <tbody>
                                         <%
-                                            String URL = "jdbc:sqlserver://localhost:1433;databaseName=lorfood;encrypt=true;trustServerCertificate=true";
-                                            String USER = "sa";
-                                            String PASSWORD = "12345678";
-
                                             Connection conn = null;
                                             PreparedStatement pstmt = null;
                                             ResultSet rs = null;
 
                                             try {
                                                 // Use the driver for SQL Server
-                                                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-                                                conn = DriverManager.getConnection(URL, USER, PASSWORD);
+                                                conn = DBContext.ConnectDB.getConnection();
 
                                                 // Query data from the users table
                                                 String sql = "SELECT userID, Username, Email, PhoneNumber, Password, created_at FROM users";

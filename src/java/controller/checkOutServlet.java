@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package controller;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -11,6 +10,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import dao.PaymentDAO;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -56,7 +58,23 @@ public class checkOutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            String address = request.getParameter("address");
+            String Amount = request.getParameter("amount");
+            String Datime = request.getParameter("time");
+            System.out.println("Thời gian nhận được: " + Datime);
+            String ShippingMethodID = request.getParameter("shippingMethod");
+            String PaymentMethodID = request.getParameter("paymentMethod");
+            String nameUser = request.getParameter("txtName");
+            String phone = request.getParameter("txtPhone");
+
+            if (PaymentDAO.addPayment(Amount, Datime, ShippingMethodID, PaymentMethodID, address, nameUser, phone)) {
+               response.sendRedirect("succesPayment.jsp");
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     /**
@@ -70,10 +88,14 @@ public class checkOutServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         HttpSession session = request.getSession(true);
+        HttpSession session = request.getSession(true);
         if (session.getAttribute("username") == null) {
             response.sendRedirect("signIn.jsp");
         } else {
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+            String timeCurrent = now.format(formatter);
+            request.setAttribute("timeCurrent", timeCurrent);
             request.getRequestDispatcher("checkOut.jsp").forward(request, response);
         }
     }

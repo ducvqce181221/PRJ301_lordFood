@@ -24,116 +24,115 @@
         <div class="image-banner">
             <div class="image-banner">
                 <div class="image-banner">
-                    <img src="img/AboutUs-img/banners.jpg" alt="">
+                    <img src="img/AboutUs-img/img.webp" alt="">
                 </div>
             </div>
-        </div> <section>
+        </div> 
+        <section>
             <div class="section-2">
                 <div class="header-section2">
-                    <img src="img/logoLorFood.png" alt="" />
+                    <img src="img/logoLorFood.png" alt="LorFood Logo" />
                     <h3>Lịch Sử </h3>
-                    <h2>Quá Trình Hình Thành</h2>
-
+                    <h2>Quá Trình Hình Thành LorFood</h2>
                 </div>
 
                 <!-- Swiper Container -->
-                <div class="swiper-container  time-slide">
+                <div class="swiper-container time-slide">
                     <div class="swiper-wrapper">
 
-                        <!-- slide 1 -->
+                        <!-- Slide 1: Establishment -->
                         <div class="swiper-slide">
                             <div class="time-line-item">
                                 <div class="time-line-img">
-                                    <img src="img/logoLorFood.png" alt="" />
+                                    <img src="img/logoLorFood.png" alt="LorFood Establishment" />
                                 </div>
                                 <div class="time-line-content">
                                     <h4>2015</h4>
-                                    <p>LorFood được thành lập với sứ mệnh mang đến bữa ăn nhanh chất lượng, tiện lợi nhưng vẫn đầy đủ dinh dưỡng.</p>
+                                    <p>LorFood được thành lập với sứ mệnh mang đến cho mọi người những bữa ăn chất lượng, lấy cảm hứng từ các món ăn truyền thống Việt Nam.</p>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- slide 2 -->
-
+                        <!-- Slide 2: Initial Mission and Vision -->
                         <div class="swiper-slide">
                             <div class="time-line-item">
                                 <div class="time-line-img">
-                                    <img src="img/logoLorFood.png" alt="" />
+                                    <img src="img/logoLorFood.png" alt="LorFood Mission" />
                                 </div>
                                 <div class="time-line-content">
-                                    <h4>2015</h4>
-                                    <p>Ban đầu, LorFood chỉ là một cửa hàng nhỏ, phục vụ các món ăn nhanh như hamburger, pizza, và gà rán.</p>
+                                    <h4>2016</h4>
+                                    <p>Ban đầu, LorFood chú trọng vào việc giới thiệu các món ăn truyền thống như phở, bún bò Huế, và bánh xèo, giúp giữ gìn hương vị đặc trưng của ẩm thực Việt Nam.</p>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- slide 3 -->
-
+                        <!-- Slide 3: Expansion to Major Cities -->
                         <div class="swiper-slide">
                             <div class="time-line-item">
                                 <div class="time-line-img">
-                                    <img src="img/logoLorFood.png" alt="" />
+                                    <img src="img/logoLorFood.png" alt="LorFood Expansion" />
                                 </div>
                                 <div class="time-line-content">
                                     <h4>2020</h4>
-                                    <p>Với sự phát triển mạnh mẽ, LorFood đã có mặt tại nhiều thành phố lớn, trở thành thương hiệu thức ăn nhanh được yêu thích.</p>
+                                    <p>Với sự phát triển mạnh mẽ, LorFood đã mở rộng đến nhiều thành phố lớn, mang đến hương vị truyền thống cho thực khách trên cả nước.</p>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- slide 4 -->
-
+                        <!-- Slide 4: Commitment to Quality -->
                         <div class="swiper-slide">
                             <div class="time-line-item">
                                 <div class="time-line-img">
-                                    <img src="img/logoLorFood.png" alt="" />
+                                    <img src="img/logoLorFood.png" alt="LorFood Quality Commitment" />
                                 </div>
                                 <div class="time-line-content">
-                                    <h4>2020</h4>
-                                    <p>LorFood nổi bật với phong cách phục vụ hiện đại, chuyên nghiệp, thu hút nhiều khách hàng.</p>
+                                    <h4>Hiện Tại</h4>
+                                    <p>LorFood cam kết giữ gìn và phát triển các món ăn truyền thống Việt Nam, mang đến cho khách hàng trải nghiệm ẩm thực đậm đà bản sắc và chất lượng cao.</p>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
-
         </section>
-
-
 
         <section class="section-history">
             <div class="text-content">
-                <h2>Lịch Sử Hình Thành Của Pizza</h2>
+                <h2>Lịch Sử Hình Thành Của Phở</h2>
                 <div class="underline"></div>
                 <p>
-                    Pizza có nguồn gốc từ Ý, và khởi đầu là một món ăn của người nghèo tại Napoli vào thế kỷ 18. Ban đầu, pizza chỉ đơn giản là một loại bánh mì dẹt được nướng trong lò và phủ lên trên bằng các nguyên liệu như dầu ô liu, thảo mộc, và phô mai. Sự kết hợp này dần trở nên phổ biến vì tính tiện lợi và giá thành rẻ.
+                    Phở, một biểu tượng của ẩm thực Việt Nam, bắt nguồn từ đầu thế kỷ 20 ở miền Bắc Việt Nam. 
+                    Ban đầu, phở được làm từ sợi bánh phở mềm, thịt bò, và nước dùng trong, ninh từ xương bò 
+                    và gia vị truyền thống như quế, hồi và gừng.
                 </p>
                 <p>
-                    Vào năm 1889, đầu bếp Raffaele Esposito đã tạo ra món pizza "Margherita" nổi tiếng, với sự kết hợp của cà chua, phô mai mozzarella và húng quế để đại diện cho ba màu của quốc kỳ Ý. Đây được coi là dấu mốc quan trọng trong sự phát triển của pizza hiện đại. Kể từ đó, pizza trở thành một món ăn yêu thích trên toàn thế giới, với hàng loạt biến thể khác nhau, từ kiểu cổ điển của Ý đến các phiên bản hiện đại tại Mỹ và nhiều quốc gia khác.
+                    Theo thời gian, phở đã lan rộng vào miền Nam và được biến tấu với nhiều hương vị, điển hình là 
+                    phở gà và phở với các loại rau thơm phong phú. Ngày nay, phở không chỉ là món ăn quen thuộc của người Việt, 
+                    mà còn là món ăn được yêu thích trên khắp thế giới.
                 </p>
             </div>
         </section>
+
 
         <section class="section1">s
 
             <div class="video-content" style="margin-left: 30px">
                 <iframe width="560" height="315"
-                        src="https://www.youtube.com/embed/VZU-EyQfUXQ?autoplay=1&mute=1"
+                        src="https://www.youtube.com/embed/ftsQYS1fkOs"
                         frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                 </iframe>
             </div>
 
             <div class="text-content">
-                <h2>Hương Vị Tuyệt Hảo Của Pizza</h2>
+                <h2>Hương Vị Đặc Trưng Của Phở</h2>
                 <div class="underline"></div>
                 <p>
-                    Pizza tại LorFood được chế biến tỉ mỉ, từ bột tươi nhào nặn kỹ lưỡng, nướng giòn rụm bên ngoài nhưng mềm bên trong. Lớp phô mai béo ngậy hòa quyện cùng sốt cà chua tươi tạo nên hương vị đặc trưng.
+                    Phở là món ăn nổi tiếng của Việt Nam, với nước dùng xương hầm đậm đà, mang đến vị ngọt tự nhiên. Bánh phở mềm mịn kết hợp hoàn hảo với thịt bò hoặc gà, tạo nên sự hòa quyện tuyệt vời.
                 </p>
                 <p>
-                    Các nguyên liệu tươi ngon như xúc xích, nấm, ớt chuông và thịt xông khói được sắp xếp hài hòa, sau đó nướng chín vàng cùng phô mai tan chảy. Hãy thưởng thức để cảm nhận sự khác biệt!
+                    Hương vị được nâng tầm bởi gia vị như quế, hồi, và hành, cùng với rau thơm tươi mát như húng quế và giá đỗ. Mỗi tô phở không chỉ là món ăn, mà còn là trải nghiệm văn hóa ẩm thực Việt Nam.
                 </p>
-
             </div>
 
 
@@ -142,37 +141,38 @@
         <!-- Lịch Sử Hình Thành Section -->
         <section class="section-history">
             <div class="text-content">
-                <h2>Lịch Sử Hình Thành Của Hamburger</h2>
+                <h2>Lịch Sử Hình Thành Của Bánh Mì</h2>
                 <div class="underline"></div>
                 <p>
-                    Hamburger có nguồn gốc từ thế kỷ 19 ở châu Âu, đặc biệt là từ thành phố Hamburg, Đức, nơi món thịt bò băm được chế biến và phục vụ trong các bữa ăn phổ biến. Khi người dân Đức di cư đến Mỹ, họ mang theo công thức thịt bò xay nổi tiếng này. Tại Mỹ, thịt bò xay được kết hợp với bánh mì mềm và các loại rau, tạo nên món ăn nhanh hoàn hảo mà chúng ta biết đến ngày nay với tên gọi “hamburger”.
+                    Bánh mì có nguồn gốc từ bánh baguette của Pháp, du nhập vào Việt Nam vào thế kỷ 19 trong thời kỳ thuộc địa. Người Việt đã sáng tạo ra bánh mì bằng cách kết hợp bánh baguette giòn với các nguyên liệu phong phú như thịt, pate, rau sống và gia vị, tạo nên món ăn độc đáo.
                 </p>
                 <p>
-                    Qua thời gian, hamburger đã trở thành biểu tượng của văn hóa ẩm thực nhanh trên toàn thế giới. Với sự kết hợp đơn giản nhưng đầy hương vị, hamburger đã chiếm được trái tim của thực khách từ Âu sang Á, và tiếp tục phát triển mạnh mẽ trong các chuỗi nhà hàng và cửa hàng ăn nhanh.
+                    Qua thời gian, bánh mì đã trở thành một phần không thể thiếu trong ẩm thực đường phố Việt Nam. Với sự sáng tạo đa dạng trong nhân bánh và cách chế biến, bánh mì không chỉ nổi tiếng trong nước mà còn lan tỏa ra thế giới, trở thành món ăn yêu thích của nhiều người.
                 </p>
             </div>
         </section>
+
         <section class="section1">
             <div class="text-content">
-                <h2>Hương Vị Tuyệt Hảo Của Hamburger</h2>
+                <h2>Hương Vị Tuyệt Hảo Của Bánh Mì</h2>
                 <div class="underline"></div>
                 <p>
-                    Hamburger tại LorFood được làm từ bánh mì nướng giòn và thịt bò tươi ướp gia vị, nướng vừa chín để giữ độ mọng nước. Rau xà lách, cà chua, dưa leo và phô mai tan chảy được kết hợp hoàn hảo trong chiếc bánh.
+                    Bánh mì tại LorFood được làm từ bánh baguette giòn tan, bên trong chứa đựng sự phong phú của các nguyên liệu như thịt nướng, pate, rau sống và nước sốt đặc biệt. Lớp bánh mì giòn rụm kết hợp với các thành phần tươi ngon tạo nên một trải nghiệm ẩm thực độc đáo.
                 </p>
                 <p>
-                    Khi thưởng thức, bạn sẽ cảm nhận vị ngọt của thịt bò hòa quyện với sự tươi mát của rau củ, vị béo của phô mai, và lớp bánh mì giòn rụm. Một hương vị đầy đặn và hấp dẫn.
+                    Khi thưởng thức, bạn sẽ cảm nhận vị ngọt của thịt, vị béo ngậy của pate, cùng với sự tươi mát của rau củ. Tất cả hòa quyện lại với nhau trong mỗi miếng bánh, tạo nên một hương vị đậm đà và hấp dẫn, khiến bạn không thể cưỡng lại được.
                 </p>
-
-
-
             </div>
+
+
 
             <div class="video-content" style="margin-left: 30px">
                 <iframe width="560" height="315"
-                        src="https://www.youtube.com/embed/T8_c6QEsNEE?autoplay=1&mute=1"
-                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                        src="https://www.youtube.com/embed/v3yyiSGulok"  <!-- Đổi từ watch?v= thành embed/ -->
+                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                 </iframe>
             </div>
+
         </section>
         <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
         <script>

@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class CategoryDAO {
 
-    protected static Connection Con;
+    protected static Connection Con = null;
     protected static String Select_Cate_By_ID = "SELECT * FROM category WHERE categoryId = ?";
     protected static String Select_All = "SELECT * FROM category";
     protected static String Delect_By_Id = "DELETE FROM category WHERE categoryId = ?";

@@ -1,12 +1,13 @@
 body {
     margin-top: 100px; /* Increased margin to ensure header doesn't overlap content */
+    background-color: white;
 }
 
 .custom-header {
+    background-color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fff;
     padding: 10px 40px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     position: fixed;
@@ -42,7 +43,7 @@ body {
 .logo-header {
     text-align: center;
     flex-grow: 1;
-    margin-left: 50px; /* Adjust spacing as necessary */
+    margin-left: 190px; /* Adjust spacing as necessary */
 }
 
 .logo-header img {

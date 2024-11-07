@@ -74,17 +74,31 @@
 
 
     <body class="sb-nav-fixed"> 
+        <c:if test="${empty sessionScope.userAdmin}">
+            <% 
+               response.sendRedirect("signInAdmin.jsp");
+            %>
+        </c:if>
+
+        <% 
+                String userAdmin = (String) session.getAttribute("userAdmin");
+        %>
+
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand ps-3" href="index.html">Management Admin</a>
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i>
+                        <% if (userAdmin != null) { %> 
+                        <span><%= userAdmin %></span> <!-- Hiển thị tên admin -->
+                        <% } %>
+                    </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#!">Settings</a></li>
                         <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="./signInAdmin.jsp">Logout</a></li>
+                        <li><a class="dropdown-item" href="/logOutAdmin">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -95,22 +109,47 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Management</div>
-
-                            <a class="nav-link" href="homeAdmin.jsp"><div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>User Management</a>
-                            <a class="nav-link" href="managementContact.jsp"><div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>Contact Management</a>
-                            <a class="nav-link" href="productManagement"><div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>Product Management</a>
+                            <a class="nav-link" href="homeAdmin.jsp">
+                                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+                                User Management
+                            </a>
+                            <a class="nav-link" href="managementContact.jsp">
+                                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+                                Contact Management
+                            </a>
+                            <a class="nav-link" href="productManagement">
+                                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+                                Product Management
+                            </a>
                             <a class="nav-link" href="categoryServlet?&action=showInfo">
                                 <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                                 Category Management
                             </a>
-                            <a class="nav-link" href="managementOrder.jsp"><div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>Order Management</a>
-                            <a class="nav-link" href="managementOrderDetail.jsp"><div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>Order Detail</a>
-                            <a class="nav-link" href="managementAdmin.jsp"><div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>Admin account</a>
+                            <a class="nav-link" href="managementAdmin.jsp">
+                                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+                                Admin account
+                            </a>
+                            <a class="nav-link" href="ShippingMethodServlet?&action=showInfo">
+                                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+                                Shipping Method
+                            </a>
+                            <a class="nav-link" href="PaymentMethodServlet?&action=showInfo">
+                                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+                                Payment Method
+                            </a>
+                            <a class="nav-link" href="PaymentServlet?&action=show">
+                                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+                                Payment Management
+                            </a>
                         </div>
                     </div>
-                    <div class="sb-sidenav-footer"><div class="small">Logged in as:</div>Management Admin</div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        Management Admin
+                    </div>
                 </nav>
             </div>
+
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
@@ -170,7 +209,7 @@ session.removeAttribute("CateEx");
                                                     <tr>
                                                         <td>${item.categoryId}</td>
                                                         <td>${item.category_name}</td>
-                                                        <td>${item.create_at}</td>>
+                                                        <td>${item.create_at}</td>
                                                         <td>
                                                             <button class="custom-height-btn custom-width-btn btn btn-primary btn-sm" 
                                                                     onclick="openUpdateModal(${item.categoryId}, '${item.category_name}')">Update</button>

@@ -14,7 +14,6 @@
             display: inline-block;
             margin: 0;
             padding: 10px;
-            background-color: #f9f9f9; /* Light background */
             border-radius: 8px;
             cursor: pointer;
         }
@@ -66,7 +65,7 @@
                                     <span>Cart</span>
                                     <figure class="cart-figure" style="display: inline; vertical-align: middle;">
                                         <i class="fa fa-shopping-bag cart-icon"></i>
-                                        <span class="cart-count">${sessionScope.size} </span>  <!-- Display number of items in cart -->
+                                        <span class="cart-count">${sessionScope.size}? 0 : ${sessionScope.size} </span>  <!-- Display number of items in cart -->
                                     </figure>
                                 </button>
                             </form>

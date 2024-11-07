@@ -201,15 +201,15 @@ public class CategoryServlet extends HttpServlet {
         }
     }
 
-    private boolean check_Exist_Name(String cateName) {
-        List<Category> list = CategoryDAO.getAll();
-        for (Category c : list) {
-            if (c.getCategory_name().equalsIgnoreCase(cateName)) {
-                return true;
+        private boolean check_Exist_Name(String cateName) {
+            List<Category> list = CategoryDAO.getAll();
+            for (Category c : list) {
+                if (c.getCategory_name().equalsIgnoreCase(cateName)) {
+                    return true;
+                }
             }
+            return false;
         }
-        return false;
-    }
 
     private boolean check_Name(String cateName) {
         return cateName.matches("^[a-zA-Z\\s-]{3,50}$");

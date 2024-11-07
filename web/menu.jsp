@@ -29,7 +29,7 @@
             <link rel="stylesheet" href="./CSS/menu.css" />
         </head>
 
-        <body style="background-color: #eaf9ff">
+        <body>
             <%--<%@include file="components/header.jsp" %>--%>
 
             <nav class="navbar navbar-expand-lg navbar-light category-custom" style="margin-top: 130px; background-color: white">
